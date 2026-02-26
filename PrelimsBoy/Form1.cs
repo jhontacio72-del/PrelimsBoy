@@ -45,7 +45,8 @@ namespace PrelimsBoy
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
+            cmb_role.BackColor = Color.FromArgb(60, 60, 60);
             StyleTextbox(tb_username);
             StyleTextbox(tb_password);
             StyleTextbox(tb_createusername);
@@ -262,10 +263,37 @@ namespace PrelimsBoy
                 dashboard.Show();
                 this.Hide(); 
             }
+
+            else if 
+                (tb_username.Text == "superadmin" && tb_password.Text == "admin1234")
+            {
+                frm_superadmin dashboards = new frm_superadmin();
+                dashboards.Show();
+                this.Hide();
+            }
             else
             {
                 MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_createusername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+            
+           
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
