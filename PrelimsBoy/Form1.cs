@@ -9,13 +9,17 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 namespace PrelimsBoy
 {
     public partial class frm_Home : Form
     {
+        string connString = "server=localhost;database=User_db;uid=root;pwd=;";
+        private frm_superadmin _gridForm;
         public frm_Home()
         {
             InitializeComponent();
+
         }
 
 
@@ -45,13 +49,14 @@ namespace PrelimsBoy
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
             cmb_role.BackColor = Color.FromArgb(60, 60, 60);
             StyleTextbox(tb_username);
             StyleTextbox(tb_password);
             StyleTextbox(tb_createusername);
             StyleTextbox(tb_createpassword);
             StyleTextbox(tb_confirmpassword);
+            StyleTextbox(tb_fullname);
             btn_login.FlatStyle = FlatStyle.Flat;
             btn_login.FlatAppearance.BorderSize = 0;
             btn_login.BackColor = Color.FromArgb(200, 30, 30);
@@ -72,6 +77,10 @@ namespace PrelimsBoy
 
             tb_confirmpassword.Text = "Confirm Password";
             tb_confirmpassword.ForeColor = Color.Gray;
+
+            tb_fullname.Text = "Enter Full Name";
+            tb_fullname.ForeColor = Color.Gray;
+
 
         }
 
@@ -261,10 +270,10 @@ namespace PrelimsBoy
             {
                 frm_Dashboard dashboard = new frm_Dashboard();
                 dashboard.Show();
-                this.Hide(); 
+                this.Hide();
             }
 
-            else if 
+            else if
                 (tb_username.Text == "superadmin" && tb_password.Text == "admin1234")
             {
                 frm_superadmin dashboards = new frm_superadmin();
@@ -289,11 +298,73 @@ namespace PrelimsBoy
 
         }
 
-            
-           
+
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (tb_fullname.Text == "Enter Full Name")
+            {
+                tb_fullname.Text = "";
+                tb_fullname.ForeColor = Color.White; // Change text color to black
+            }
+        }
+
+        private void tb_fullname_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tb_fullname.Text))
+            {
+                tb_fullname.Text = "Enter Full Name";
+                tb_fullname.ForeColor = Color.Gray; // Change text color to gray
+            }
+        }
+
+        private void btn_register_Click(object sender, EventArgs e)
+        {
+            string role = cmb_role.SelectedItem?.ToString();
+            string status = (role == "Instructor") ? "Pending" : "Active";
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    conn.Open();
+                    // Added username and status to the insert query
+                    string query = "INSERT INTO users (name, username, role, status) VALUES (@name, @user, @role, @status)";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@name", tb_fullname.Text);
+                        cmd.Parameters.AddWithValue("@user", tb_createusername.Text);
+                        cmd.Parameters.AddWithValue("@role", role);
+                        cmd.Parameters.AddWithValue("@status", status);
+
+                        cmd.ExecuteNonQuery();
+
+                        if (role == "Instructor")
+                        {
+                            MessageBox.Show("Registered successfully! Please wait for admin approval.", "Pending", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Student registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                        // Refresh the SuperAdmin grid if it's open
+                        frm_superadmin openAdminForm = (frm_superadmin)Application.OpenForms["frm_superadmin"];
+                        if (openAdminForm != null)
+                        {
+                            openAdminForm.LoadData();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
     }
 }

@@ -32,12 +32,11 @@
             this.pnl_left = new System.Windows.Forms.Panel();
             this.pnl_right = new System.Windows.Forms.Panel();
             this.pnl_register = new System.Windows.Forms.Panel();
+            this.tb_fullname = new System.Windows.Forms.TextBox();
             this.cmb_role = new System.Windows.Forms.ComboBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pb_vison3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pb_vison2 = new System.Windows.Forms.PictureBox();
-            this.pb_visoff3 = new System.Windows.Forms.PictureBox();
             this.pb_visoff2 = new System.Windows.Forms.PictureBox();
             this.lbl_BckLgin = new System.Windows.Forms.Label();
             this.tb_confirmpassword = new System.Windows.Forms.TextBox();
@@ -48,6 +47,8 @@
             this.tb_createusername = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.pb_visoff3 = new System.Windows.Forms.PictureBox();
+            this.pb_vison3 = new System.Windows.Forms.PictureBox();
             this.pnl_login = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,20 +59,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tb_username = new System.Windows.Forms.TextBox();
             this.lbl_login = new System.Windows.Forms.Label();
-            this.pb_visibilityoff = new System.Windows.Forms.PictureBox();
             this.pb_visibilityon = new System.Windows.Forms.PictureBox();
+            this.pb_visibilityoff = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pnl_right.SuspendLayout();
             this.pnl_register.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_vison3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_vison2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_visoff3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_visoff2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_visoff3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_vison3)).BeginInit();
             this.pnl_login.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityoff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityoff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_left
@@ -99,12 +102,12 @@
             // 
             // pnl_register
             // 
+            this.pnl_register.Controls.Add(this.pictureBox4);
+            this.pnl_register.Controls.Add(this.tb_fullname);
             this.pnl_register.Controls.Add(this.cmb_role);
             this.pnl_register.Controls.Add(this.pictureBox3);
-            this.pnl_register.Controls.Add(this.pb_vison3);
             this.pnl_register.Controls.Add(this.pictureBox2);
             this.pnl_register.Controls.Add(this.pb_vison2);
-            this.pnl_register.Controls.Add(this.pb_visoff3);
             this.pnl_register.Controls.Add(this.pb_visoff2);
             this.pnl_register.Controls.Add(this.lbl_BckLgin);
             this.pnl_register.Controls.Add(this.tb_confirmpassword);
@@ -115,10 +118,25 @@
             this.pnl_register.Controls.Add(this.tb_createusername);
             this.pnl_register.Controls.Add(this.label6);
             this.pnl_register.Controls.Add(this.label5);
+            this.pnl_register.Controls.Add(this.pb_visoff3);
+            this.pnl_register.Controls.Add(this.pb_vison3);
             this.pnl_register.Location = new System.Drawing.Point(85, 69);
             this.pnl_register.Name = "pnl_register";
-            this.pnl_register.Size = new System.Drawing.Size(266, 321);
+            this.pnl_register.Size = new System.Drawing.Size(266, 362);
             this.pnl_register.TabIndex = 1;
+            // 
+            // tb_fullname
+            // 
+            this.tb_fullname.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_fullname.ForeColor = System.Drawing.Color.White;
+            this.tb_fullname.Location = new System.Drawing.Point(32, 260);
+            this.tb_fullname.Multiline = true;
+            this.tb_fullname.Name = "tb_fullname";
+            this.tb_fullname.Size = new System.Drawing.Size(204, 30);
+            this.tb_fullname.TabIndex = 22;
+            this.tb_fullname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_fullname.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.tb_fullname.Leave += new System.EventHandler(this.tb_fullname_Leave);
             // 
             // cmb_role
             // 
@@ -147,17 +165,6 @@
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
-            // pb_vison3
-            // 
-            this.pb_vison3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_vison3.BackgroundImage")));
-            this.pb_vison3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pb_vison3.Location = new System.Drawing.Point(3, 189);
-            this.pb_vison3.Name = "pb_vison3";
-            this.pb_vison3.Size = new System.Drawing.Size(30, 30);
-            this.pb_vison3.TabIndex = 18;
-            this.pb_vison3.TabStop = false;
-            this.pb_vison3.Click += new System.EventHandler(this.pb_vison3_Click);
-            // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
@@ -179,17 +186,6 @@
             this.pb_vison2.TabStop = false;
             this.pb_vison2.Click += new System.EventHandler(this.pb_vison2_Click);
             // 
-            // pb_visoff3
-            // 
-            this.pb_visoff3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_visoff3.BackgroundImage")));
-            this.pb_visoff3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pb_visoff3.Location = new System.Drawing.Point(3, 189);
-            this.pb_visoff3.Name = "pb_visoff3";
-            this.pb_visoff3.Size = new System.Drawing.Size(30, 30);
-            this.pb_visoff3.TabIndex = 11;
-            this.pb_visoff3.TabStop = false;
-            this.pb_visoff3.Click += new System.EventHandler(this.pb_visoff3_Click);
-            // 
             // pb_visoff2
             // 
             this.pb_visoff2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_visoff2.BackgroundImage")));
@@ -207,7 +203,7 @@
             this.lbl_BckLgin.BackColor = System.Drawing.Color.Transparent;
             this.lbl_BckLgin.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_BckLgin.ForeColor = System.Drawing.Color.LightCoral;
-            this.lbl_BckLgin.Location = new System.Drawing.Point(80, 293);
+            this.lbl_BckLgin.Location = new System.Drawing.Point(84, 331);
             this.lbl_BckLgin.Name = "lbl_BckLgin";
             this.lbl_BckLgin.Size = new System.Drawing.Size(104, 20);
             this.lbl_BckLgin.TabIndex = 11;
@@ -218,10 +214,10 @@
             // 
             this.tb_confirmpassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_confirmpassword.ForeColor = System.Drawing.Color.White;
-            this.tb_confirmpassword.Location = new System.Drawing.Point(29, 189);
+            this.tb_confirmpassword.Location = new System.Drawing.Point(32, 189);
             this.tb_confirmpassword.Multiline = true;
             this.tb_confirmpassword.Name = "tb_confirmpassword";
-            this.tb_confirmpassword.Size = new System.Drawing.Size(207, 30);
+            this.tb_confirmpassword.Size = new System.Drawing.Size(204, 30);
             this.tb_confirmpassword.TabIndex = 16;
             this.tb_confirmpassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_confirmpassword.Enter += new System.EventHandler(this.tb_confirmpassword_Enter);
@@ -242,10 +238,10 @@
             // 
             this.tb_createpassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_createpassword.ForeColor = System.Drawing.Color.White;
-            this.tb_createpassword.Location = new System.Drawing.Point(30, 133);
+            this.tb_createpassword.Location = new System.Drawing.Point(32, 133);
             this.tb_createpassword.Multiline = true;
             this.tb_createpassword.Name = "tb_createpassword";
-            this.tb_createpassword.Size = new System.Drawing.Size(207, 30);
+            this.tb_createpassword.Size = new System.Drawing.Size(205, 30);
             this.tb_createpassword.TabIndex = 14;
             this.tb_createpassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_createpassword.Enter += new System.EventHandler(this.tb_createpassword_Enter);
@@ -267,21 +263,22 @@
             this.btn_register.BackColor = System.Drawing.Color.IndianRed;
             this.btn_register.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_register.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_register.Location = new System.Drawing.Point(32, 260);
+            this.btn_register.Location = new System.Drawing.Point(30, 298);
             this.btn_register.Name = "btn_register";
             this.btn_register.Size = new System.Drawing.Size(207, 30);
             this.btn_register.TabIndex = 11;
             this.btn_register.Text = "REGISTER";
             this.btn_register.UseVisualStyleBackColor = false;
+            this.btn_register.Click += new System.EventHandler(this.btn_register_Click);
             // 
             // tb_createusername
             // 
             this.tb_createusername.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_createusername.ForeColor = System.Drawing.Color.White;
-            this.tb_createusername.Location = new System.Drawing.Point(30, 77);
+            this.tb_createusername.Location = new System.Drawing.Point(32, 77);
             this.tb_createusername.Multiline = true;
             this.tb_createusername.Name = "tb_createusername";
-            this.tb_createusername.Size = new System.Drawing.Size(207, 30);
+            this.tb_createusername.Size = new System.Drawing.Size(205, 30);
             this.tb_createusername.TabIndex = 12;
             this.tb_createusername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_createusername.TextChanged += new System.EventHandler(this.tb_createusername_TextChanged);
@@ -310,6 +307,28 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "REGISTER";
             // 
+            // pb_visoff3
+            // 
+            this.pb_visoff3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_visoff3.BackgroundImage")));
+            this.pb_visoff3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pb_visoff3.Location = new System.Drawing.Point(3, 189);
+            this.pb_visoff3.Name = "pb_visoff3";
+            this.pb_visoff3.Size = new System.Drawing.Size(30, 30);
+            this.pb_visoff3.TabIndex = 11;
+            this.pb_visoff3.TabStop = false;
+            this.pb_visoff3.Click += new System.EventHandler(this.pb_visoff3_Click);
+            // 
+            // pb_vison3
+            // 
+            this.pb_vison3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_vison3.BackgroundImage")));
+            this.pb_vison3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pb_vison3.Location = new System.Drawing.Point(3, 189);
+            this.pb_vison3.Name = "pb_vison3";
+            this.pb_vison3.Size = new System.Drawing.Size(30, 30);
+            this.pb_vison3.TabIndex = 18;
+            this.pb_vison3.TabStop = false;
+            this.pb_vison3.Click += new System.EventHandler(this.pb_vison3_Click);
+            // 
             // pnl_login
             // 
             this.pnl_login.Controls.Add(this.label4);
@@ -321,11 +340,11 @@
             this.pnl_login.Controls.Add(this.label1);
             this.pnl_login.Controls.Add(this.tb_username);
             this.pnl_login.Controls.Add(this.lbl_login);
-            this.pnl_login.Controls.Add(this.pb_visibilityoff);
             this.pnl_login.Controls.Add(this.pb_visibilityon);
+            this.pnl_login.Controls.Add(this.pb_visibilityoff);
             this.pnl_login.Location = new System.Drawing.Point(82, 69);
             this.pnl_login.Name = "pnl_login";
-            this.pnl_login.Size = new System.Drawing.Size(266, 321);
+            this.pnl_login.Size = new System.Drawing.Size(266, 362);
             this.pnl_login.TabIndex = 0;
             // 
             // label4
@@ -439,6 +458,17 @@
             this.lbl_login.TabIndex = 0;
             this.lbl_login.Text = "LOGIN";
             // 
+            // pb_visibilityon
+            // 
+            this.pb_visibilityon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_visibilityon.BackgroundImage")));
+            this.pb_visibilityon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pb_visibilityon.Location = new System.Drawing.Point(20, 161);
+            this.pb_visibilityon.Name = "pb_visibilityon";
+            this.pb_visibilityon.Size = new System.Drawing.Size(30, 30);
+            this.pb_visibilityon.TabIndex = 5;
+            this.pb_visibilityon.TabStop = false;
+            this.pb_visibilityon.Click += new System.EventHandler(this.pb_visibilityon_Click);
+            // 
             // pb_visibilityoff
             // 
             this.pb_visibilityoff.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_visibilityoff.BackgroundImage")));
@@ -450,16 +480,15 @@
             this.pb_visibilityoff.TabStop = false;
             this.pb_visibilityoff.Click += new System.EventHandler(this.pb_visibilityoff_Click);
             // 
-            // pb_visibilityon
+            // pictureBox4
             // 
-            this.pb_visibilityon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_visibilityon.BackgroundImage")));
-            this.pb_visibilityon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pb_visibilityon.Location = new System.Drawing.Point(20, 161);
-            this.pb_visibilityon.Name = "pb_visibilityon";
-            this.pb_visibilityon.Size = new System.Drawing.Size(30, 30);
-            this.pb_visibilityon.TabIndex = 5;
-            this.pb_visibilityon.TabStop = false;
-            this.pb_visibilityon.Click += new System.EventHandler(this.pb_visibilityon_Click);
+            this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox4.Location = new System.Drawing.Point(3, 260);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox4.TabIndex = 23;
+            this.pictureBox4.TabStop = false;
             // 
             // frm_Home
             // 
@@ -478,16 +507,17 @@
             this.pnl_register.ResumeLayout(false);
             this.pnl_register.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_vison3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_vison2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_visoff3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_visoff2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_visoff3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_vison3)).EndInit();
             this.pnl_login.ResumeLayout(false);
             this.pnl_login.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityoff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityoff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -525,6 +555,8 @@
         private System.Windows.Forms.PictureBox pb_vison2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ComboBox cmb_role;
+        private System.Windows.Forms.TextBox tb_fullname;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
 
