@@ -101,6 +101,7 @@
             // pnl_left
             // 
             this.pnl_left.BackColor = System.Drawing.Color.DarkGray;
+            this.pnl_left.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_left.BackgroundImage")));
             this.pnl_left.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnl_left.Controls.Add(this.pnl_homepage);
             this.pnl_left.Controls.Add(this.pictureBox2);
@@ -114,7 +115,7 @@
             this.pnl_left.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnl_left.Location = new System.Drawing.Point(0, 0);
             this.pnl_left.Name = "pnl_left";
-            this.pnl_left.Size = new System.Drawing.Size(194, 450);
+            this.pnl_left.Size = new System.Drawing.Size(200, 450);
             this.pnl_left.TabIndex = 0;
             // 
             // pnl_homepage
@@ -267,12 +268,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Symbol", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.BackColor = System.Drawing.Color.DimGray;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(22, 127);
+            this.label1.Location = new System.Drawing.Point(34, 132);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 30);
+            this.label1.Size = new System.Drawing.Size(132, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Super Admin";
             // 
@@ -281,7 +282,7 @@
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 17);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(167, 112);
             this.pictureBox1.TabIndex = 0;
