@@ -62,6 +62,17 @@ namespace PrelimsBoy
             btn_approve.Text = "Approve";
             btn_approve.UseColumnTextForButtonValue = true;
             dt_manageinstructor.Columns.Add(btn_approve);
+
+
+
+            // === NEW: Add a Reject Button Column ===
+            DataGridViewButtonColumn btn_reject = new DataGridViewButtonColumn();
+            btn_reject.Name = "colReject"; // IMPORTANT: Unique name for this button
+            btn_reject.HeaderText = ""; // No header text for the reject column, or "Reject"
+            btn_reject.Text = "Reject";
+            btn_reject.UseColumnTextForButtonValue = true;
+            dt_manageinstructor.Columns.Add(btn_reject);
+            // =====================================
         }
         public void LoadData()
         {
@@ -187,24 +198,56 @@ namespace PrelimsBoy
 
         private void dt_manageinstructor_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Check if the clicked cell is the Approve button
-            if (dt_manageinstructor.Columns[e.ColumnIndex].Name == "colApprove" && e.RowIndex >= 0)
+            // Check if a button column was clicked and it's a valid row
+            if (e.RowIndex >= 0)
             {
+                // Declare userId here so it's accessible to both if/else if blocks
                 int userId = Convert.ToInt32(dt_manageinstructor.Rows[e.RowIndex].Cells["instId"].Value);
-
-                using (MySqlConnection conn = new MySqlConnection(connString))
+                // If the clicked cell is the Approve button
+                if (dt_manageinstructor.Columns[e.ColumnIndex].Name == "colApprove")
                 {
-                    conn.Open();
-                    string query = "UPDATE users SET status = 'Active' WHERE id = @id";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@id", userId);
-                    cmd.ExecuteNonQuery();
+                    using (MySqlConnection conn = new MySqlConnection(connString))
+                    {
+                        conn.Open();
+                        string query = "UPDATE users SET status = 'Active' WHERE id = @id";
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@id", userId);
+                        cmd.ExecuteNonQuery();
+                    }
+                    MessageBox.Show("Instructor Approved!");
+                    LoadData(); // Refresh both grids
                 }
-
-                MessageBox.Show("Instructor Approved!");
-                LoadData(); // Refresh both grids
+                // If the clicked cell is the Reject button
+                else if (dt_manageinstructor.Columns[e.ColumnIndex].Name == "colReject")
+                {
+                    DialogResult dialogResult = MessageBox.Show(
+                        "Are you sure you want to reject this instructor? This will permanently delete their account.",
+                        "Confirm Rejection", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            using (MySqlConnection conn = new MySqlConnection(connString))
+                            {
+                                conn.Open();
+                                // Query to delete the user from the database
+                                string query = "DELETE FROM users WHERE id = @id";
+                                MySqlCommand cmd = new MySqlCommand(query, conn);
+                                cmd.Parameters.AddWithValue("@id", userId);
+                                cmd.ExecuteNonQuery();
+                            }
+                            MessageBox.Show("Instructor Rejected and Account Deleted.");
+                            LoadData(); // Refresh both grids to show the change
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error rejecting instructor: " + ex.Message);
+                        }
+                    }
+                }
             }
-        }
+            }
+
 
         private void panel6_Click(object sender, EventArgs e)
         {
@@ -214,6 +257,46 @@ namespace PrelimsBoy
         private void panel2_Click(object sender, EventArgs e)
         {
             pnl_manageinstructor.BringToFront();
+        }
+
+        private void panel3_Click(object sender, EventArgs e)
+        {
+            pnl_billing.BringToFront();
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel5_Click(object sender, EventArgs e)
+        {
+            pnl_account.BringToFront();
+        }
+
+        private void panel4_Click(object sender, EventArgs e)
+        {
+            pnl_manageEnrollment.BringToFront();
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+            pnl_manageCourse.BringToFront();
+        }
+
+        private void pnl_homepage_MouseEnter(object sender, EventArgs e)
+        {
+            pnl_homepage.BackColor = Color.LightGray;
+        }
+
+        private void pnl_homepage_MouseLeave(object sender, EventArgs e)
+        {
+            pnl_homepage.BackColor = Color.DimGray;
         }
     }
 }

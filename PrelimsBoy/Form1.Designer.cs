@@ -32,6 +32,7 @@
             this.pnl_left = new System.Windows.Forms.Panel();
             this.pnl_right = new System.Windows.Forms.Panel();
             this.pnl_register = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tb_fullname = new System.Windows.Forms.TextBox();
             this.cmb_role = new System.Windows.Forms.ComboBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -61,9 +62,9 @@
             this.lbl_login = new System.Windows.Forms.Label();
             this.pb_visibilityon = new System.Windows.Forms.PictureBox();
             this.pb_visibilityoff = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pnl_right.SuspendLayout();
             this.pnl_register.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_vison2)).BeginInit();
@@ -74,7 +75,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityoff)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_left
@@ -91,8 +91,8 @@
             // pnl_right
             // 
             this.pnl_right.BackColor = System.Drawing.Color.Transparent;
-            this.pnl_right.Controls.Add(this.pnl_register);
             this.pnl_right.Controls.Add(this.pnl_login);
+            this.pnl_right.Controls.Add(this.pnl_register);
             this.pnl_right.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_right.Location = new System.Drawing.Point(329, 0);
             this.pnl_right.Name = "pnl_right";
@@ -124,6 +124,16 @@
             this.pnl_register.Name = "pnl_register";
             this.pnl_register.Size = new System.Drawing.Size(266, 362);
             this.pnl_register.TabIndex = 1;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox4.Location = new System.Drawing.Point(3, 260);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox4.TabIndex = 23;
+            this.pictureBox4.TabStop = false;
             // 
             // tb_fullname
             // 
@@ -480,16 +490,6 @@
             this.pb_visibilityoff.TabStop = false;
             this.pb_visibilityoff.Click += new System.EventHandler(this.pb_visibilityoff_Click);
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Location = new System.Drawing.Point(3, 260);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox4.TabIndex = 23;
-            this.pictureBox4.TabStop = false;
-            // 
             // frm_Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -506,6 +506,7 @@
             this.pnl_right.ResumeLayout(false);
             this.pnl_register.ResumeLayout(false);
             this.pnl_register.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_vison2)).EndInit();
@@ -517,7 +518,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityoff)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
