@@ -24,7 +24,7 @@ namespace PrelimsBoy
         private void SetupGrid()
         {
             dataGridView1.Columns.Clear();
-            dataGridView1.Columns.Add("colNumber", "Registered User");
+            dataGridView1.Columns.Add("colNumber", "ID");
             dataGridView1.Columns.Add("colName", "Name");
             dataGridView1.Columns.Add("colUsername", "Username"); // New Column
             dataGridView1.Columns.Add("colRole", "Role");
@@ -46,7 +46,7 @@ namespace PrelimsBoy
             dt_manageinstructor.Columns.Clear();
             dt_manageinstructor.AutoGenerateColumns = false;
 
-            dt_manageinstructor.Columns.Add("instId", "Registered User");
+            dt_manageinstructor.Columns.Add("instId", "ID");
             dt_manageinstructor.Columns["instId"].DataPropertyName = "id";
 
             dt_manageinstructor.Columns.Add("instName", "Instructor Name");
