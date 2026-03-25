@@ -18,11 +18,32 @@ namespace PrelimsBoy
         public frm_superadmin()
         {
             InitializeComponent();
+            btn_searchuser.Click += btn_searchuser_Click;
+            tb_searchuser.KeyDown += tb_searchuser_KeyDown;
+
+            // initial load for users grid (replaces the students part of LoadData if you prefer)
+            LoadUsers();
+            cb_pendingonly.CheckedChanged += cb_pendingonly_CheckedChanged;
+            btn_search.Click += btn_search_Click;
+            tb_search.KeyDown += tb_search_KeyDown;
+
+            // initial load (replace the instructor part of LoadData with this call)
+            LoadInstructors();
             SetupGrid();
             LoadData();
             SetupInstructorGrid();
             dt_course.CellClick += dt_course_CellClick;
             SetupCourseGrid();
+
+            SetupSubjectGrid();
+            InitUnitsCombo();
+            LoadSubjects();
+
+            // Wire subject buttons (safe to re-wire)
+            btn_add.Click -= btn_add_Click; btn_add.Click += btn_add_Click;
+            btn_clear.Click -= btn_clear_Click; btn_clear.Click += btn_clear_Click;
+            btn_update.Click -= btn_update_Click; btn_update.Click += btn_update_Click;
+            btn_delete.Click -= btn_delete_Click; btn_delete.Click += btn_delete_Click;
         }
         private void SetupGrid()
         {
@@ -644,6 +665,434 @@ namespace PrelimsBoy
             catch (Exception ex)
             {
                 MessageBox.Show("Unexpected error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private int selectedSubjectId = -1; // tracks the row you clicked
+
+        private void SetupSubjectGrid()
+        {
+            dg_subjects.Columns.Clear();
+            dg_subjects.AutoGenerateColumns = false;
+
+            dg_subjects.Columns.Add("subId", "ID");
+            dg_subjects.Columns["subId"].DataPropertyName = "subject_id";
+
+            dg_subjects.Columns.Add("subCode", "Subject Code");
+            dg_subjects.Columns["subCode"].DataPropertyName = "subject_code";
+
+            dg_subjects.Columns.Add("subName", "Subject Name");
+            dg_subjects.Columns["subName"].DataPropertyName = "subject_name";
+
+            dg_subjects.Columns.Add("subUnits", "Units");
+            dg_subjects.Columns["subUnits"].DataPropertyName = "units";
+
+            dg_subjects.Columns.Add("subDesc", "Description");
+            dg_subjects.Columns["subDesc"].DataPropertyName = "description";
+
+            dg_subjects.Columns.Add("subActive", "Active");
+            dg_subjects.Columns["subActive"].DataPropertyName = "is_active";
+
+            dg_subjects.ReadOnly = true;
+            dg_subjects.AllowUserToAddRows = false;
+            dg_subjects.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dg_subjects.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // wire events (safe to re-wire)
+            dg_subjects.CellClick -= dg_subjects_CellClick;
+            dg_subjects.CellClick += dg_subjects_CellClick;
+        }
+        private void LoadSubjects()
+        {
+            try
+            {
+                using (MySqlConnection conn = Helpers.Database.GetConnection())
+                {
+                    if (conn == null)
+                    {
+                        MessageBox.Show("Failed to establish database connection for subjects.",
+                            "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    string query = @"SELECT subject_id, subject_code, subject_name, units, description, is_active
+                             FROM subjects
+                             ORDER BY subject_id DESC";
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dg_subjects.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading subjects: " + ex.Message);
+            }
+        }
+
+        private void InitUnitsCombo()
+        {
+            cb_units.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_units.Items.Clear();
+            // common unit values; adjust if you need others
+            cb_units.Items.AddRange(new object[] { "1.0", "2.0", "3.0", "4.0", "5.0", "6.0" });
+            cb_units.SelectedItem = "3.0";
+        }
+        private void ClearSubjectFields()
+        {
+            tb_subcode.Clear();
+            tb_subname.Clear();
+            tb_subdesc.Clear();
+            if (cb_units.Items.Count > 0) cb_units.SelectedItem = "3.0";
+            dg_subjects.ClearSelection();
+            selectedSubjectId = -1;
+        }
+
+        private void dg_subjects_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            var row = dg_subjects.Rows[e.RowIndex];
+            if (row.Cells["subId"].Value == null) return;
+
+            selectedSubjectId = Convert.ToInt32(row.Cells["subId"].Value);
+            tb_subcode.Text = row.Cells["subCode"].Value?.ToString() ?? "";
+            tb_subname.Text = row.Cells["subName"].Value?.ToString() ?? "";
+            tb_subdesc.Text = row.Cells["subDesc"].Value?.ToString() ?? "";
+
+            string unitsStr = row.Cells["subUnits"].Value?.ToString() ?? "3.0";
+            if (decimal.TryParse(unitsStr, out decimal u))
+                cb_units.SelectedItem = u.ToString("0.0");
+            else
+                cb_units.SelectedItem = "3.0";
+        }
+
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tb_subcode.Text) || string.IsNullOrWhiteSpace(tb_subname.Text))
+            {
+                MessageBox.Show("Subject Code and Subject Name cannot be empty.",
+                    "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (cb_units.SelectedItem == null || !decimal.TryParse(cb_units.SelectedItem.ToString(), out decimal units))
+            {
+                MessageBox.Show("Please select a valid Units value.",
+                    "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection conn = Helpers.Database.GetConnection())
+                {
+                    if (conn == null) return;
+
+                    // INSERT with description
+                    string q = @"INSERT INTO subjects (subject_code, subject_name, units, description)
+                         VALUES (@code, @name, @units, @desc)";
+                    using (var cmd = new MySqlCommand(q, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@code", tb_subcode.Text.Trim());
+                        cmd.Parameters.AddWithValue("@name", tb_subname.Text.Trim());
+                        cmd.Parameters.AddWithValue("@units", units);
+                        cmd.Parameters.AddWithValue("@desc",
+                            string.IsNullOrWhiteSpace(tb_subdesc.Text) ? (object)DBNull.Value : tb_subdesc.Text.Trim());
+
+                        int rows = cmd.ExecuteNonQuery();
+                        if (rows > 0)
+                        {
+                            MessageBox.Show("Subject added successfully!", "Success",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ClearSubjectFields();
+                            LoadSubjects();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to add subject.", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1062)
+                    MessageBox.Show("A subject with this Subject Code already exists. Please use a unique code.",
+                        "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                    MessageBox.Show("Database error adding subject: " + ex.Message,
+                        "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            ClearSubjectFields();
+        }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            if (selectedSubjectId <= 0)
+            {
+                MessageBox.Show("Please select a subject from the list to update.",
+                    "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(tb_subcode.Text) || string.IsNullOrWhiteSpace(tb_subname.Text))
+            {
+                MessageBox.Show("Subject Code and Subject Name cannot be empty.",
+                    "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (cb_units.SelectedItem == null || !decimal.TryParse(cb_units.SelectedItem.ToString(), out decimal units))
+            {
+                MessageBox.Show("Please select a valid Units value.",
+                    "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection conn = Helpers.Database.GetConnection())
+                {
+                    if (conn == null) return;
+
+                    // UPDATE with description
+                    string q2 = @"UPDATE subjects
+                          SET subject_code=@code, subject_name=@name, units=@units, description=@desc
+                          WHERE subject_id=@id";
+                    using (var cmd = new MySqlCommand(q2, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@code", tb_subcode.Text.Trim());
+                        cmd.Parameters.AddWithValue("@name", tb_subname.Text.Trim());
+                        cmd.Parameters.AddWithValue("@units", units);
+                        cmd.Parameters.AddWithValue("@desc",
+                            string.IsNullOrWhiteSpace(tb_subdesc.Text) ? (object)DBNull.Value : tb_subdesc.Text.Trim());
+                        cmd.Parameters.AddWithValue("@id", selectedSubjectId);
+
+                        int rows = cmd.ExecuteNonQuery();
+                        if (rows > 0)
+                        {
+                            MessageBox.Show("Subject updated successfully!", "Success",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadSubjects();
+                            ClearSubjectFields();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No changes were made.", "Info",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1062)
+                    MessageBox.Show("Another subject already uses that Subject Code.",
+                        "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                    MessageBox.Show("Database error updating subject: " + ex.Message,
+                        "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            if (selectedSubjectId <= 0)
+            {
+                MessageBox.Show("Please select a subject from the list to delete.",
+                    "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string code = tb_subcode.Text.Trim();
+            var confirm = MessageBox.Show($"Delete subject '{code}'? This cannot be undone.",
+                "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirm != DialogResult.Yes) return;
+
+            try
+            {
+                using (MySqlConnection conn = Helpers.Database.GetConnection())
+                {
+                    if (conn == null) return;
+
+                    string query = "DELETE FROM subjects WHERE subject_id = @id";
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", selectedSubjectId);
+                        int rows = cmd.ExecuteNonQuery();
+                        if (rows > 0)
+                        {
+                            MessageBox.Show("Subject deleted.", "Deleted",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadSubjects();
+                            ClearSubjectFields();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Delete failed—subject not found.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1451) // FK constraint
+                    MessageBox.Show("This subject can’t be deleted because it’s referenced by other records.",
+                        "Constraint", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                    MessageBox.Show("Database error deleting subject: " + ex.Message,
+                        "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unexpected error: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LoadInstructors()
+        {
+            bool pendingOnly = cb_pendingonly.Checked;
+            string keyword = (tb_search.Text ?? "").Trim();
+            LoadInstructors(pendingOnly, keyword);
+        }
+
+        private void LoadInstructors(bool pendingOnly, string keyword)
+        {
+            try
+            {
+                using (var conn = Helpers.Database.GetConnection())
+                {
+                    if (conn == null)
+                    {
+                        MessageBox.Show("Failed to establish database connection for instructors.",
+                            "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    var sql = new StringBuilder(@"
+                SELECT id, name, username, role, status
+                FROM users
+                WHERE role = 'Instructor'
+            ");
+
+                    using (var cmd = new MySqlCommand() { Connection = conn })
+                    {
+                        if (pendingOnly)
+                        {
+                            sql.Append(" AND status = 'Pending'");
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(keyword))
+                        {
+                            // search by id OR name (case-insensitive)
+                            sql.Append(" AND (name LIKE @kw OR CAST(id AS CHAR) LIKE @kw)");
+                            cmd.Parameters.AddWithValue("@kw", "%" + keyword + "%");
+                        }
+
+                        sql.Append(" ORDER BY id DESC");
+                        cmd.CommandText = sql.ToString();
+
+                        using (var da = new MySqlDataAdapter(cmd))
+                        {
+                            var dt = new DataTable();
+                            da.Fill(dt);
+                            dt_manageinstructor.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading instructors: " + ex.Message);
+            }
+        }
+
+        private void cb_pendingonly_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadInstructors();
+        }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            LoadInstructors();
+        }
+
+        private void tb_search_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                LoadInstructors();
+            }
+        }
+        private void LoadUsers()
+        {
+            string keyword = (tb_searchuser.Text ?? "").Trim();
+            LoadUsers(keyword);
+        }
+
+        private void LoadUsers(string keyword)
+        {
+            try
+            {
+                using (var conn = Helpers.Database.GetConnection())
+                {
+                    if (conn == null)
+                    {
+                        MessageBox.Show("Failed to establish database connection for user data.",
+                            "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    var sql = new StringBuilder(@"
+                SELECT id, name, username, role, status
+                FROM users
+                WHERE 1=1
+            ");
+
+                    using (var cmd = new MySqlCommand() { Connection = conn })
+                    {
+                        // If you want to limit to Students only, uncomment the next line:
+                        // sql.Append(" AND role = 'Student'");
+
+                        if (!string.IsNullOrWhiteSpace(keyword))
+                        {
+                            // Match by ID or Name (case-insensitive LIKE)
+                            sql.Append(" AND (name LIKE @kw OR CAST(id AS CHAR) LIKE @kw)");
+                            cmd.Parameters.AddWithValue("@kw", "%" + keyword + "%");
+                        }
+
+                        sql.Append(" ORDER BY id DESC");
+                        cmd.CommandText = sql.ToString();
+
+                        using (var da = new MySqlDataAdapter(cmd))
+                        {
+                            var dt = new DataTable();
+                            da.Fill(dt);
+                            dataGridView1.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading users: " + ex.Message);
+            }
+        }
+
+        private void btn_searchuser_Click(object sender, EventArgs e)
+        {
+            LoadUsers();
+        }
+
+        private void tb_searchuser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                LoadUsers();
             }
         }
         // --- END NEW: Event Handlers for Course Management ---
