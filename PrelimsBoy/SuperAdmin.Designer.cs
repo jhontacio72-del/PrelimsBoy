@@ -44,6 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnl_content1 = new System.Windows.Forms.Panel();
             this.tb_searchuser = new System.Windows.Forms.TextBox();
@@ -56,6 +57,23 @@
             this.pnl_manageEnrollment = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.pnl_billing = new System.Windows.Forms.Panel();
+            this.dt_billing = new System.Windows.Forms.DataGridView();
+            this.b_paymentmethod = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.tb_paymentamount = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.tb_totalamount = new System.Windows.Forms.TextBox();
+            this.cb_status = new System.Windows.Forms.ComboBox();
+            this.cb_term = new System.Windows.Forms.ComboBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.tb_notes = new System.Windows.Forms.TextBox();
+            this.tb_schoolyear = new System.Windows.Forms.TextBox();
+            this.cb_student = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.pnl_account = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
@@ -91,24 +109,6 @@
             this.tb_coursecode = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnl_fill.SuspendLayout();
             this.pnl_left.SuspendLayout();
             this.pnl_homepage.SuspendLayout();
@@ -123,13 +123,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnl_manageEnrollment.SuspendLayout();
             this.pnl_billing.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_billing)).BeginInit();
             this.pnl_account.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_subjects)).BeginInit();
             this.pnl_manageinstructor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_manageinstructor)).BeginInit();
             this.pnl_manageCourse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_course)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_fill
@@ -137,12 +137,12 @@
             this.pnl_fill.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnl_fill.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnl_fill.Controls.Add(this.pnl_left);
-            this.pnl_fill.Controls.Add(this.pnl_content1);
-            this.pnl_fill.Controls.Add(this.pnl_manageEnrollment);
             this.pnl_fill.Controls.Add(this.pnl_billing);
             this.pnl_fill.Controls.Add(this.pnl_account);
             this.pnl_fill.Controls.Add(this.pnl_manageinstructor);
             this.pnl_fill.Controls.Add(this.pnl_manageCourse);
+            this.pnl_fill.Controls.Add(this.pnl_content1);
+            this.pnl_fill.Controls.Add(this.pnl_manageEnrollment);
             this.pnl_fill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_fill.Location = new System.Drawing.Point(0, 0);
             this.pnl_fill.Name = "pnl_fill";
@@ -214,7 +214,7 @@
             this.panel5.Size = new System.Drawing.Size(170, 34);
             this.panel5.TabIndex = 3;
             this.panel5.Click += new System.EventHandler(this.panel5_Click);
-            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
+           
             this.panel5.MouseEnter += new System.EventHandler(this.panel5_MouseEnter);
             this.panel5.MouseLeave += new System.EventHandler(this.panel5_MouseLeave);
             // 
@@ -316,6 +316,18 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Manage Course";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.DimGray;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(34, 132);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Super Admin";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
@@ -326,7 +338,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(167, 112);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+       
             // 
             // pnl_content1
             // 
@@ -439,25 +451,25 @@
             this.label12.Size = new System.Drawing.Size(195, 25);
             this.label12.TabIndex = 5;
             this.label12.Text = "Manage Enrollment";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
+     
             // 
             // pnl_billing
             // 
             this.pnl_billing.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_billing.Controls.Add(this.dataGridView2);
-            this.pnl_billing.Controls.Add(this.textBox5);
+            this.pnl_billing.Controls.Add(this.dt_billing);
+            this.pnl_billing.Controls.Add(this.b_paymentmethod);
             this.pnl_billing.Controls.Add(this.label31);
-            this.pnl_billing.Controls.Add(this.textBox4);
+            this.pnl_billing.Controls.Add(this.tb_paymentamount);
             this.pnl_billing.Controls.Add(this.label30);
-            this.pnl_billing.Controls.Add(this.textBox3);
-            this.pnl_billing.Controls.Add(this.comboBox3);
-            this.pnl_billing.Controls.Add(this.comboBox2);
+            this.pnl_billing.Controls.Add(this.tb_totalamount);
+            this.pnl_billing.Controls.Add(this.cb_status);
+            this.pnl_billing.Controls.Add(this.cb_term);
             this.pnl_billing.Controls.Add(this.label29);
             this.pnl_billing.Controls.Add(this.label28);
             this.pnl_billing.Controls.Add(this.label27);
-            this.pnl_billing.Controls.Add(this.textBox2);
-            this.pnl_billing.Controls.Add(this.textBox1);
-            this.pnl_billing.Controls.Add(this.comboBox1);
+            this.pnl_billing.Controls.Add(this.tb_notes);
+            this.pnl_billing.Controls.Add(this.tb_schoolyear);
+            this.pnl_billing.Controls.Add(this.cb_student);
             this.pnl_billing.Controls.Add(this.label26);
             this.pnl_billing.Controls.Add(this.label25);
             this.pnl_billing.Controls.Add(this.label24);
@@ -466,6 +478,169 @@
             this.pnl_billing.Name = "pnl_billing";
             this.pnl_billing.Size = new System.Drawing.Size(594, 447);
             this.pnl_billing.TabIndex = 5;
+            // 
+            // dt_billing
+            // 
+            this.dt_billing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dt_billing.Location = new System.Drawing.Point(6, 168);
+            this.dt_billing.Name = "dt_billing";
+            this.dt_billing.Size = new System.Drawing.Size(580, 266);
+            this.dt_billing.TabIndex = 22;
+            // 
+            // b_paymentmethod
+            // 
+            this.b_paymentmethod.Location = new System.Drawing.Point(430, 143);
+            this.b_paymentmethod.Name = "b_paymentmethod";
+            this.b_paymentmethod.Size = new System.Drawing.Size(127, 20);
+            this.b_paymentmethod.TabIndex = 21;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label31.Location = new System.Drawing.Point(287, 143);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(136, 20);
+            this.label31.TabIndex = 20;
+            this.label31.Text = "Payment Method";
+            // 
+            // tb_paymentamount
+            // 
+            this.tb_paymentamount.Location = new System.Drawing.Point(155, 143);
+            this.tb_paymentamount.Name = "tb_paymentamount";
+            this.tb_paymentamount.Size = new System.Drawing.Size(116, 20);
+            this.tb_paymentamount.TabIndex = 19;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label30.Location = new System.Drawing.Point(12, 143);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(141, 20);
+            this.label30.TabIndex = 18;
+            this.label30.Text = "Payment Amount:";
+            // 
+            // tb_totalamount
+            // 
+            this.tb_totalamount.Location = new System.Drawing.Point(409, 80);
+            this.tb_totalamount.Name = "tb_totalamount";
+            this.tb_totalamount.Size = new System.Drawing.Size(149, 20);
+            this.tb_totalamount.TabIndex = 17;
+            // 
+            // cb_status
+            // 
+            this.cb_status.FormattingEnabled = true;
+            this.cb_status.Location = new System.Drawing.Point(409, 103);
+            this.cb_status.Name = "cb_status";
+            this.cb_status.Size = new System.Drawing.Size(149, 21);
+            this.cb_status.TabIndex = 16;
+            // 
+            // cb_term
+            // 
+            this.cb_term.FormattingEnabled = true;
+            this.cb_term.Location = new System.Drawing.Point(409, 52);
+            this.cb_term.Name = "cb_term";
+            this.cb_term.Size = new System.Drawing.Size(149, 21);
+            this.cb_term.TabIndex = 15;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label29.Location = new System.Drawing.Point(287, 104);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(59, 20);
+            this.label29.TabIndex = 14;
+            this.label29.Text = "Status:";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label28.Location = new System.Drawing.Point(287, 79);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(116, 20);
+            this.label28.TabIndex = 13;
+            this.label28.Text = "Total Amount:";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.Transparent;
+            this.label27.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label27.Location = new System.Drawing.Point(287, 50);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(51, 20);
+            this.label27.TabIndex = 12;
+            this.label27.Text = "Term:";
+            // 
+            // tb_notes
+            // 
+            this.tb_notes.Location = new System.Drawing.Point(121, 106);
+            this.tb_notes.Name = "tb_notes";
+            this.tb_notes.Size = new System.Drawing.Size(141, 20);
+            this.tb_notes.TabIndex = 11;
+            // 
+            // tb_schoolyear
+            // 
+            this.tb_schoolyear.Location = new System.Drawing.Point(121, 80);
+            this.tb_schoolyear.Name = "tb_schoolyear";
+            this.tb_schoolyear.Size = new System.Drawing.Size(141, 20);
+            this.tb_schoolyear.TabIndex = 10;
+            // 
+            // cb_student
+            // 
+            this.cb_student.FormattingEnabled = true;
+            this.cb_student.Location = new System.Drawing.Point(121, 49);
+            this.cb_student.Name = "cb_student";
+            this.cb_student.Size = new System.Drawing.Size(141, 21);
+            this.cb_student.TabIndex = 9;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label26.Location = new System.Drawing.Point(12, 106);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(57, 20);
+            this.label26.TabIndex = 8;
+            this.label26.Text = "Notes:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.Transparent;
+            this.label25.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label25.Location = new System.Drawing.Point(12, 82);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(102, 20);
+            this.label25.TabIndex = 7;
+            this.label25.Text = "School Year:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label24.Location = new System.Drawing.Point(11, 51);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(71, 20);
+            this.label24.TabIndex = 6;
+            this.label24.Text = "Student:";
             // 
             // label11
             // 
@@ -732,8 +907,8 @@
             this.dt_course.Size = new System.Drawing.Size(587, 331);
             this.dt_course.TabIndex = 16;
             this.dt_course.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dt_course_CellClick);
-            this.dt_course.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dt_course_CellContentClick);
-            this.dt_course.Click += new System.EventHandler(this.dt_course_Click);
+     
+     
             // 
             // btn_deletecourse
             // 
@@ -842,181 +1017,6 @@
             this.label14.TabIndex = 5;
             this.label14.Text = "Course";
             // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label24.Location = new System.Drawing.Point(11, 51);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(71, 20);
-            this.label24.TabIndex = 6;
-            this.label24.Text = "Student:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.Transparent;
-            this.label25.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label25.Location = new System.Drawing.Point(12, 82);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(102, 20);
-            this.label25.TabIndex = 7;
-            this.label25.Text = "School Year:";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.BackColor = System.Drawing.Color.Transparent;
-            this.label26.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label26.Location = new System.Drawing.Point(12, 106);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(57, 20);
-            this.label26.TabIndex = 8;
-            this.label26.Text = "Notes:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(121, 49);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(141, 21);
-            this.comboBox1.TabIndex = 9;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(121, 80);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(141, 20);
-            this.textBox1.TabIndex = 10;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(121, 106);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(141, 20);
-            this.textBox2.TabIndex = 11;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.BackColor = System.Drawing.Color.Transparent;
-            this.label27.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label27.Location = new System.Drawing.Point(287, 50);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(51, 20);
-            this.label27.TabIndex = 12;
-            this.label27.Text = "Term:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.Color.Transparent;
-            this.label28.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label28.Location = new System.Drawing.Point(287, 79);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(116, 20);
-            this.label28.TabIndex = 13;
-            this.label28.Text = "Total Amount:";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.BackColor = System.Drawing.Color.Transparent;
-            this.label29.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label29.Location = new System.Drawing.Point(287, 104);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(59, 20);
-            this.label29.TabIndex = 14;
-            this.label29.Text = "Status:";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(397, 50);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(149, 21);
-            this.comboBox2.TabIndex = 15;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(397, 103);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(149, 21);
-            this.comboBox3.TabIndex = 16;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(397, 79);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(149, 20);
-            this.textBox3.TabIndex = 17;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.Color.Transparent;
-            this.label30.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label30.Location = new System.Drawing.Point(12, 143);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(141, 20);
-            this.label30.TabIndex = 18;
-            this.label30.Text = "Payment Amount:";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(155, 143);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(116, 20);
-            this.textBox4.TabIndex = 19;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.BackColor = System.Drawing.Color.Transparent;
-            this.label31.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label31.Location = new System.Drawing.Point(287, 143);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(136, 20);
-            this.label31.TabIndex = 20;
-            this.label31.Text = "Payment Method";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(430, 143);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(116, 20);
-            this.textBox5.TabIndex = 21;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 168);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(580, 266);
-            this.dataGridView2.TabIndex = 22;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.DimGray;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(34, 132);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Super Admin";
-            // 
             // frm_superadmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1050,6 +1050,7 @@
             this.pnl_manageEnrollment.PerformLayout();
             this.pnl_billing.ResumeLayout(false);
             this.pnl_billing.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_billing)).EndInit();
             this.pnl_account.ResumeLayout(false);
             this.pnl_account.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_subjects)).EndInit();
@@ -1059,7 +1060,6 @@
             this.pnl_manageCourse.ResumeLayout(false);
             this.pnl_manageCourse.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_course)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1129,22 +1129,22 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox tb_subdesc;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox tb_notes;
+        private System.Windows.Forms.TextBox tb_schoolyear;
+        private System.Windows.Forms.ComboBox cb_student;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox b_paymentmethod;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tb_paymentamount;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox tb_totalamount;
+        private System.Windows.Forms.ComboBox cb_status;
+        private System.Windows.Forms.ComboBox cb_term;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dt_billing;
         private System.Windows.Forms.Label label1;
     }
 }

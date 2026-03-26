@@ -23,10 +23,7 @@ namespace PrelimsBoy
         }
 
 
-        private void pnl_right_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
         private void StyleTextbox(TextBox textBox)
         {
             textBox.BackColor = Color.FromArgb(60, 60, 60);
@@ -37,15 +34,7 @@ namespace PrelimsBoy
         }
 
         private bool passwordVisible = false;
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tb_password_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -84,10 +73,7 @@ namespace PrelimsBoy
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void pb_visibilityoff_Click(object sender, EventArgs e)
         {
@@ -145,11 +131,7 @@ namespace PrelimsBoy
             }
         }
 
-        private void btn_login_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+       
         private void btn_login_MouseEnter(object sender, EventArgs e)
         {
             btn_login.BackColor = Color.FromArgb(255, 50, 50);
@@ -165,10 +147,7 @@ namespace PrelimsBoy
             pnl_register.BringToFront();
         }
 
-        private void label10_Click(object sender, EventArgs e)
-        {
-            pnl_login.BringToFront();
-        }
+     
 
         private void pb_vis2_Click(object sender, EventArgs e)
         {
@@ -287,24 +266,6 @@ namespace PrelimsBoy
 
 
         }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tb_createusername_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBox1_Enter(object sender, EventArgs e)
         {
             if (tb_fullname.Text == "Enter Full Name")

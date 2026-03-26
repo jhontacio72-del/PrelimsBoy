@@ -185,10 +185,7 @@ namespace PrelimsBoy
             }
         }
         // --- END NEW: Load Courses into dt_course ---
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void Form3_Load(object sender, EventArgs e)
         {
@@ -342,10 +339,7 @@ namespace PrelimsBoy
             pnl_billing.BringToFront();
         }
 
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
 
         private void panel5_Click(object sender, EventArgs e)
         {
@@ -357,10 +351,7 @@ namespace PrelimsBoy
             pnl_manageEnrollment.BringToFront();
         }
 
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void panel1_Click(object sender, EventArgs e)
         {
@@ -481,15 +472,7 @@ namespace PrelimsBoy
             // }
         }
 
-        private void dt_course_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dt_course_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void dt_course_CellClick(object sender, DataGridViewCellEventArgs e)
         {
