@@ -212,7 +212,7 @@ namespace PrelimsBoy
 
         private void pictureBox2_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.BackColor = Color.Gray;
         }
 
         private void panel1_MouseEnter(object sender, EventArgs e)
