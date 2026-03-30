@@ -98,7 +98,6 @@
             this.pnl_right.Name = "pnl_right";
             this.pnl_right.Size = new System.Drawing.Size(471, 450);
             this.pnl_right.TabIndex = 1;
-         
             // 
             // pnl_register
             // 
@@ -145,7 +144,7 @@
             this.tb_fullname.Size = new System.Drawing.Size(204, 30);
             this.tb_fullname.TabIndex = 22;
             this.tb_fullname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tb_fullname.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.tb_fullname.Enter += new System.EventHandler(this.tb_fullname_Enter);
             this.tb_fullname.Leave += new System.EventHandler(this.tb_fullname_Leave);
             // 
             // cmb_role
@@ -173,7 +172,6 @@
             this.pictureBox3.Size = new System.Drawing.Size(30, 29);
             this.pictureBox3.TabIndex = 20;
             this.pictureBox3.TabStop = false;
-      
             // 
             // pictureBox2
             // 
@@ -218,7 +216,7 @@
             this.lbl_BckLgin.Size = new System.Drawing.Size(104, 20);
             this.lbl_BckLgin.TabIndex = 11;
             this.lbl_BckLgin.Text = "Back to Login";
-        
+            this.lbl_BckLgin.Click += new System.EventHandler(this.lbl_BckLgin_Click);
             // 
             // tb_confirmpassword
             // 
@@ -291,7 +289,6 @@
             this.tb_createusername.Size = new System.Drawing.Size(205, 30);
             this.tb_createusername.TabIndex = 12;
             this.tb_createusername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-      
             this.tb_createusername.Enter += new System.EventHandler(this.tb_createusername_Enter);
             this.tb_createusername.Leave += new System.EventHandler(this.tb_createusername_Leave);
             // 
@@ -392,7 +389,6 @@
             this.btn_login.Text = "LOGIN";
             this.btn_login.UseVisualStyleBackColor = false;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
-        
             this.btn_login.Leave += new System.EventHandler(this.btn_login_Leave);
             this.btn_login.MouseEnter += new System.EventHandler(this.btn_login_MouseEnter);
             // 
@@ -416,7 +412,6 @@
             this.label2.Size = new System.Drawing.Size(76, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Password";
-         
             // 
             // tb_password
             // 
@@ -428,7 +423,6 @@
             this.tb_password.Size = new System.Drawing.Size(196, 30);
             this.tb_password.TabIndex = 3;
             this.tb_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-  
             this.tb_password.Enter += new System.EventHandler(this.tb_password_Enter);
             this.tb_password.Leave += new System.EventHandler(this.tb_password_Leave);
             // 
@@ -453,7 +447,6 @@
             this.tb_username.Size = new System.Drawing.Size(196, 30);
             this.tb_username.TabIndex = 1;
             this.tb_username.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-       
             this.tb_username.Enter += new System.EventHandler(this.tb_username_Enter);
             this.tb_username.Leave += new System.EventHandler(this.tb_username_Leave);
             // 

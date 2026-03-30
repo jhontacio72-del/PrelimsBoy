@@ -5,7 +5,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using PrelimsBoy.Helpers;
+using PrelimsBoy.Models;
+using PrelimsBoy.Services;
 namespace PrelimsBoy.Helpers
 {
     internal class Database
