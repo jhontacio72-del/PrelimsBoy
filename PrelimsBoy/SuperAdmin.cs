@@ -15,6 +15,8 @@ namespace PrelimsBoy
 {
     public partial class frm_superadmin : Form
     {
+        private readonly BillingService _billing = new BillingService();
+        private int selectedBillingId = -1;
         private readonly SuperadminServices _users = new SuperadminServices();
         private readonly CourseServices _courses = new CourseServices();
         private readonly SubjectServices _subjects = new SubjectServices();
@@ -23,6 +25,9 @@ namespace PrelimsBoy
         {
             InitializeComponent();
             SetupGrid();
+            SetupBillingGrid();
+            LoadBilling();
+            LoadStudentCombo();
             SetupInstructorGrid();
             SetupCourseGrid();
             SetupSubjectGrid();
@@ -406,6 +411,71 @@ namespace PrelimsBoy
                 e.SuppressKeyPress = true;
                 LoadUsers();
             }
+        }
+        private void SetupBillingGrid()
+        {
+            dt_billing.Columns.Clear();
+            dt_billing.AutoGenerateColumns = false; dt_billing.ReadOnly = true; dt_billing.AllowUserToAddRows = false;
+            dt_billing.SelectionMode = DataGridViewSelectionMode.FullRowSelect; dt_billing.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "billId", HeaderText = "ID", DataPropertyName = "billing_id" });
+            dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "studId", HeaderText = "Student ID", DataPropertyName = "student_id" });
+            dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "studName", HeaderText = "Student", DataPropertyName = "student_name" });
+            dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "sy", HeaderText = "School Year", DataPropertyName = "school_year" });
+            dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "term", HeaderText = "Term", DataPropertyName = "term" });
+            dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "total", HeaderText = "Total Amount", DataPropertyName = "total_amount" });
+            dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "status", HeaderText = "Status", DataPropertyName = "status" });
+            dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "notes", HeaderText = "Notes", DataPropertyName = "notes" });
+            dt_billing.CellClick += dt_billing_CellClick;
+            cb_status.DropDownStyle = ComboBoxStyle.DropDownList; cb_status.Items.Clear(); cb_status.Items.AddRange(new object[] { "Unpaid", "Partial", "Paid", "Void" }); cb_status.SelectedItem = "Unpaid";
+            cb_term.DropDownStyle = ComboBoxStyle.DropDownList; cb_term.Items.Clear(); cb_term.Items.AddRange(new object[] { "1st", "2nd", "Summer" });
+        }
+
+        private void LoadBilling() { dt_billing.DataSource = _billing.GetAll(); }
+        private void LoadStudentCombo() { var dt = _billing.GetStudentsLookup(); cb_student.DisplayMember = "fullname"; cb_student.ValueMember = "id"; cb_student.DataSource = dt; }
+        private void ClearBillingFields() { selectedBillingId = -1; cb_student.SelectedIndex = -1; tb_schoolyear.Clear(); cb_term.SelectedIndex = -1; tb_totalamount.Text = "0.00"; cb_status.SelectedItem = "Unpaid"; tb_notes.Clear(); tb_paymentamount.Clear(); tb_paymentmethod.Clear(); dt_billing.ClearSelection(); }
+        private Billing ReadBilling(int id) { decimal t; decimal.TryParse(tb_totalamount.Text, out t); return new Billing { BillingId = id, StudentId = Convert.ToInt32(cb_student.SelectedValue), SchoolYear = tb_schoolyear.Text.Trim(), Term = cb_term.SelectedItem?.ToString() ?? "", TotalAmount = t, Status = cb_status.SelectedItem?.ToString() ?? "Unpaid", Notes = tb_notes.Text?.Trim() }; }
+
+        private void dt_billing_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return; var r = dt_billing.Rows[e.RowIndex];
+            selectedBillingId = Convert.ToInt32(r.Cells["billId"].Value ?? -1);
+            cb_student.SelectedValue = Convert.ToInt32(r.Cells["studId"].Value ?? -1);
+            tb_schoolyear.Text = Convert.ToString(r.Cells["sy"].Value) ?? "";
+            cb_term.SelectedItem = Convert.ToString(r.Cells["term"].Value);
+            tb_totalamount.Text = Convert.ToDecimal(r.Cells["total"].Value ?? 0).ToString("0.00");
+            cb_status.SelectedItem = Convert.ToString(r.Cells["status"].Value) ?? "Unpaid";
+            tb_notes.Text = Convert.ToString(r.Cells["notes"].Value) ?? "";
+        }
+
+        private void btn_addbilling_Click(object sender, EventArgs e)
+        {
+            if (cb_student.SelectedValue == null || string.IsNullOrWhiteSpace(tb_schoolyear.Text) || cb_term.SelectedItem == null) { MessageBox.Show("Student, School Year, and Term are required."); return; }
+            string m; var ok = _billing.Add(ReadBilling(0), out m); MessageBox.Show(ok ? m : (m ?? "Failed."), ok ? "OK" : "Error", MessageBoxButtons.OK, ok ? MessageBoxIcon.Information : MessageBoxIcon.Error); if (ok) { LoadBilling(); ClearBillingFields(); }
+        }
+
+        private void btn_updatebilling_Click(object sender, EventArgs e)
+        {
+            if (selectedBillingId <= 0) { MessageBox.Show("Select a billing record to update."); return; }
+            string m; var ok = _billing.Update(ReadBilling(selectedBillingId), out m); MessageBox.Show(ok ? m : (m ?? "Failed."), ok ? "OK" : "Error", MessageBoxButtons.OK, ok ? MessageBoxIcon.Information : MessageBoxIcon.Error); if (ok) { LoadBilling(); ClearBillingFields(); }
+        }
+
+        private void btn_deletebilling_Click(object sender, EventArgs e)
+        {
+            if (selectedBillingId <= 0) { MessageBox.Show("Select a billing record to delete."); return; }
+            if (MessageBox.Show("Delete this billing record?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
+            string m; var ok = _billing.Delete(selectedBillingId, out m); MessageBox.Show(ok ? m : (m ?? "Failed."), ok ? "OK" : "Error", MessageBoxButtons.OK, ok ? MessageBoxIcon.Information : MessageBoxIcon.Error); if (ok) { LoadBilling(); ClearBillingFields(); }
+        }
+
+        private void btn_recordpayment_Click(object sender, EventArgs e)
+        {
+            if (selectedBillingId <= 0) { MessageBox.Show("Select a billing record."); return; }
+            decimal p; if (!decimal.TryParse(tb_paymentamount.Text, out p) || p <= 0) { MessageBox.Show("Enter a valid payment amount."); return; }
+            string m; var ok = _billing.RecordPayment(selectedBillingId, p, tb_paymentmethod.Text?.Trim() ?? "", out m); MessageBox.Show(ok ? m : (m ?? "Failed."), ok ? "OK" : "Error", MessageBoxButtons.OK, ok ? MessageBoxIcon.Information : MessageBoxIcon.Error); if (ok) { LoadBilling(); tb_paymentamount.Clear(); tb_paymentmethod.Clear(); }
+        }
+
+        private void btn_clearbilling_Click(object sender, EventArgs e)
+        {
+            ClearBillingFields();
         }
     }
 }

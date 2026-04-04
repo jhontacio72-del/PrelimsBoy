@@ -46,9 +46,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnl_content1 = new System.Windows.Forms.Panel();
+            this.tb_searchuser = new System.Windows.Forms.TextBox();
+            this.btn_searchuser = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pnl_manageEnrollment = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
             this.pnl_billing = new System.Windows.Forms.Panel();
             this.dt_billing = new System.Windows.Forms.DataGridView();
-            this.b_paymentmethod = new System.Windows.Forms.TextBox();
+            this.tb_paymentmethod = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.tb_paymentamount = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
@@ -99,16 +109,11 @@
             this.tb_coursecode = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.pnl_content1 = new System.Windows.Forms.Panel();
-            this.tb_searchuser = new System.Windows.Forms.TextBox();
-            this.btn_searchuser = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.pnl_manageEnrollment = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
+            this.btn_addbilling = new System.Windows.Forms.Button();
+            this.btn_deletebilling = new System.Windows.Forms.Button();
+            this.btn_updatebilling = new System.Windows.Forms.Button();
+            this.btn_recordpayment = new System.Windows.Forms.Button();
+            this.btn_clearbilling = new System.Windows.Forms.Button();
             this.pnl_fill.SuspendLayout();
             this.pnl_left.SuspendLayout();
             this.pnl_homepage.SuspendLayout();
@@ -119,6 +124,9 @@
             this.pnl_maninstructor.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnl_content1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.pnl_manageEnrollment.SuspendLayout();
             this.pnl_billing.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_billing)).BeginInit();
             this.pnl_account.SuspendLayout();
@@ -127,14 +135,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dt_manageinstructor)).BeginInit();
             this.pnl_manageCourse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_course)).BeginInit();
-            this.pnl_content1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.pnl_manageEnrollment.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_fill
             // 
-            this.pnl_fill.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pnl_fill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(18)))));
             this.pnl_fill.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnl_fill.Controls.Add(this.pnl_left);
             this.pnl_fill.Controls.Add(this.pnl_content1);
@@ -151,7 +156,7 @@
             // 
             // pnl_left
             // 
-            this.pnl_left.BackColor = System.Drawing.Color.DarkGray;
+            this.pnl_left.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(18)))));
             this.pnl_left.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_left.BackgroundImage")));
             this.pnl_left.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnl_left.Controls.Add(this.pnl_homepage);
@@ -334,15 +339,132 @@
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(15, 17);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(167, 112);
+            this.pictureBox1.Size = new System.Drawing.Size(167, 103);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // pnl_content1
+            // 
+            this.pnl_content1.BackColor = System.Drawing.Color.DimGray;
+            this.pnl_content1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnl_content1.Controls.Add(this.tb_searchuser);
+            this.pnl_content1.Controls.Add(this.btn_searchuser);
+            this.pnl_content1.Controls.Add(this.label22);
+            this.pnl_content1.Controls.Add(this.label21);
+            this.pnl_content1.Controls.Add(this.label8);
+            this.pnl_content1.Controls.Add(this.label2);
+            this.pnl_content1.Controls.Add(this.dataGridView1);
+            this.pnl_content1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnl_content1.Location = new System.Drawing.Point(206, 3);
+            this.pnl_content1.Name = "pnl_content1";
+            this.pnl_content1.Size = new System.Drawing.Size(597, 444);
+            this.pnl_content1.TabIndex = 1;
+            // 
+            // tb_searchuser
+            // 
+            this.tb_searchuser.Location = new System.Drawing.Point(248, 60);
+            this.tb_searchuser.Name = "tb_searchuser";
+            this.tb_searchuser.Size = new System.Drawing.Size(262, 20);
+            this.tb_searchuser.TabIndex = 8;
+            // 
+            // btn_searchuser
+            // 
+            this.btn_searchuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_searchuser.Location = new System.Drawing.Point(516, 58);
+            this.btn_searchuser.Name = "btn_searchuser";
+            this.btn_searchuser.Size = new System.Drawing.Size(75, 23);
+            this.btn_searchuser.TabIndex = 7;
+            this.btn_searchuser.Text = "Search";
+            this.btn_searchuser.UseVisualStyleBackColor = true;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Font = new System.Drawing.Font("Segoe UI Symbol", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Black;
+            this.label22.Location = new System.Drawing.Point(478, 14);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(86, 13);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "Notifications";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Segoe UI Symbol", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Black;
+            this.label21.Location = new System.Drawing.Point(415, 14);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(57, 13);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "Settings";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(13, 50);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(76, 32);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Users";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Symbol", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(6, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(130, 30);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Home Page";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(4, 85);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(590, 356);
+            this.dataGridView1.TabIndex = 4;
+            // 
+            // pnl_manageEnrollment
+            // 
+            this.pnl_manageEnrollment.BackColor = System.Drawing.Color.DimGray;
+            this.pnl_manageEnrollment.Controls.Add(this.label12);
+            this.pnl_manageEnrollment.Location = new System.Drawing.Point(206, 3);
+            this.pnl_manageEnrollment.Name = "pnl_manageEnrollment";
+            this.pnl_manageEnrollment.Size = new System.Drawing.Size(597, 444);
+            this.pnl_manageEnrollment.TabIndex = 6;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label12.Location = new System.Drawing.Point(10, 10);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(195, 25);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Manage Enrollment";
             // 
             // pnl_billing
             // 
             this.pnl_billing.BackColor = System.Drawing.Color.DimGray;
+            this.pnl_billing.Controls.Add(this.btn_clearbilling);
+            this.pnl_billing.Controls.Add(this.btn_recordpayment);
+            this.pnl_billing.Controls.Add(this.btn_updatebilling);
+            this.pnl_billing.Controls.Add(this.btn_deletebilling);
+            this.pnl_billing.Controls.Add(this.btn_addbilling);
             this.pnl_billing.Controls.Add(this.dt_billing);
-            this.pnl_billing.Controls.Add(this.b_paymentmethod);
+            this.pnl_billing.Controls.Add(this.tb_paymentmethod);
             this.pnl_billing.Controls.Add(this.label31);
             this.pnl_billing.Controls.Add(this.tb_paymentamount);
             this.pnl_billing.Controls.Add(this.label30);
@@ -367,17 +489,18 @@
             // dt_billing
             // 
             this.dt_billing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dt_billing.Location = new System.Drawing.Point(6, 168);
+            this.dt_billing.Location = new System.Drawing.Point(6, 215);
             this.dt_billing.Name = "dt_billing";
-            this.dt_billing.Size = new System.Drawing.Size(580, 266);
+            this.dt_billing.ReadOnly = true;
+            this.dt_billing.Size = new System.Drawing.Size(580, 226);
             this.dt_billing.TabIndex = 22;
             // 
-            // b_paymentmethod
+            // tb_paymentmethod
             // 
-            this.b_paymentmethod.Location = new System.Drawing.Point(430, 143);
-            this.b_paymentmethod.Name = "b_paymentmethod";
-            this.b_paymentmethod.Size = new System.Drawing.Size(127, 20);
-            this.b_paymentmethod.TabIndex = 21;
+            this.tb_paymentmethod.Location = new System.Drawing.Point(430, 143);
+            this.tb_paymentmethod.Name = "tb_paymentmethod";
+            this.tb_paymentmethod.Size = new System.Drawing.Size(134, 20);
+            this.tb_paymentmethod.TabIndex = 21;
             // 
             // label31
             // 
@@ -414,7 +537,7 @@
             // 
             this.tb_totalamount.Location = new System.Drawing.Point(409, 80);
             this.tb_totalamount.Name = "tb_totalamount";
-            this.tb_totalamount.Size = new System.Drawing.Size(149, 20);
+            this.tb_totalamount.Size = new System.Drawing.Size(155, 20);
             this.tb_totalamount.TabIndex = 17;
             // 
             // cb_status
@@ -422,7 +545,7 @@
             this.cb_status.FormattingEnabled = true;
             this.cb_status.Location = new System.Drawing.Point(409, 103);
             this.cb_status.Name = "cb_status";
-            this.cb_status.Size = new System.Drawing.Size(149, 21);
+            this.cb_status.Size = new System.Drawing.Size(155, 21);
             this.cb_status.TabIndex = 16;
             // 
             // cb_term
@@ -430,7 +553,7 @@
             this.cb_term.FormattingEnabled = true;
             this.cb_term.Location = new System.Drawing.Point(409, 52);
             this.cb_term.Name = "cb_term";
-            this.cb_term.Size = new System.Drawing.Size(149, 21);
+            this.cb_term.Size = new System.Drawing.Size(155, 21);
             this.cb_term.TabIndex = 15;
             // 
             // label29
@@ -473,14 +596,14 @@
             // 
             this.tb_notes.Location = new System.Drawing.Point(121, 106);
             this.tb_notes.Name = "tb_notes";
-            this.tb_notes.Size = new System.Drawing.Size(141, 20);
+            this.tb_notes.Size = new System.Drawing.Size(160, 20);
             this.tb_notes.TabIndex = 11;
             // 
             // tb_schoolyear
             // 
             this.tb_schoolyear.Location = new System.Drawing.Point(121, 80);
             this.tb_schoolyear.Name = "tb_schoolyear";
-            this.tb_schoolyear.Size = new System.Drawing.Size(141, 20);
+            this.tb_schoolyear.Size = new System.Drawing.Size(160, 20);
             this.tb_schoolyear.TabIndex = 10;
             // 
             // cb_student
@@ -488,7 +611,7 @@
             this.cb_student.FormattingEnabled = true;
             this.cb_student.Location = new System.Drawing.Point(121, 49);
             this.cb_student.Name = "cb_student";
-            this.cb_student.Size = new System.Drawing.Size(141, 21);
+            this.cb_student.Size = new System.Drawing.Size(160, 21);
             this.cb_student.TabIndex = 9;
             // 
             // label26
@@ -583,6 +706,7 @@
             this.dg_subjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_subjects.Location = new System.Drawing.Point(6, 160);
             this.dg_subjects.Name = "dg_subjects";
+            this.dg_subjects.ReadOnly = true;
             this.dg_subjects.Size = new System.Drawing.Size(582, 281);
             this.dg_subjects.TabIndex = 16;
             this.dg_subjects.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_subjects_CellClick);
@@ -594,7 +718,7 @@
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(79, 26);
             this.btn_delete.TabIndex = 15;
-            this.btn_delete.Text = "Delete";
+            this.btn_delete.Text = "DELETE";
             this.btn_delete.UseVisualStyleBackColor = true;
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
@@ -605,7 +729,7 @@
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(79, 26);
             this.btn_update.TabIndex = 14;
-            this.btn_update.Text = "Update";
+            this.btn_update.Text = "UPDATE";
             this.btn_update.UseVisualStyleBackColor = true;
             this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
@@ -616,7 +740,7 @@
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(79, 26);
             this.btn_clear.TabIndex = 13;
-            this.btn_clear.Text = "Clear";
+            this.btn_clear.Text = "CLEAR";
             this.btn_clear.UseVisualStyleBackColor = true;
             this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
@@ -627,7 +751,7 @@
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(79, 26);
             this.btn_add.TabIndex = 12;
-            this.btn_add.Text = "Add";
+            this.btn_add.Text = "ADD";
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
@@ -750,6 +874,7 @@
             this.dt_manageinstructor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dt_manageinstructor.Location = new System.Drawing.Point(1, 85);
             this.dt_manageinstructor.Name = "dt_manageinstructor";
+            this.dt_manageinstructor.ReadOnly = true;
             this.dt_manageinstructor.Size = new System.Drawing.Size(587, 356);
             this.dt_manageinstructor.TabIndex = 1;
             this.dt_manageinstructor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dt_manageinstructor_CellContentClick);
@@ -789,6 +914,7 @@
             this.dt_course.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dt_course.Location = new System.Drawing.Point(3, 110);
             this.dt_course.Name = "dt_course";
+            this.dt_course.ReadOnly = true;
             this.dt_course.Size = new System.Drawing.Size(587, 331);
             this.dt_course.TabIndex = 16;
             this.dt_course.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dt_course_CellClick);
@@ -800,7 +926,7 @@
             this.btn_deletecourse.Name = "btn_deletecourse";
             this.btn_deletecourse.Size = new System.Drawing.Size(75, 23);
             this.btn_deletecourse.TabIndex = 15;
-            this.btn_deletecourse.Text = "Delete";
+            this.btn_deletecourse.Text = "DELETE";
             this.btn_deletecourse.UseVisualStyleBackColor = true;
             this.btn_deletecourse.Click += new System.EventHandler(this.btn_deletecourse_Click_1);
             // 
@@ -811,7 +937,7 @@
             this.btn_updatecourse.Name = "btn_updatecourse";
             this.btn_updatecourse.Size = new System.Drawing.Size(75, 23);
             this.btn_updatecourse.TabIndex = 14;
-            this.btn_updatecourse.Text = "Update";
+            this.btn_updatecourse.Text = "UPDATE";
             this.btn_updatecourse.UseVisualStyleBackColor = true;
             this.btn_updatecourse.Click += new System.EventHandler(this.btn_updatecourse_Click_1);
             // 
@@ -822,7 +948,7 @@
             this.btn_clearcourse.Name = "btn_clearcourse";
             this.btn_clearcourse.Size = new System.Drawing.Size(75, 23);
             this.btn_clearcourse.TabIndex = 13;
-            this.btn_clearcourse.Text = "Clear";
+            this.btn_clearcourse.Text = "CLEAR";
             this.btn_clearcourse.UseVisualStyleBackColor = true;
             this.btn_clearcourse.Click += new System.EventHandler(this.btn_clearcourse_Click_1);
             // 
@@ -833,7 +959,7 @@
             this.btn_addcourse.Name = "btn_addcourse";
             this.btn_addcourse.Size = new System.Drawing.Size(75, 23);
             this.btn_addcourse.TabIndex = 12;
-            this.btn_addcourse.Text = "Add";
+            this.btn_addcourse.Text = "ADD";
             this.btn_addcourse.UseVisualStyleBackColor = true;
             this.btn_addcourse.Click += new System.EventHandler(this.btn_addcourse_Click_1);
             // 
@@ -900,117 +1026,60 @@
             this.label14.TabIndex = 5;
             this.label14.Text = "Course";
             // 
-            // pnl_content1
+            // btn_addbilling
             // 
-            this.pnl_content1.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_content1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnl_content1.Controls.Add(this.tb_searchuser);
-            this.pnl_content1.Controls.Add(this.btn_searchuser);
-            this.pnl_content1.Controls.Add(this.label22);
-            this.pnl_content1.Controls.Add(this.label21);
-            this.pnl_content1.Controls.Add(this.label8);
-            this.pnl_content1.Controls.Add(this.label2);
-            this.pnl_content1.Controls.Add(this.dataGridView1);
-            this.pnl_content1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnl_content1.Location = new System.Drawing.Point(206, 3);
-            this.pnl_content1.Name = "pnl_content1";
-            this.pnl_content1.Size = new System.Drawing.Size(597, 444);
-            this.pnl_content1.TabIndex = 1;
+            this.btn_addbilling.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_addbilling.Location = new System.Drawing.Point(39, 180);
+            this.btn_addbilling.Name = "btn_addbilling";
+            this.btn_addbilling.Size = new System.Drawing.Size(75, 23);
+            this.btn_addbilling.TabIndex = 23;
+            this.btn_addbilling.Text = "ADD";
+            this.btn_addbilling.UseVisualStyleBackColor = true;
+            this.btn_addbilling.Click += new System.EventHandler(this.btn_addbilling_Click);
             // 
-            // tb_searchuser
+            // btn_deletebilling
             // 
-            this.tb_searchuser.Location = new System.Drawing.Point(248, 60);
-            this.tb_searchuser.Name = "tb_searchuser";
-            this.tb_searchuser.Size = new System.Drawing.Size(262, 20);
-            this.tb_searchuser.TabIndex = 8;
+            this.btn_deletebilling.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_deletebilling.Location = new System.Drawing.Point(126, 180);
+            this.btn_deletebilling.Name = "btn_deletebilling";
+            this.btn_deletebilling.Size = new System.Drawing.Size(75, 23);
+            this.btn_deletebilling.TabIndex = 24;
+            this.btn_deletebilling.Text = "DELETE";
+            this.btn_deletebilling.UseVisualStyleBackColor = true;
+            this.btn_deletebilling.Click += new System.EventHandler(this.btn_deletebilling_Click);
             // 
-            // btn_searchuser
+            // btn_updatebilling
             // 
-            this.btn_searchuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_searchuser.Location = new System.Drawing.Point(516, 58);
-            this.btn_searchuser.Name = "btn_searchuser";
-            this.btn_searchuser.Size = new System.Drawing.Size(75, 23);
-            this.btn_searchuser.TabIndex = 7;
-            this.btn_searchuser.Text = "Search";
-            this.btn_searchuser.UseVisualStyleBackColor = true;
+            this.btn_updatebilling.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_updatebilling.Location = new System.Drawing.Point(215, 180);
+            this.btn_updatebilling.Name = "btn_updatebilling";
+            this.btn_updatebilling.Size = new System.Drawing.Size(75, 23);
+            this.btn_updatebilling.TabIndex = 25;
+            this.btn_updatebilling.Text = "UPDATE";
+            this.btn_updatebilling.UseVisualStyleBackColor = true;
+            this.btn_updatebilling.Click += new System.EventHandler(this.btn_updatebilling_Click);
             // 
-            // label22
+            // btn_recordpayment
             // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.label22.Font = new System.Drawing.Font("Segoe UI Symbol", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(478, 14);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(86, 13);
-            this.label22.TabIndex = 6;
-            this.label22.Text = "Notifications";
+            this.btn_recordpayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_recordpayment.Location = new System.Drawing.Point(303, 180);
+            this.btn_recordpayment.Name = "btn_recordpayment";
+            this.btn_recordpayment.Size = new System.Drawing.Size(131, 23);
+            this.btn_recordpayment.TabIndex = 26;
+            this.btn_recordpayment.Text = "RECORD PAYMENT";
+            this.btn_recordpayment.UseVisualStyleBackColor = true;
+            this.btn_recordpayment.Click += new System.EventHandler(this.btn_recordpayment_Click);
             // 
-            // label21
+            // btn_clearbilling
             // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.Font = new System.Drawing.Font("Segoe UI Symbol", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.Black;
-            this.label21.Location = new System.Drawing.Point(415, 14);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 13);
-            this.label21.TabIndex = 5;
-            this.label21.Text = "Settings";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(13, 50);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(76, 32);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Users";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Symbol", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(6, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 30);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Home Page";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 85);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(590, 356);
-            this.dataGridView1.TabIndex = 4;
-            // 
-            // pnl_manageEnrollment
-            // 
-            this.pnl_manageEnrollment.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_manageEnrollment.Controls.Add(this.label12);
-            this.pnl_manageEnrollment.Location = new System.Drawing.Point(206, 3);
-            this.pnl_manageEnrollment.Name = "pnl_manageEnrollment";
-            this.pnl_manageEnrollment.Size = new System.Drawing.Size(597, 444);
-            this.pnl_manageEnrollment.TabIndex = 6;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label12.Location = new System.Drawing.Point(10, 10);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(195, 25);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Manage Enrollment";
+            this.btn_clearbilling.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_clearbilling.Location = new System.Drawing.Point(452, 180);
+            this.btn_clearbilling.Name = "btn_clearbilling";
+            this.btn_clearbilling.Size = new System.Drawing.Size(75, 23);
+            this.btn_clearbilling.TabIndex = 27;
+            this.btn_clearbilling.Text = "CLEAR";
+            this.btn_clearbilling.UseVisualStyleBackColor = true;
+            this.btn_clearbilling.Click += new System.EventHandler(this.btn_clearbilling_Click);
             // 
             // frm_superadmin
             // 
@@ -1038,6 +1107,11 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnl_content1.ResumeLayout(false);
+            this.pnl_content1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.pnl_manageEnrollment.ResumeLayout(false);
+            this.pnl_manageEnrollment.PerformLayout();
             this.pnl_billing.ResumeLayout(false);
             this.pnl_billing.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_billing)).EndInit();
@@ -1050,11 +1124,6 @@
             this.pnl_manageCourse.ResumeLayout(false);
             this.pnl_manageCourse.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_course)).EndInit();
-            this.pnl_content1.ResumeLayout(false);
-            this.pnl_content1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.pnl_manageEnrollment.ResumeLayout(false);
-            this.pnl_manageEnrollment.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1129,7 +1198,7 @@
         private System.Windows.Forms.ComboBox cb_student;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox b_paymentmethod;
+        private System.Windows.Forms.TextBox tb_paymentmethod;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox tb_paymentamount;
         private System.Windows.Forms.Label label30;
@@ -1141,5 +1210,10 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.DataGridView dt_billing;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_recordpayment;
+        private System.Windows.Forms.Button btn_updatebilling;
+        private System.Windows.Forms.Button btn_deletebilling;
+        private System.Windows.Forms.Button btn_addbilling;
+        private System.Windows.Forms.Button btn_clearbilling;
     }
 }

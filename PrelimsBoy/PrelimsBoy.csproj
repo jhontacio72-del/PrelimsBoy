@@ -60,9 +60,6 @@
     <Reference Include="MySql.Data, Version=9.6.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.9.6.0\lib\net462\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySqlConnector.2.5.0\lib\net471\MySqlConnector.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -115,10 +112,12 @@
     <Compile Include="LoginRegister.Designer.cs">
       <DependentUpon>LoginRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Billing.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Services\authServices.cs" />
+    <Compile Include="Services\BillingService.cs" />
     <Compile Include="Services\CourseServices.cs" />
     <Compile Include="Services\SubjectServices.cs" />
     <Compile Include="Services\SuperadminServices.cs" />
