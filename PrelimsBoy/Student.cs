@@ -156,7 +156,7 @@ namespace PrelimsBoy
 
         private void pnl_left_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.X > pnl_left.Width - 10) // only allow dragging from the right edge
+            if (e.X > pnl_left.Width - 10) 
             {
                
             }

@@ -271,27 +271,27 @@ namespace PrelimsBoy
 
         private void pictureBox2_MouseEnter(object sender, EventArgs e)
         {
-            pictureBox2.BackColor = Color.LightGray;
+            pictureBox2.BackColor = Color.DimGray;
         }
 
         private void pictureBox2_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox2.BackColor = Color.Gray;
+            pictureBox2.BackColor = Color.White;
         }
 
         private void panel1_MouseEnter(object sender, EventArgs e)
         {
-            panel1.BackColor = Color.LightGray;
+            panel1.BackColor = Color.DimGray;
         }
 
         private void panel1_MouseLeave(object sender, EventArgs e)
         {
-            panel1.BackColor = Color.DimGray;
+            panel1.BackColor = Color.White;
         }
 
         private void panel2_MouseEnter(object sender, EventArgs e)
         {
-            pnl_maninstructor.BackColor = Color.LightGray;
+            pnl_maninstructor.BackColor = Color.DimGray;
         }
 
         private void panel2_MouseLeave(object sender, EventArgs e)
@@ -301,37 +301,37 @@ namespace PrelimsBoy
 
         private void panel3_MouseEnter(object sender, EventArgs e)
         {
-            panel3.BackColor = Color.LightGray;
+            panel3.BackColor = Color.DimGray;
         }
 
         private void panel3_MouseLeave(object sender, EventArgs e)
         {
-            panel3.BackColor = Color.DimGray;
+            panel3.BackColor = Color.White;
         }
 
         private void panel4_MouseEnter(object sender, EventArgs e)
         {
-            panel4.BackColor = Color.LightGray;
+            panel4.BackColor = Color.DimGray;
         }
 
         private void panel4_MouseLeave(object sender, EventArgs e)
         {
-            panel4.BackColor = Color.DimGray;
+            panel4.BackColor = Color.White;
         }
 
         private void panel5_MouseEnter(object sender, EventArgs e)
         {
-            panel5.BackColor = Color.LightGray;
+            panel5.BackColor = Color.DimGray;
         }
 
         private void panel5_MouseLeave(object sender, EventArgs e)
         {
-            panel5.BackColor = Color.DimGray;
+            panel5.BackColor = Color.White;
         }
 
         private void panel2_MouseLeave_1(object sender, EventArgs e)
         {
-            pnl_maninstructor.BackColor = Color.DimGray;
+            pnl_maninstructor.BackColor = Color.White;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -370,12 +370,12 @@ namespace PrelimsBoy
 
         private void pnl_homepage_MouseEnter(object sender, EventArgs e)
         {
-            pnl_homepage.BackColor = Color.LightGray;
+            pnl_homepage.BackColor = Color.DimGray;
         }
 
         private void pnl_homepage_MouseLeave(object sender, EventArgs e)
         {
-            pnl_homepage.BackColor = Color.DimGray;
+            pnl_homepage.BackColor = Color.White;
         }
       private void LoadInstructors()
         {

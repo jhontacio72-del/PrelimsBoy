@@ -193,7 +193,7 @@ namespace PrelimsBoy
             if (tb_createusername.Text == "Create Username")
             {
                 tb_createusername.Text = "";
-                tb_createusername.ForeColor = Color.White; // Change text color to black
+                tb_createusername.ForeColor = Color.White; 
             }
         }
 
@@ -202,7 +202,7 @@ namespace PrelimsBoy
             if (string.IsNullOrEmpty(tb_createusername.Text))
             {
                 tb_createusername.Text = "Create Username";
-                tb_createusername.ForeColor = Color.Gray; // Change text color to gray
+                tb_createusername.ForeColor = Color.Gray; 
             }
         }
 
@@ -212,10 +212,9 @@ namespace PrelimsBoy
             {
                 tb_createpassword.Text = "";
                 tb_createpassword.PasswordChar = '*';
-                tb_createpassword.ForeColor = Color.White; // Change text color to black
+                tb_createpassword.ForeColor = Color.White;
             }
         }
-
         private void tb_createpassword_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(tb_createpassword.Text))
@@ -232,7 +231,7 @@ namespace PrelimsBoy
             {
                 tb_confirmpassword.Text = "";
                 tb_confirmpassword.PasswordChar = '*';
-                tb_confirmpassword.ForeColor = Color.White; // Change text color to black
+                tb_confirmpassword.ForeColor = Color.White; 
             }
         }
 
@@ -242,7 +241,7 @@ namespace PrelimsBoy
             {
                 tb_confirmpassword.PasswordChar = '\0';
                 tb_confirmpassword.Text = "Confirm Password";
-                tb_confirmpassword.ForeColor = Color.Gray; // Change text color to gray
+                tb_confirmpassword.ForeColor = Color.Gray; 
             }
         }
 
@@ -330,7 +329,7 @@ namespace PrelimsBoy
             if (tb_fullname.Text == "Enter Full Name")
             {
                 tb_fullname.Text = "";
-                tb_fullname.ForeColor = Color.White; // Change text color to black
+                tb_fullname.ForeColor = Color.White; 
             }
         }
 
@@ -339,7 +338,7 @@ namespace PrelimsBoy
             if (string.IsNullOrEmpty(tb_fullname.Text))
             {
                 tb_fullname.Text = "Enter Full name";
-                tb_fullname.ForeColor = Color.Gray; // Change text color to gray
+                tb_fullname.ForeColor = Color.Gray; 
             }
         }
     }
