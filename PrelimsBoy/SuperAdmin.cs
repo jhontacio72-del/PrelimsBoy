@@ -477,6 +477,26 @@ namespace PrelimsBoy
         {
             ClearBillingFields();
         }
+
+        private void pnl_coursesubjects_Click(object sender, EventArgs e)
+        {
+            pnl_coursesub.BringToFront();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnl_coursesubjects_MouseEnter(object sender, EventArgs e)
+        {
+            pnl_coursesubjects.BackColor = Color.DimGray;
+        }
+
+        private void pnl_coursesubjects_MouseLeave(object sender, EventArgs e)
+        {
+            pnl_coursesubjects.BackColor = Color.White;
+        }
     }
 }
 

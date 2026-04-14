@@ -31,6 +31,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Home));
             this.pnl_left = new System.Windows.Forms.Panel();
             this.pnl_right = new System.Windows.Forms.Panel();
+            this.pnl_login = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btn_login = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tb_password = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tb_username = new System.Windows.Forms.TextBox();
+            this.lbl_login = new System.Windows.Forms.Label();
+            this.pb_visibilityon = new System.Windows.Forms.PictureBox();
+            this.pb_visibilityoff = new System.Windows.Forms.PictureBox();
             this.pnl_register = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tb_fullname = new System.Windows.Forms.TextBox();
@@ -50,19 +62,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pb_visoff3 = new System.Windows.Forms.PictureBox();
             this.pb_vison3 = new System.Windows.Forms.PictureBox();
-            this.pnl_login = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btn_login = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tb_password = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tb_username = new System.Windows.Forms.TextBox();
-            this.lbl_login = new System.Windows.Forms.Label();
-            this.pb_visibilityon = new System.Windows.Forms.PictureBox();
-            this.pb_visibilityoff = new System.Windows.Forms.PictureBox();
             this.pnl_right.SuspendLayout();
+            this.pnl_login.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityoff)).BeginInit();
             this.pnl_register.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -71,10 +75,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_visoff2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_visoff3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_vison3)).BeginInit();
-            this.pnl_login.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityoff)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_left
@@ -91,13 +91,160 @@
             // pnl_right
             // 
             this.pnl_right.BackColor = System.Drawing.Color.Transparent;
-            this.pnl_right.Controls.Add(this.pnl_login);
             this.pnl_right.Controls.Add(this.pnl_register);
+            this.pnl_right.Controls.Add(this.pnl_login);
             this.pnl_right.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_right.Location = new System.Drawing.Point(329, 0);
             this.pnl_right.Name = "pnl_right";
             this.pnl_right.Size = new System.Drawing.Size(471, 450);
             this.pnl_right.TabIndex = 1;
+            // 
+            // pnl_login
+            // 
+            this.pnl_login.Controls.Add(this.label4);
+            this.pnl_login.Controls.Add(this.label3);
+            this.pnl_login.Controls.Add(this.btn_login);
+            this.pnl_login.Controls.Add(this.pictureBox1);
+            this.pnl_login.Controls.Add(this.label2);
+            this.pnl_login.Controls.Add(this.tb_password);
+            this.pnl_login.Controls.Add(this.label1);
+            this.pnl_login.Controls.Add(this.tb_username);
+            this.pnl_login.Controls.Add(this.lbl_login);
+            this.pnl_login.Controls.Add(this.pb_visibilityon);
+            this.pnl_login.Controls.Add(this.pb_visibilityoff);
+            this.pnl_login.Location = new System.Drawing.Point(82, 69);
+            this.pnl_login.Name = "pnl_login";
+            this.pnl_login.Size = new System.Drawing.Size(266, 362);
+            this.pnl_login.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.LightCoral;
+            this.label4.Location = new System.Drawing.Point(110, 249);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 20);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Register";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DarkGray;
+            this.label3.Location = new System.Drawing.Point(84, 230);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(128, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Don\'t have an account?";
+            // 
+            // btn_login
+            // 
+            this.btn_login.BackColor = System.Drawing.Color.IndianRed;
+            this.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_login.Location = new System.Drawing.Point(51, 197);
+            this.btn_login.Name = "btn_login";
+            this.btn_login.Size = new System.Drawing.Size(196, 30);
+            this.btn_login.TabIndex = 8;
+            this.btn_login.Text = "LOGIN";
+            this.btn_login.UseVisualStyleBackColor = false;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
+            this.btn_login.Leave += new System.EventHandler(this.btn_login_Leave);
+            this.btn_login.MouseEnter += new System.EventHandler(this.btn_login_MouseEnter);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(20, 83);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkGray;
+            this.label2.Location = new System.Drawing.Point(16, 138);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Password";
+            // 
+            // tb_password
+            // 
+            this.tb_password.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_password.ForeColor = System.Drawing.Color.White;
+            this.tb_password.Location = new System.Drawing.Point(51, 161);
+            this.tb_password.Multiline = true;
+            this.tb_password.Name = "tb_password";
+            this.tb_password.Size = new System.Drawing.Size(196, 30);
+            this.tb_password.TabIndex = 3;
+            this.tb_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_password.Enter += new System.EventHandler(this.tb_password_Enter);
+            this.tb_password.Leave += new System.EventHandler(this.tb_password_Leave);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkGray;
+            this.label1.Location = new System.Drawing.Point(16, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Username";
+            // 
+            // tb_username
+            // 
+            this.tb_username.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_username.ForeColor = System.Drawing.Color.White;
+            this.tb_username.Location = new System.Drawing.Point(51, 84);
+            this.tb_username.Multiline = true;
+            this.tb_username.Name = "tb_username";
+            this.tb_username.Size = new System.Drawing.Size(196, 30);
+            this.tb_username.TabIndex = 1;
+            this.tb_username.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_username.Enter += new System.EventHandler(this.tb_username_Enter);
+            this.tb_username.Leave += new System.EventHandler(this.tb_username_Leave);
+            // 
+            // lbl_login
+            // 
+            this.lbl_login.AutoSize = true;
+            this.lbl_login.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_login.ForeColor = System.Drawing.Color.White;
+            this.lbl_login.Location = new System.Drawing.Point(99, 24);
+            this.lbl_login.Name = "lbl_login";
+            this.lbl_login.Size = new System.Drawing.Size(78, 30);
+            this.lbl_login.TabIndex = 0;
+            this.lbl_login.Text = "LOGIN";
+            // 
+            // pb_visibilityon
+            // 
+            this.pb_visibilityon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_visibilityon.BackgroundImage")));
+            this.pb_visibilityon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pb_visibilityon.Location = new System.Drawing.Point(20, 161);
+            this.pb_visibilityon.Name = "pb_visibilityon";
+            this.pb_visibilityon.Size = new System.Drawing.Size(30, 30);
+            this.pb_visibilityon.TabIndex = 5;
+            this.pb_visibilityon.TabStop = false;
+            this.pb_visibilityon.Click += new System.EventHandler(this.pb_visibilityon_Click);
+            // 
+            // pb_visibilityoff
+            // 
+            this.pb_visibilityoff.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_visibilityoff.BackgroundImage")));
+            this.pb_visibilityoff.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pb_visibilityoff.Location = new System.Drawing.Point(20, 161);
+            this.pb_visibilityoff.Name = "pb_visibilityoff";
+            this.pb_visibilityoff.Size = new System.Drawing.Size(30, 30);
+            this.pb_visibilityoff.TabIndex = 6;
+            this.pb_visibilityoff.TabStop = false;
+            this.pb_visibilityoff.Click += new System.EventHandler(this.pb_visibilityoff_Click);
             // 
             // pnl_register
             // 
@@ -336,153 +483,6 @@
             this.pb_vison3.TabStop = false;
             this.pb_vison3.Click += new System.EventHandler(this.pb_vison3_Click);
             // 
-            // pnl_login
-            // 
-            this.pnl_login.Controls.Add(this.label4);
-            this.pnl_login.Controls.Add(this.label3);
-            this.pnl_login.Controls.Add(this.btn_login);
-            this.pnl_login.Controls.Add(this.pictureBox1);
-            this.pnl_login.Controls.Add(this.label2);
-            this.pnl_login.Controls.Add(this.tb_password);
-            this.pnl_login.Controls.Add(this.label1);
-            this.pnl_login.Controls.Add(this.tb_username);
-            this.pnl_login.Controls.Add(this.lbl_login);
-            this.pnl_login.Controls.Add(this.pb_visibilityon);
-            this.pnl_login.Controls.Add(this.pb_visibilityoff);
-            this.pnl_login.Location = new System.Drawing.Point(82, 69);
-            this.pnl_login.Name = "pnl_login";
-            this.pnl_login.Size = new System.Drawing.Size(266, 362);
-            this.pnl_login.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.LightCoral;
-            this.label4.Location = new System.Drawing.Point(110, 249);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 20);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Register";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DarkGray;
-            this.label3.Location = new System.Drawing.Point(84, 230);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Don\'t have an account?";
-            // 
-            // btn_login
-            // 
-            this.btn_login.BackColor = System.Drawing.Color.IndianRed;
-            this.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_login.Location = new System.Drawing.Point(51, 197);
-            this.btn_login.Name = "btn_login";
-            this.btn_login.Size = new System.Drawing.Size(196, 30);
-            this.btn_login.TabIndex = 8;
-            this.btn_login.Text = "LOGIN";
-            this.btn_login.UseVisualStyleBackColor = false;
-            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
-            this.btn_login.Leave += new System.EventHandler(this.btn_login_Leave);
-            this.btn_login.MouseEnter += new System.EventHandler(this.btn_login_MouseEnter);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(20, 83);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkGray;
-            this.label2.Location = new System.Drawing.Point(16, 138);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Password";
-            // 
-            // tb_password
-            // 
-            this.tb_password.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_password.ForeColor = System.Drawing.Color.White;
-            this.tb_password.Location = new System.Drawing.Point(51, 161);
-            this.tb_password.Multiline = true;
-            this.tb_password.Name = "tb_password";
-            this.tb_password.Size = new System.Drawing.Size(196, 30);
-            this.tb_password.TabIndex = 3;
-            this.tb_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tb_password.Enter += new System.EventHandler(this.tb_password_Enter);
-            this.tb_password.Leave += new System.EventHandler(this.tb_password_Leave);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkGray;
-            this.label1.Location = new System.Drawing.Point(16, 60);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Username";
-            // 
-            // tb_username
-            // 
-            this.tb_username.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_username.ForeColor = System.Drawing.Color.White;
-            this.tb_username.Location = new System.Drawing.Point(51, 84);
-            this.tb_username.Multiline = true;
-            this.tb_username.Name = "tb_username";
-            this.tb_username.Size = new System.Drawing.Size(196, 30);
-            this.tb_username.TabIndex = 1;
-            this.tb_username.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tb_username.Enter += new System.EventHandler(this.tb_username_Enter);
-            this.tb_username.Leave += new System.EventHandler(this.tb_username_Leave);
-            // 
-            // lbl_login
-            // 
-            this.lbl_login.AutoSize = true;
-            this.lbl_login.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_login.ForeColor = System.Drawing.Color.White;
-            this.lbl_login.Location = new System.Drawing.Point(99, 24);
-            this.lbl_login.Name = "lbl_login";
-            this.lbl_login.Size = new System.Drawing.Size(78, 30);
-            this.lbl_login.TabIndex = 0;
-            this.lbl_login.Text = "LOGIN";
-            // 
-            // pb_visibilityon
-            // 
-            this.pb_visibilityon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_visibilityon.BackgroundImage")));
-            this.pb_visibilityon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pb_visibilityon.Location = new System.Drawing.Point(20, 161);
-            this.pb_visibilityon.Name = "pb_visibilityon";
-            this.pb_visibilityon.Size = new System.Drawing.Size(30, 30);
-            this.pb_visibilityon.TabIndex = 5;
-            this.pb_visibilityon.TabStop = false;
-            this.pb_visibilityon.Click += new System.EventHandler(this.pb_visibilityon_Click);
-            // 
-            // pb_visibilityoff
-            // 
-            this.pb_visibilityoff.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_visibilityoff.BackgroundImage")));
-            this.pb_visibilityoff.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pb_visibilityoff.Location = new System.Drawing.Point(20, 161);
-            this.pb_visibilityoff.Name = "pb_visibilityoff";
-            this.pb_visibilityoff.Size = new System.Drawing.Size(30, 30);
-            this.pb_visibilityoff.TabIndex = 6;
-            this.pb_visibilityoff.TabStop = false;
-            this.pb_visibilityoff.Click += new System.EventHandler(this.pb_visibilityoff_Click);
-            // 
             // frm_Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -497,6 +497,11 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pnl_right.ResumeLayout(false);
+            this.pnl_login.ResumeLayout(false);
+            this.pnl_login.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityoff)).EndInit();
             this.pnl_register.ResumeLayout(false);
             this.pnl_register.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -506,11 +511,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_visoff2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_visoff3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_vison3)).EndInit();
-            this.pnl_login.ResumeLayout(false);
-            this.pnl_login.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_visibilityoff)).EndInit();
             this.ResumeLayout(false);
 
         }
