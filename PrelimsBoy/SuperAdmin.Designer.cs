@@ -54,18 +54,29 @@
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnl_content1 = new System.Windows.Forms.Panel();
+            this.tb_searchuser = new System.Windows.Forms.TextBox();
+            this.btn_searchuser = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pnl_manageEnrollment = new System.Windows.Forms.Panel();
+            this.btn_classoffupdate = new System.Windows.Forms.Button();
+            this.btn_classoffcreate = new System.Windows.Forms.Button();
+            this.btn_deleteorenable = new System.Windows.Forms.Button();
+            this.btn_classoffclear = new System.Windows.Forms.Button();
+            this.dt_classoffering = new System.Windows.Forms.DataGridView();
             this.label38 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.numericUpDown_capacity = new System.Windows.Forms.NumericUpDown();
+            this.cb_instructor = new System.Windows.Forms.ComboBox();
             this.label36 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.tb_schoolsyear = new System.Windows.Forms.TextBox();
+            this.cb_subjects = new System.Windows.Forms.ComboBox();
+            this.cb_terms = new System.Windows.Forms.ComboBox();
             this.label35 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cb_course = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
@@ -109,6 +120,17 @@
             this.label15 = new System.Windows.Forms.Label();
             this.tb_subcode = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.pnl_coursesub = new System.Windows.Forms.Panel();
+            this.dt_assignedSub = new System.Windows.Forms.DataGridView();
+            this.btn_coursesubRemove = new System.Windows.Forms.Button();
+            this.btn_coursesubAdd = new System.Windows.Forms.Button();
+            this.dt_availablesubject = new System.Windows.Forms.DataGridView();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.btn_coursesubLoad = new System.Windows.Forms.Button();
+            this.cb_selectcourse = new System.Windows.Forms.ComboBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
             this.pnl_manageinstructor = new System.Windows.Forms.Panel();
             this.btn_search = new System.Windows.Forms.Button();
             this.tb_search = new System.Windows.Forms.TextBox();
@@ -128,30 +150,6 @@
             this.tb_coursecode = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.pnl_content1 = new System.Windows.Forms.Panel();
-            this.tb_searchuser = new System.Windows.Forms.TextBox();
-            this.btn_searchuser = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.pnl_coursesub = new System.Windows.Forms.Panel();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.pnl_fill.SuspendLayout();
             this.pnl_left.SuspendLayout();
             this.pnl_coursesubjects.SuspendLayout();
@@ -170,22 +168,22 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnl_content1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnl_manageEnrollment.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_classoffering)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_capacity)).BeginInit();
             this.pnl_billing.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_billing)).BeginInit();
             this.pnl_account.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_subjects)).BeginInit();
+            this.pnl_coursesub.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_assignedSub)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_availablesubject)).BeginInit();
             this.pnl_manageinstructor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_manageinstructor)).BeginInit();
             this.pnl_manageCourse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_course)).BeginInit();
-            this.pnl_content1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.pnl_coursesub.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_fill
@@ -193,13 +191,13 @@
             this.pnl_fill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(18)))));
             this.pnl_fill.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnl_fill.Controls.Add(this.pnl_left);
+            this.pnl_fill.Controls.Add(this.pnl_coursesub);
+            this.pnl_fill.Controls.Add(this.pnl_manageinstructor);
+            this.pnl_fill.Controls.Add(this.pnl_manageCourse);
             this.pnl_fill.Controls.Add(this.pnl_content1);
             this.pnl_fill.Controls.Add(this.pnl_manageEnrollment);
             this.pnl_fill.Controls.Add(this.pnl_billing);
             this.pnl_fill.Controls.Add(this.pnl_account);
-            this.pnl_fill.Controls.Add(this.pnl_coursesub);
-            this.pnl_fill.Controls.Add(this.pnl_manageinstructor);
-            this.pnl_fill.Controls.Add(this.pnl_manageCourse);
             this.pnl_fill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_fill.Location = new System.Drawing.Point(0, 0);
             this.pnl_fill.Name = "pnl_fill";
@@ -489,27 +487,122 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // pnl_content1
+            // 
+            this.pnl_content1.BackColor = System.Drawing.Color.DimGray;
+            this.pnl_content1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_content1.BackgroundImage")));
+            this.pnl_content1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnl_content1.Controls.Add(this.tb_searchuser);
+            this.pnl_content1.Controls.Add(this.btn_searchuser);
+            this.pnl_content1.Controls.Add(this.label22);
+            this.pnl_content1.Controls.Add(this.label21);
+            this.pnl_content1.Controls.Add(this.label8);
+            this.pnl_content1.Controls.Add(this.label2);
+            this.pnl_content1.Controls.Add(this.dataGridView1);
+            this.pnl_content1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnl_content1.Location = new System.Drawing.Point(206, 3);
+            this.pnl_content1.Name = "pnl_content1";
+            this.pnl_content1.Size = new System.Drawing.Size(597, 444);
+            this.pnl_content1.TabIndex = 1;
+            // 
+            // tb_searchuser
+            // 
+            this.tb_searchuser.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_searchuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_searchuser.Location = new System.Drawing.Point(234, 54);
+            this.tb_searchuser.Multiline = true;
+            this.tb_searchuser.Name = "tb_searchuser";
+            this.tb_searchuser.Size = new System.Drawing.Size(294, 25);
+            this.tb_searchuser.TabIndex = 8;
+            // 
+            // btn_searchuser
+            // 
+            this.btn_searchuser.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_searchuser.BackgroundImage")));
+            this.btn_searchuser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_searchuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_searchuser.Location = new System.Drawing.Point(533, 54);
+            this.btn_searchuser.Name = "btn_searchuser";
+            this.btn_searchuser.Size = new System.Drawing.Size(48, 26);
+            this.btn_searchuser.TabIndex = 7;
+            this.btn_searchuser.UseVisualStyleBackColor = true;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(478, 14);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(88, 15);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "Notifications";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(415, 14);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(57, 15);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "Settings";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(13, 50);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(76, 32);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Users";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Symbol", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(6, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(130, 30);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Home Page";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.Lavender;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(4, 85);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(590, 356);
+            this.dataGridView1.TabIndex = 4;
+            // 
             // pnl_manageEnrollment
             // 
             this.pnl_manageEnrollment.BackColor = System.Drawing.Color.DimGray;
             this.pnl_manageEnrollment.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_manageEnrollment.BackgroundImage")));
             this.pnl_manageEnrollment.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnl_manageEnrollment.Controls.Add(this.button4);
-            this.pnl_manageEnrollment.Controls.Add(this.button3);
-            this.pnl_manageEnrollment.Controls.Add(this.button2);
-            this.pnl_manageEnrollment.Controls.Add(this.button1);
-            this.pnl_manageEnrollment.Controls.Add(this.dataGridView2);
+            this.pnl_manageEnrollment.Controls.Add(this.btn_classoffupdate);
+            this.pnl_manageEnrollment.Controls.Add(this.btn_classoffcreate);
+            this.pnl_manageEnrollment.Controls.Add(this.btn_deleteorenable);
+            this.pnl_manageEnrollment.Controls.Add(this.btn_classoffclear);
+            this.pnl_manageEnrollment.Controls.Add(this.dt_classoffering);
             this.pnl_manageEnrollment.Controls.Add(this.label38);
-            this.pnl_manageEnrollment.Controls.Add(this.numericUpDown1);
-            this.pnl_manageEnrollment.Controls.Add(this.textBox2);
-            this.pnl_manageEnrollment.Controls.Add(this.label37);
-            this.pnl_manageEnrollment.Controls.Add(this.comboBox4);
+            this.pnl_manageEnrollment.Controls.Add(this.numericUpDown_capacity);
+            this.pnl_manageEnrollment.Controls.Add(this.cb_instructor);
             this.pnl_manageEnrollment.Controls.Add(this.label36);
-            this.pnl_manageEnrollment.Controls.Add(this.textBox1);
-            this.pnl_manageEnrollment.Controls.Add(this.comboBox3);
-            this.pnl_manageEnrollment.Controls.Add(this.comboBox2);
+            this.pnl_manageEnrollment.Controls.Add(this.tb_schoolsyear);
+            this.pnl_manageEnrollment.Controls.Add(this.cb_subjects);
+            this.pnl_manageEnrollment.Controls.Add(this.cb_terms);
             this.pnl_manageEnrollment.Controls.Add(this.label35);
-            this.pnl_manageEnrollment.Controls.Add(this.comboBox1);
+            this.pnl_manageEnrollment.Controls.Add(this.cb_course);
             this.pnl_manageEnrollment.Controls.Add(this.label34);
             this.pnl_manageEnrollment.Controls.Add(this.label32);
             this.pnl_manageEnrollment.Controls.Add(this.label33);
@@ -518,6 +611,59 @@
             this.pnl_manageEnrollment.Name = "pnl_manageEnrollment";
             this.pnl_manageEnrollment.Size = new System.Drawing.Size(597, 444);
             this.pnl_manageEnrollment.TabIndex = 6;
+            // 
+            // btn_classoffupdate
+            // 
+            this.btn_classoffupdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_classoffupdate.Location = new System.Drawing.Point(516, 99);
+            this.btn_classoffupdate.Name = "btn_classoffupdate";
+            this.btn_classoffupdate.Size = new System.Drawing.Size(65, 26);
+            this.btn_classoffupdate.TabIndex = 25;
+            this.btn_classoffupdate.Text = "update";
+            this.btn_classoffupdate.UseVisualStyleBackColor = true;
+            this.btn_classoffupdate.Click += new System.EventHandler(this.btn_classoffupdate_Click_1);
+            // 
+            // btn_classoffcreate
+            // 
+            this.btn_classoffcreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_classoffcreate.Location = new System.Drawing.Point(448, 100);
+            this.btn_classoffcreate.Name = "btn_classoffcreate";
+            this.btn_classoffcreate.Size = new System.Drawing.Size(65, 26);
+            this.btn_classoffcreate.TabIndex = 24;
+            this.btn_classoffcreate.Text = "Create";
+            this.btn_classoffcreate.UseVisualStyleBackColor = true;
+            this.btn_classoffcreate.Click += new System.EventHandler(this.btn_classoffcreate_Click_1);
+            // 
+            // btn_deleteorenable
+            // 
+            this.btn_deleteorenable.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_deleteorenable.Location = new System.Drawing.Point(516, 139);
+            this.btn_deleteorenable.Name = "btn_deleteorenable";
+            this.btn_deleteorenable.Size = new System.Drawing.Size(65, 26);
+            this.btn_deleteorenable.TabIndex = 23;
+            this.btn_deleteorenable.Text = "D/E";
+            this.btn_deleteorenable.UseVisualStyleBackColor = true;
+            this.btn_deleteorenable.Click += new System.EventHandler(this.btn_deleteorenable_Click_1);
+            // 
+            // btn_classoffclear
+            // 
+            this.btn_classoffclear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_classoffclear.Location = new System.Drawing.Point(448, 139);
+            this.btn_classoffclear.Name = "btn_classoffclear";
+            this.btn_classoffclear.Size = new System.Drawing.Size(65, 26);
+            this.btn_classoffclear.TabIndex = 22;
+            this.btn_classoffclear.Text = "Clear";
+            this.btn_classoffclear.UseVisualStyleBackColor = true;
+            this.btn_classoffclear.Click += new System.EventHandler(this.btn_classoffclear_Click_1);
+            // 
+            // dt_classoffering
+            // 
+            this.dt_classoffering.BackgroundColor = System.Drawing.Color.Lavender;
+            this.dt_classoffering.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dt_classoffering.Location = new System.Drawing.Point(7, 197);
+            this.dt_classoffering.Name = "dt_classoffering";
+            this.dt_classoffering.Size = new System.Drawing.Size(584, 244);
+            this.dt_classoffering.TabIndex = 21;
             // 
             // label38
             // 
@@ -531,39 +677,20 @@
             this.label38.TabIndex = 20;
             this.label38.Text = "Capacity:";
             // 
-            // numericUpDown1
+            // numericUpDown_capacity
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(516, 64);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
-            this.numericUpDown1.TabIndex = 19;
+            this.numericUpDown_capacity.Location = new System.Drawing.Point(516, 64);
+            this.numericUpDown_capacity.Name = "numericUpDown_capacity";
+            this.numericUpDown_capacity.Size = new System.Drawing.Size(48, 20);
+            this.numericUpDown_capacity.TabIndex = 19;
             // 
-            // textBox2
+            // cb_instructor
             // 
-            this.textBox2.Location = new System.Drawing.Point(311, 153);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(120, 20);
-            this.textBox2.TabIndex = 18;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.BackColor = System.Drawing.Color.Transparent;
-            this.label37.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.ForeColor = System.Drawing.Color.White;
-            this.label37.Location = new System.Drawing.Point(219, 154);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(69, 20);
-            this.label37.TabIndex = 17;
-            this.label37.Text = "Section:";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(310, 102);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 16;
+            this.cb_instructor.FormattingEnabled = true;
+            this.cb_instructor.Location = new System.Drawing.Point(310, 102);
+            this.cb_instructor.Name = "cb_instructor";
+            this.cb_instructor.Size = new System.Drawing.Size(121, 21);
+            this.cb_instructor.TabIndex = 16;
             // 
             // label36
             // 
@@ -577,28 +704,28 @@
             this.label36.TabIndex = 15;
             this.label36.Text = "Instructor:";
             // 
-            // textBox1
+            // tb_schoolsyear
             // 
-            this.textBox1.Location = new System.Drawing.Point(309, 63);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 20);
-            this.textBox1.TabIndex = 14;
+            this.tb_schoolsyear.Location = new System.Drawing.Point(309, 63);
+            this.tb_schoolsyear.Name = "tb_schoolsyear";
+            this.tb_schoolsyear.Size = new System.Drawing.Size(120, 20);
+            this.tb_schoolsyear.TabIndex = 14;
             // 
-            // comboBox3
+            // cb_subjects
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(84, 153);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 13;
+            this.cb_subjects.FormattingEnabled = true;
+            this.cb_subjects.Location = new System.Drawing.Point(84, 153);
+            this.cb_subjects.Name = "cb_subjects";
+            this.cb_subjects.Size = new System.Drawing.Size(121, 21);
+            this.cb_subjects.TabIndex = 13;
             // 
-            // comboBox2
+            // cb_terms
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(84, 104);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(113, 21);
-            this.comboBox2.TabIndex = 12;
+            this.cb_terms.FormattingEnabled = true;
+            this.cb_terms.Location = new System.Drawing.Point(84, 104);
+            this.cb_terms.Name = "cb_terms";
+            this.cb_terms.Size = new System.Drawing.Size(113, 21);
+            this.cb_terms.TabIndex = 12;
             // 
             // label35
             // 
@@ -612,13 +739,14 @@
             this.label35.TabIndex = 11;
             this.label35.Text = "School Year:";
             // 
-            // comboBox1
+            // cb_course
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(84, 63);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(114, 21);
-            this.comboBox1.TabIndex = 10;
+            this.cb_course.FormattingEnabled = true;
+            this.cb_course.Location = new System.Drawing.Point(84, 63);
+            this.cb_course.Name = "cb_course";
+            this.cb_course.Size = new System.Drawing.Size(114, 21);
+            this.cb_course.TabIndex = 10;
+            this.cb_course.SelectedIndexChanged += new System.EventHandler(this.cb_course_SelectedIndexChanged);
             // 
             // label34
             // 
@@ -1107,6 +1235,133 @@
             this.label13.TabIndex = 5;
             this.label13.Text = " Subjects";
             // 
+            // pnl_coursesub
+            // 
+            this.pnl_coursesub.BackColor = System.Drawing.Color.DimGray;
+            this.pnl_coursesub.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_coursesub.BackgroundImage")));
+            this.pnl_coursesub.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnl_coursesub.Controls.Add(this.dt_assignedSub);
+            this.pnl_coursesub.Controls.Add(this.btn_coursesubRemove);
+            this.pnl_coursesub.Controls.Add(this.btn_coursesubAdd);
+            this.pnl_coursesub.Controls.Add(this.dt_availablesubject);
+            this.pnl_coursesub.Controls.Add(this.label42);
+            this.pnl_coursesub.Controls.Add(this.label40);
+            this.pnl_coursesub.Controls.Add(this.btn_coursesubLoad);
+            this.pnl_coursesub.Controls.Add(this.cb_selectcourse);
+            this.pnl_coursesub.Controls.Add(this.label41);
+            this.pnl_coursesub.Controls.Add(this.label39);
+            this.pnl_coursesub.Location = new System.Drawing.Point(205, 3);
+            this.pnl_coursesub.Name = "pnl_coursesub";
+            this.pnl_coursesub.Size = new System.Drawing.Size(598, 441);
+            this.pnl_coursesub.TabIndex = 6;
+            // 
+            // dt_assignedSub
+            // 
+            this.dt_assignedSub.BackgroundColor = System.Drawing.Color.Lavender;
+            this.dt_assignedSub.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dt_assignedSub.Location = new System.Drawing.Point(339, 131);
+            this.dt_assignedSub.Name = "dt_assignedSub";
+            this.dt_assignedSub.Size = new System.Drawing.Size(247, 262);
+            this.dt_assignedSub.TabIndex = 16;
+            // 
+            // btn_coursesubRemove
+            // 
+            this.btn_coursesubRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_coursesubRemove.Location = new System.Drawing.Point(257, 172);
+            this.btn_coursesubRemove.Name = "btn_coursesubRemove";
+            this.btn_coursesubRemove.Size = new System.Drawing.Size(75, 23);
+            this.btn_coursesubRemove.TabIndex = 15;
+            this.btn_coursesubRemove.Text = "<<<<";
+            this.btn_coursesubRemove.UseVisualStyleBackColor = true;
+            this.btn_coursesubRemove.Click += new System.EventHandler(this.btn_coursesubRemove_Click_1);
+            // 
+            // btn_coursesubAdd
+            // 
+            this.btn_coursesubAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_coursesubAdd.Location = new System.Drawing.Point(257, 139);
+            this.btn_coursesubAdd.Name = "btn_coursesubAdd";
+            this.btn_coursesubAdd.Size = new System.Drawing.Size(75, 23);
+            this.btn_coursesubAdd.TabIndex = 14;
+            this.btn_coursesubAdd.Text = "ADD>>";
+            this.btn_coursesubAdd.UseVisualStyleBackColor = true;
+            this.btn_coursesubAdd.Click += new System.EventHandler(this.btn_coursesubAdd_Click_1);
+            // 
+            // dt_availablesubject
+            // 
+            this.dt_availablesubject.BackgroundColor = System.Drawing.Color.Lavender;
+            this.dt_availablesubject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dt_availablesubject.Location = new System.Drawing.Point(8, 129);
+            this.dt_availablesubject.Name = "dt_availablesubject";
+            this.dt_availablesubject.Size = new System.Drawing.Size(247, 262);
+            this.dt_availablesubject.TabIndex = 13;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.BackColor = System.Drawing.Color.Transparent;
+            this.label42.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.ForeColor = System.Drawing.Color.White;
+            this.label42.Location = new System.Drawing.Point(342, 106);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(134, 17);
+            this.label42.TabIndex = 12;
+            this.label42.Text = "Assigned Subjects:";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.BackColor = System.Drawing.Color.Transparent;
+            this.label40.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.ForeColor = System.Drawing.Color.White;
+            this.label40.Location = new System.Drawing.Point(9, 103);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(134, 17);
+            this.label40.TabIndex = 11;
+            this.label40.Text = "Available Subjects:";
+            // 
+            // btn_coursesubLoad
+            // 
+            this.btn_coursesubLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_coursesubLoad.Location = new System.Drawing.Point(306, 61);
+            this.btn_coursesubLoad.Name = "btn_coursesubLoad";
+            this.btn_coursesubLoad.Size = new System.Drawing.Size(75, 23);
+            this.btn_coursesubLoad.TabIndex = 10;
+            this.btn_coursesubLoad.Text = "LOAD";
+            this.btn_coursesubLoad.UseVisualStyleBackColor = true;
+            this.btn_coursesubLoad.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // cb_selectcourse
+            // 
+            this.cb_selectcourse.FormattingEnabled = true;
+            this.cb_selectcourse.Location = new System.Drawing.Point(144, 63);
+            this.cb_selectcourse.Name = "cb_selectcourse";
+            this.cb_selectcourse.Size = new System.Drawing.Size(156, 21);
+            this.cb_selectcourse.TabIndex = 9;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.BackColor = System.Drawing.Color.Transparent;
+            this.label41.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.ForeColor = System.Drawing.Color.White;
+            this.label41.Location = new System.Drawing.Point(26, 64);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(115, 20);
+            this.label41.TabIndex = 8;
+            this.label41.Text = "Select Course:";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.BackColor = System.Drawing.Color.Transparent;
+            this.label39.Font = new System.Drawing.Font("Segoe UI", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.ForeColor = System.Drawing.Color.White;
+            this.label39.Location = new System.Drawing.Point(3, 11);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(159, 30);
+            this.label39.TabIndex = 0;
+            this.label39.Text = "Course Subject";
+            // 
             // pnl_manageinstructor
             // 
             this.pnl_manageinstructor.BackColor = System.Drawing.Color.DimGray;
@@ -1326,277 +1581,6 @@
             this.label14.TabIndex = 5;
             this.label14.Text = "Course";
             // 
-            // pnl_content1
-            // 
-            this.pnl_content1.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_content1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_content1.BackgroundImage")));
-            this.pnl_content1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnl_content1.Controls.Add(this.tb_searchuser);
-            this.pnl_content1.Controls.Add(this.btn_searchuser);
-            this.pnl_content1.Controls.Add(this.label22);
-            this.pnl_content1.Controls.Add(this.label21);
-            this.pnl_content1.Controls.Add(this.label8);
-            this.pnl_content1.Controls.Add(this.label2);
-            this.pnl_content1.Controls.Add(this.dataGridView1);
-            this.pnl_content1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnl_content1.Location = new System.Drawing.Point(206, 3);
-            this.pnl_content1.Name = "pnl_content1";
-            this.pnl_content1.Size = new System.Drawing.Size(597, 444);
-            this.pnl_content1.TabIndex = 1;
-            // 
-            // tb_searchuser
-            // 
-            this.tb_searchuser.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_searchuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_searchuser.Location = new System.Drawing.Point(234, 54);
-            this.tb_searchuser.Multiline = true;
-            this.tb_searchuser.Name = "tb_searchuser";
-            this.tb_searchuser.Size = new System.Drawing.Size(294, 25);
-            this.tb_searchuser.TabIndex = 8;
-            // 
-            // btn_searchuser
-            // 
-            this.btn_searchuser.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_searchuser.BackgroundImage")));
-            this.btn_searchuser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_searchuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_searchuser.Location = new System.Drawing.Point(533, 54);
-            this.btn_searchuser.Name = "btn_searchuser";
-            this.btn_searchuser.Size = new System.Drawing.Size(48, 26);
-            this.btn_searchuser.TabIndex = 7;
-            this.btn_searchuser.UseVisualStyleBackColor = true;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.label22.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(478, 14);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(88, 15);
-            this.label22.TabIndex = 6;
-            this.label22.Text = "Notifications";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(415, 14);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 15);
-            this.label21.TabIndex = 5;
-            this.label21.Text = "Settings";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(13, 50);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(76, 32);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Users";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Symbol", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(6, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 30);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Home Page";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.Lavender;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 85);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(590, 356);
-            this.dataGridView1.TabIndex = 4;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(448, 139);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(65, 26);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(516, 139);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(65, 26);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "D/E";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(448, 100);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(65, 26);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Create";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(516, 99);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(65, 26);
-            this.button4.TabIndex = 25;
-            this.button4.Text = "update";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.Lavender;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(7, 197);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(584, 244);
-            this.dataGridView2.TabIndex = 21;
-            // 
-            // pnl_coursesub
-            // 
-            this.pnl_coursesub.BackColor = System.Drawing.Color.DimGray;
-            this.pnl_coursesub.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_coursesub.BackgroundImage")));
-            this.pnl_coursesub.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnl_coursesub.Controls.Add(this.dataGridView4);
-            this.pnl_coursesub.Controls.Add(this.button7);
-            this.pnl_coursesub.Controls.Add(this.button6);
-            this.pnl_coursesub.Controls.Add(this.dataGridView3);
-            this.pnl_coursesub.Controls.Add(this.label42);
-            this.pnl_coursesub.Controls.Add(this.label40);
-            this.pnl_coursesub.Controls.Add(this.button5);
-            this.pnl_coursesub.Controls.Add(this.comboBox5);
-            this.pnl_coursesub.Controls.Add(this.label41);
-            this.pnl_coursesub.Controls.Add(this.label39);
-            this.pnl_coursesub.Location = new System.Drawing.Point(205, 3);
-            this.pnl_coursesub.Name = "pnl_coursesub";
-            this.pnl_coursesub.Size = new System.Drawing.Size(598, 441);
-            this.pnl_coursesub.TabIndex = 6;
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.BackColor = System.Drawing.Color.Transparent;
-            this.label39.Font = new System.Drawing.Font("Segoe UI", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.ForeColor = System.Drawing.Color.White;
-            this.label39.Location = new System.Drawing.Point(3, 11);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(159, 30);
-            this.label39.TabIndex = 0;
-            this.label39.Text = "Course Subject";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.BackColor = System.Drawing.Color.Transparent;
-            this.label41.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.ForeColor = System.Drawing.Color.White;
-            this.label41.Location = new System.Drawing.Point(26, 64);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(115, 20);
-            this.label41.TabIndex = 8;
-            this.label41.Text = "Select Course:";
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(144, 63);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(156, 21);
-            this.comboBox5.TabIndex = 9;
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(306, 61);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 10;
-            this.button5.Text = "LOAD";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.BackColor = System.Drawing.Color.Transparent;
-            this.label40.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.ForeColor = System.Drawing.Color.White;
-            this.label40.Location = new System.Drawing.Point(9, 103);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(134, 17);
-            this.label40.TabIndex = 11;
-            this.label40.Text = "Available Subjects:";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.BackColor = System.Drawing.Color.Transparent;
-            this.label42.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.ForeColor = System.Drawing.Color.White;
-            this.label42.Location = new System.Drawing.Point(342, 106);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(134, 17);
-            this.label42.TabIndex = 12;
-            this.label42.Text = "Assigned Subjects:";
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.BackgroundColor = System.Drawing.Color.Lavender;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(8, 129);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(247, 262);
-            this.dataGridView3.TabIndex = 13;
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(257, 139);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 14;
-            this.button6.Text = "ADD>>";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(257, 172);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 15;
-            this.button7.Text = "<<<<";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView4
-            // 
-            this.dataGridView4.BackgroundColor = System.Drawing.Color.Lavender;
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(339, 131);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(247, 262);
-            this.dataGridView4.TabIndex = 16;
-            // 
             // frm_superadmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1631,29 +1615,29 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnl_content1.ResumeLayout(false);
+            this.pnl_content1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnl_manageEnrollment.ResumeLayout(false);
             this.pnl_manageEnrollment.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_classoffering)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_capacity)).EndInit();
             this.pnl_billing.ResumeLayout(false);
             this.pnl_billing.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_billing)).EndInit();
             this.pnl_account.ResumeLayout(false);
             this.pnl_account.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_subjects)).EndInit();
+            this.pnl_coursesub.ResumeLayout(false);
+            this.pnl_coursesub.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_assignedSub)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_availablesubject)).EndInit();
             this.pnl_manageinstructor.ResumeLayout(false);
             this.pnl_manageinstructor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_manageinstructor)).EndInit();
             this.pnl_manageCourse.ResumeLayout(false);
             this.pnl_manageCourse.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_course)).EndInit();
-            this.pnl_content1.ResumeLayout(false);
-            this.pnl_content1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.pnl_coursesub.ResumeLayout(false);
-            this.pnl_coursesub.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1754,34 +1738,32 @@
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cb_instructor;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox tb_schoolsyear;
+        private System.Windows.Forms.ComboBox cb_subjects;
+        private System.Windows.Forms.ComboBox cb_terms;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cb_course;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.NumericUpDown numericUpDown_capacity;
+        private System.Windows.Forms.Button btn_classoffupdate;
+        private System.Windows.Forms.Button btn_classoffcreate;
+        private System.Windows.Forms.Button btn_deleteorenable;
+        private System.Windows.Forms.Button btn_classoffclear;
+        private System.Windows.Forms.DataGridView dt_classoffering;
         private System.Windows.Forms.Panel pnl_coursesub;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Button btn_coursesubLoad;
+        private System.Windows.Forms.ComboBox cb_selectcourse;
+        private System.Windows.Forms.Button btn_coursesubRemove;
+        private System.Windows.Forms.Button btn_coursesubAdd;
+        private System.Windows.Forms.DataGridView dt_availablesubject;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridView dt_assignedSub;
     }
 }

@@ -21,6 +21,11 @@ namespace PrelimsBoy
         private readonly CourseServices _courses = new CourseServices();
         private readonly SubjectServices _subjects = new SubjectServices();
         private int selectedSubjectId = -1;
+        private readonly CourseSubjectService _courseSubject = new CourseSubjectService();
+        private int selectedCourseId = -1;
+        private Stack<int> undoStack = new Stack<int>();
+        private readonly ClassOfferingService _classOffering = new ClassOfferingService();
+        private int selectedClassId = -1;
         public frm_superadmin()
         {
             InitializeComponent();
@@ -36,6 +41,16 @@ namespace PrelimsBoy
             LoadInstructors();
             LoadCourses();
             LoadSubjects();
+            SetupCourseSubjectGrids();
+            LoadCourseCombo();
+            SetupClassOfferingGrid();
+            LoadClassOfferingCombos();
+            LoadClassOfferings();
+            cb_course.SelectedIndexChanged += cb_course_SelectedIndexChanged;
+            btn_classoffcreate.Click += btn_classoffcreate_Click;
+            btn_classoffupdate.Click += btn_classoffupdate_Click;
+            btn_classoffclear.Click += btn_classoffclear_Click;
+            btn_deleteorenable.Click += btn_deleteorenable_Click;
             btn_searchuser.Click += (s, e) => LoadUsers(tb_searchuser.Text?.Trim());
             tb_searchuser.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) { e.SuppressKeyPress = true; LoadUsers(tb_searchuser.Text?.Trim()); } };
             cb_pendingonly.CheckedChanged += (s, e) => LoadInstructors(cb_pendingonly.Checked, tb_search.Text?.Trim());
@@ -485,7 +500,8 @@ namespace PrelimsBoy
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            btn_coursesubLoad.Click += btn_coursesubLoad_Click;
+            btn_coursesubAdd.Click += btn_coursesubAdd_Click;
         }
 
         private void pnl_coursesubjects_MouseEnter(object sender, EventArgs e)
@@ -496,6 +512,277 @@ namespace PrelimsBoy
         private void pnl_coursesubjects_MouseLeave(object sender, EventArgs e)
         {
             pnl_coursesubjects.BackColor = Color.White;
+        }
+        private void SetupCourseSubjectGrids()
+        {
+            dt_availablesubject.Columns.Clear();
+            dt_availablesubject.AutoGenerateColumns = false;
+            dt_availablesubject.ReadOnly = true;
+            dt_availablesubject.AllowUserToAddRows = false;
+            dt_availablesubject.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dt_availablesubject.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dt_availablesubject.Columns.Add(new DataGridViewTextBoxColumn { Name = "availSubId", HeaderText = "ID", DataPropertyName = "subject_id" });
+            dt_availablesubject.Columns.Add(new DataGridViewTextBoxColumn { Name = "availSubCode", HeaderText = "Code", DataPropertyName = "subject_code" });
+            dt_availablesubject.Columns.Add(new DataGridViewTextBoxColumn { Name = "availSubName", HeaderText = "Subject Name", DataPropertyName = "subject_name" });
+            dt_availablesubject.Columns.Add(new DataGridViewTextBoxColumn { Name = "availUnits", HeaderText = "Units", DataPropertyName = "units" });
+
+            dt_assignedSub.Columns.Clear();
+            dt_assignedSub.AutoGenerateColumns = false;
+            dt_assignedSub.ReadOnly = true;
+            dt_assignedSub.AllowUserToAddRows = false;
+            dt_assignedSub.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dt_assignedSub.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dt_assignedSub.Columns.Add(new DataGridViewTextBoxColumn { Name = "csId", HeaderText = "CSID", DataPropertyName = "course_subject_id", Visible = false });
+            dt_assignedSub.Columns.Add(new DataGridViewTextBoxColumn { Name = "assignSubId", HeaderText = "Subject ID", DataPropertyName = "subject_id", Visible = false });
+            dt_assignedSub.Columns.Add(new DataGridViewTextBoxColumn { Name = "assignSubCode", HeaderText = "Code", DataPropertyName = "subject_code" });
+            dt_assignedSub.Columns.Add(new DataGridViewTextBoxColumn { Name = "assignSubName", HeaderText = "Subject Name", DataPropertyName = "subject_name" });
+            dt_assignedSub.Columns.Add(new DataGridViewTextBoxColumn { Name = "assignUnits", HeaderText = "Units", DataPropertyName = "units" });
+        }
+
+        private void LoadCourseCombo()
+        {
+            var dt = _courseSubject.GetCoursesLookup();
+            cb_selectcourse.DisplayMember = "fullname";
+            cb_selectcourse.ValueMember = "course_id";
+            cb_selectcourse.DataSource = dt;
+            cb_selectcourse.SelectedIndex = -1;
+        }
+
+        private void LoadCourseSubjectGrids()
+        {
+            if (selectedCourseId <= 0) return;
+            dt_availablesubject.DataSource = _courseSubject.GetAvailableSubjects(selectedCourseId);
+            dt_assignedSub.DataSource = _courseSubject.GetAssignedSubjects(selectedCourseId);
+        }
+        private void btn_coursesubLoad_Click(object sender, EventArgs e)
+        {
+            if (cb_selectcourse.SelectedValue == null) { MessageBox.Show("Select a course first."); return; }
+            selectedCourseId = Convert.ToInt32(cb_selectcourse.SelectedValue);
+            undoStack.Clear();
+            LoadCourseSubjectGrids();
+        }
+        private void btn_coursesubAdd_Click(object sender, EventArgs e)
+        {
+            if (selectedCourseId <= 0) { MessageBox.Show("Load a course first."); return; }
+            if (dt_availablesubject.CurrentRow?.Cells["availSubId"].Value == null) { MessageBox.Show("Select a subject to add."); return; }
+
+            var subjectId = Convert.ToInt32(dt_availablesubject.CurrentRow.Cells["availSubId"].Value);
+            if (_courseSubject.AssignSubject(selectedCourseId, subjectId, out var msg))
+            {
+                LoadCourseSubjectGrids();
+  
+                var dt = _courseSubject.GetAssignedSubjects(selectedCourseId);
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (Convert.ToInt32(row["subject_id"]) == subjectId)
+                    {
+                        undoStack.Push(Convert.ToInt32(row["course_subject_id"]));
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(msg ?? "Failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btn_coursesubRemove_Click(object sender, EventArgs e)
+        {
+            if (dt_assignedSub.CurrentRow?.Cells["csId"].Value == null) { MessageBox.Show("Select an assigned subject to remove."); return; }
+            var csId = Convert.ToInt32(dt_assignedSub.CurrentRow.Cells["csId"].Value);
+            if (_courseSubject.RemoveSubject(csId, out var msg))
+            {
+                LoadCourseSubjectGrids();
+            }
+            else
+            {
+                MessageBox.Show(msg ?? "Failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btn_coursesubAdd_Click_1(object sender, EventArgs e)
+        {
+            btn_coursesubLoad.Click += btn_coursesubLoad_Click;
+            btn_coursesubAdd.Click += btn_coursesubAdd_Click;
+        }
+        private void btn_coursesubRemove_Click_1(object sender, EventArgs e)
+        {
+            if (dt_assignedSub.CurrentRow?.Cells["csId"].Value == null) { MessageBox.Show("Select an assigned subject to remove."); return; }
+            var csId = Convert.ToInt32(dt_assignedSub.CurrentRow.Cells["csId"].Value);
+            if (_courseSubject.RemoveSubject(csId, out var msg))
+            {
+                LoadCourseSubjectGrids();
+            }
+            else
+            {
+                MessageBox.Show(msg ?? "Failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cb_course_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cb_course.SelectedValue == null) return;
+            int courseId = Convert.ToInt32(cb_course.SelectedValue);
+            var dt = _classOffering.GetSubjectsByCourse(courseId);
+            cb_subjects.DataSource = dt;
+            cb_subjects.DisplayMember = "fullname";
+            cb_subjects.ValueMember = "subject_id";
+        }
+        private void SetupClassOfferingGrid()
+        {
+            dt_classoffering.Columns.Clear();
+            dt_classoffering.AutoGenerateColumns = false;
+            dt_classoffering.ReadOnly = true;
+            dt_classoffering.AllowUserToAddRows = false;
+            dt_classoffering.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dt_classoffering.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dt_classoffering.Columns.Add(new DataGridViewTextBoxColumn { Name = "classId", HeaderText = "ID", DataPropertyName = "class_id", Visible = true });
+            dt_classoffering.Columns.Add(new DataGridViewTextBoxColumn { Name = "course_id", HeaderText = "CourseID", DataPropertyName = "course_id", Visible = false });
+            dt_classoffering.Columns.Add(new DataGridViewTextBoxColumn { Name = "subject_id", HeaderText = "SubjectID", DataPropertyName = "subject_id", Visible = false });
+            dt_classoffering.Columns.Add(new DataGridViewTextBoxColumn { Name = "instructor_id", HeaderText = "InstructorID", DataPropertyName = "instructor_id", Visible = false });
+
+            dt_classoffering.Columns.Add(new DataGridViewTextBoxColumn { Name = "courseCode", HeaderText = "Course", DataPropertyName = "course_code" });
+            dt_classoffering.Columns.Add(new DataGridViewTextBoxColumn { Name = "subjectCode", HeaderText = "Subject", DataPropertyName = "subject_code" });
+            dt_classoffering.Columns.Add(new DataGridViewTextBoxColumn { Name = "section", HeaderText = "Section", DataPropertyName = "section" });
+            dt_classoffering.Columns.Add(new DataGridViewTextBoxColumn { Name = "sy", HeaderText = "SY", DataPropertyName = "school_year" });
+            dt_classoffering.Columns.Add(new DataGridViewTextBoxColumn { Name = "term", HeaderText = "Term", DataPropertyName = "term" });
+            dt_classoffering.Columns.Add(new DataGridViewTextBoxColumn { Name = "instructor", HeaderText = "Instructor", DataPropertyName = "instructor_name" });
+            dt_classoffering.Columns.Add(new DataGridViewTextBoxColumn { Name = "capacity", HeaderText = "Cap", DataPropertyName = "capacity" });
+            dt_classoffering.Columns.Add(new DataGridViewTextBoxColumn { Name = "active", HeaderText = "Active", DataPropertyName = "is_active" });
+
+            dt_classoffering.CellClick += dt_classoffering_CellClick;
+        }
+
+        private void LoadClassOfferingCombos()
+        {
+            cb_course.DataSource = _courseSubject.GetCoursesLookup();
+            cb_course.DisplayMember = "fullname";
+            cb_course.ValueMember = "course_id";
+            cb_course.SelectedIndex = -1;
+
+            cb_terms.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_terms.Items.Clear();
+            cb_terms.Items.AddRange(new object[] { "1st", "2nd", "Summer" });
+
+            var inst = _classOffering.GetInstructors();
+            cb_instructor.DataSource = inst;
+            cb_instructor.DisplayMember = "fullname";
+            cb_instructor.ValueMember = "id";
+            cb_instructor.SelectedIndex = -1;
+
+            numericUpDown_capacity.Value = 30;
+        }
+
+        private void LoadClassOfferings()
+        {
+            dt_classoffering.DataSource = _classOffering.GetAll();
+        }
+
+        private void ClearClassOfferingFields()
+        {
+            selectedClassId = -1;
+            cb_course.SelectedIndex = -1;
+            cb_subjects.DataSource = null;
+            cb_terms.SelectedIndex = -1;
+            cb_instructor.SelectedIndex = -1;
+            tb_schoolsyear.Clear();
+ 
+            numericUpDown_capacity.Value = 30;
+            dt_classoffering.ClearSelection();
+        }
+
+        private ClassOffering ReadClassOffering(int id)
+        {
+            return new ClassOffering
+            {
+                ClassId = id,
+                CourseId = Convert.ToInt32(cb_course.SelectedValue),
+                SubjectId = Convert.ToInt32(cb_subjects.SelectedValue),
+                InstructorId = cb_instructor.SelectedValue == null ? (int?)null : Convert.ToInt32(cb_instructor.SelectedValue),
+                SchoolYear = tb_schoolsyear.Text.Trim(),
+                Term = cb_terms.SelectedItem?.ToString() ?? "",
+                Section = "A", 
+                Capacity = (int)numericUpDown_capacity.Value
+            };
+        }
+
+        private void btn_classoffcreate_Click(object sender, EventArgs e)
+        {
+            if (cb_course.SelectedValue == null || cb_subjects.SelectedValue == null || string.IsNullOrWhiteSpace(tb_schoolsyear.Text) || cb_terms.SelectedItem == null)
+            { MessageBox.Show("Course, Subject, School Year, and Term are required."); return; }
+
+            if (_classOffering.Add(ReadClassOffering(0), out var msg))
+            { MessageBox.Show(msg); ClearClassOfferingFields(); LoadClassOfferings(); }
+            else MessageBox.Show(msg ?? "Failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btn_classoffupdate_Click(object sender, EventArgs e)
+        {
+            if (selectedClassId <= 0) { MessageBox.Show("Select a class offering to update."); return; }
+            if (_classOffering.Update(ReadClassOffering(selectedClassId), out var msg))
+            { MessageBox.Show(msg); ClearClassOfferingFields(); LoadClassOfferings(); }
+            else MessageBox.Show(msg ?? "Failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        private void btn_classoffclear_Click(object sender, EventArgs e)
+        {
+            ClearClassOfferingFields();
+        }
+
+        private void btn_deleteorenable_Click(object sender, EventArgs e)
+        {
+            if (selectedClassId <= 0) { MessageBox.Show("Select a class offering."); return; }
+            if (_classOffering.ToggleActive(selectedClassId, out var msg))
+            { MessageBox.Show(msg); LoadClassOfferings(); }
+            else MessageBox.Show(msg ?? "Failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dt_classoffering_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            var row = dt_classoffering.Rows[e.RowIndex];
+            selectedClassId = Convert.ToInt32(row.Cells["classId"].Value);
+
+            cb_course.SelectedValue = row.Cells["course_id"].Value;
+            cb_subjects.SelectedValue = row.Cells["subject_id"].Value;
+            cb_instructor.SelectedValue = row.Cells["instructor_id"].Value == DBNull.Value ? -1 : Convert.ToInt32(row.Cells["instructor_id"].Value);
+
+            tb_schoolsyear.Text = row.Cells["sy"].Value?.ToString() ?? "";
+            cb_terms.SelectedItem = row.Cells["term"].Value?.ToString();
+
+            numericUpDown_capacity.Value = Convert.ToDecimal(row.Cells["capacity"].Value);
+        }
+
+        private void btn_classoffcreate_Click_1(object sender, EventArgs e)
+        {
+            if (cb_course.SelectedValue == null || cb_subjects.SelectedValue == null || string.IsNullOrWhiteSpace(tb_schoolsyear.Text) || cb_terms.SelectedItem == null)
+            { MessageBox.Show("Course, Subject, School Year, and Term are required."); return; }
+
+            if (_classOffering.Add(ReadClassOffering(0), out var msg))
+            { MessageBox.Show(msg); ClearClassOfferingFields(); LoadClassOfferings(); }
+            else MessageBox.Show(msg ?? "Failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btn_classoffupdate_Click_1(object sender, EventArgs e)
+        {
+            if (selectedClassId <= 0) { MessageBox.Show("Select a class offering to update."); return; }
+            if (_classOffering.Update(ReadClassOffering(selectedClassId), out var msg))
+            { MessageBox.Show(msg); ClearClassOfferingFields(); LoadClassOfferings(); }
+            else MessageBox.Show(msg ?? "Failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btn_classoffclear_Click_1(object sender, EventArgs e)
+        {
+            ClearClassOfferingFields();
+        }
+
+        private void btn_deleteorenable_Click_1(object sender, EventArgs e)
+        {
+            if (selectedClassId <= 0) { MessageBox.Show("Select a class offering."); return; }
+            if (_classOffering.ToggleActive(selectedClassId, out var msg))
+            { MessageBox.Show(msg); LoadClassOfferings(); }
+            else MessageBox.Show(msg ?? "Failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

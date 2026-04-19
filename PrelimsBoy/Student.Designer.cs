@@ -30,28 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Dashboard));
             this.pnl_fill = new System.Windows.Forms.Panel();
-            this.pnl_mid = new System.Windows.Forms.Panel();
-            this.pnl_right = new System.Windows.Forms.Panel();
-            this.pnl_awards = new System.Windows.Forms.Panel();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.Awards = new System.Windows.Forms.Label();
-            this.panel34 = new System.Windows.Forms.Panel();
-            this.panel35 = new System.Windows.Forms.Panel();
-            this.panel36 = new System.Windows.Forms.Panel();
-            this.pnl_location = new System.Windows.Forms.Panel();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.panel30 = new System.Windows.Forms.Panel();
-            this.panel31 = new System.Windows.Forms.Panel();
-            this.panel32 = new System.Windows.Forms.Panel();
-            this.pnl_history = new System.Windows.Forms.Panel();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.panel26 = new System.Windows.Forms.Panel();
-            this.panel27 = new System.Windows.Forms.Panel();
-            this.panel28 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.pnl_enrollmenss = new System.Windows.Forms.Panel();
             this.pnl_left = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.pnl_schedule = new System.Windows.Forms.Panel();
@@ -93,18 +72,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.lbl_studentId = new System.Windows.Forms.Label();
+            this.lbl_username = new System.Windows.Forms.Label();
+            this.cb_terms = new System.Windows.Forms.ComboBox();
+            this.btn_loadclasses = new System.Windows.Forms.Button();
+            this.dt_availableclasses = new System.Windows.Forms.DataGridView();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tb_schoolyear = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dt_myclasses = new System.Windows.Forms.DataGridView();
+            this.btn_enroll = new System.Windows.Forms.Button();
+            this.btn_drop = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.pnl_fill.SuspendLayout();
-            this.pnl_right.SuspendLayout();
-            this.pnl_awards.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            this.panel34.SuspendLayout();
-            this.pnl_location.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            this.panel30.SuspendLayout();
-            this.pnl_history.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            this.panel26.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pnl_enrollmenss.SuspendLayout();
             this.pnl_left.SuspendLayout();
             this.pnl_schedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -125,14 +107,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_availableclasses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_myclasses)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_fill
             // 
             this.pnl_fill.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_fill.BackgroundImage")));
             this.pnl_fill.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnl_fill.Controls.Add(this.pnl_mid);
-            this.pnl_fill.Controls.Add(this.pnl_right);
+            this.pnl_fill.Controls.Add(this.pnl_enrollmenss);
             this.pnl_fill.Controls.Add(this.pnl_left);
             this.pnl_fill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_fill.Location = new System.Drawing.Point(0, 0);
@@ -140,235 +123,33 @@
             this.pnl_fill.Size = new System.Drawing.Size(800, 450);
             this.pnl_fill.TabIndex = 0;
             // 
-            // pnl_mid
+            // pnl_enrollmenss
             // 
-            this.pnl_mid.BackColor = System.Drawing.Color.Transparent;
-            this.pnl_mid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_mid.Location = new System.Drawing.Point(141, 0);
-            this.pnl_mid.Name = "pnl_mid";
-            this.pnl_mid.Size = new System.Drawing.Size(459, 450);
-            this.pnl_mid.TabIndex = 2;
-            // 
-            // pnl_right
-            // 
-            this.pnl_right.BackColor = System.Drawing.Color.Transparent;
-            this.pnl_right.Controls.Add(this.pnl_awards);
-            this.pnl_right.Controls.Add(this.pnl_location);
-            this.pnl_right.Controls.Add(this.pnl_history);
-            this.pnl_right.Controls.Add(this.pictureBox2);
-            this.pnl_right.Controls.Add(this.label8);
-            this.pnl_right.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_right.Location = new System.Drawing.Point(600, 0);
-            this.pnl_right.Name = "pnl_right";
-            this.pnl_right.Padding = new System.Windows.Forms.Padding(3);
-            this.pnl_right.Size = new System.Drawing.Size(200, 450);
-            this.pnl_right.TabIndex = 1;
-            // 
-            // pnl_awards
-            // 
-            this.pnl_awards.BackColor = System.Drawing.Color.LightGray;
-            this.pnl_awards.Controls.Add(this.pictureBox11);
-            this.pnl_awards.Controls.Add(this.Awards);
-            this.pnl_awards.Controls.Add(this.panel34);
-            this.pnl_awards.Controls.Add(this.panel36);
-            this.pnl_awards.ForeColor = System.Drawing.Color.Transparent;
-            this.pnl_awards.Location = new System.Drawing.Point(6, 242);
-            this.pnl_awards.Name = "pnl_awards";
-            this.pnl_awards.Size = new System.Drawing.Size(182, 32);
-            this.pnl_awards.TabIndex = 8;
-            this.pnl_awards.MouseEnter += new System.EventHandler(this.pnl_awards_MouseEnter);
-            this.pnl_awards.MouseLeave += new System.EventHandler(this.pnl_awards_MouseLeave);
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox11.BackgroundImage")));
-            this.pictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox11.Location = new System.Drawing.Point(3, 0);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(33, 32);
-            this.pictureBox11.TabIndex = 0;
-            this.pictureBox11.TabStop = false;
-            // 
-            // Awards
-            // 
-            this.Awards.AutoSize = true;
-            this.Awards.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Awards.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Awards.Location = new System.Drawing.Point(34, 8);
-            this.Awards.Name = "Awards";
-            this.Awards.Size = new System.Drawing.Size(67, 19);
-            this.Awards.TabIndex = 5;
-            this.Awards.Text = "Awards";
-            // 
-            // panel34
-            // 
-            this.panel34.BackColor = System.Drawing.Color.LightGray;
-            this.panel34.Controls.Add(this.panel35);
-            this.panel34.ForeColor = System.Drawing.Color.Transparent;
-            this.panel34.Location = new System.Drawing.Point(0, 30);
-            this.panel34.Name = "panel34";
-            this.panel34.Size = new System.Drawing.Size(135, 32);
-            this.panel34.TabIndex = 2;
-            // 
-            // panel35
-            // 
-            this.panel35.Location = new System.Drawing.Point(0, 30);
-            this.panel35.Name = "panel35";
-            this.panel35.Size = new System.Drawing.Size(135, 36);
-            this.panel35.TabIndex = 1;
-            // 
-            // panel36
-            // 
-            this.panel36.Location = new System.Drawing.Point(0, 30);
-            this.panel36.Name = "panel36";
-            this.panel36.Size = new System.Drawing.Size(135, 36);
-            this.panel36.TabIndex = 1;
-            // 
-            // pnl_location
-            // 
-            this.pnl_location.BackColor = System.Drawing.Color.LightGray;
-            this.pnl_location.Controls.Add(this.pictureBox10);
-            this.pnl_location.Controls.Add(this.label10);
-            this.pnl_location.Controls.Add(this.panel30);
-            this.pnl_location.Controls.Add(this.panel32);
-            this.pnl_location.ForeColor = System.Drawing.Color.Transparent;
-            this.pnl_location.Location = new System.Drawing.Point(6, 204);
-            this.pnl_location.Name = "pnl_location";
-            this.pnl_location.Size = new System.Drawing.Size(182, 32);
-            this.pnl_location.TabIndex = 7;
-            this.pnl_location.MouseEnter += new System.EventHandler(this.pnl_location_MouseEnter);
-            this.pnl_location.MouseLeave += new System.EventHandler(this.pnl_location_MouseLeave);
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox10.BackgroundImage")));
-            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox10.Location = new System.Drawing.Point(3, 0);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(33, 32);
-            this.pictureBox10.TabIndex = 0;
-            this.pictureBox10.TabStop = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(34, 8);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 19);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Location";
-            // 
-            // panel30
-            // 
-            this.panel30.BackColor = System.Drawing.Color.LightGray;
-            this.panel30.Controls.Add(this.panel31);
-            this.panel30.ForeColor = System.Drawing.Color.Transparent;
-            this.panel30.Location = new System.Drawing.Point(0, 30);
-            this.panel30.Name = "panel30";
-            this.panel30.Size = new System.Drawing.Size(135, 32);
-            this.panel30.TabIndex = 2;
-            // 
-            // panel31
-            // 
-            this.panel31.Location = new System.Drawing.Point(0, 30);
-            this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(135, 36);
-            this.panel31.TabIndex = 1;
-            // 
-            // panel32
-            // 
-            this.panel32.Location = new System.Drawing.Point(0, 30);
-            this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(135, 36);
-            this.panel32.TabIndex = 1;
-            // 
-            // pnl_history
-            // 
-            this.pnl_history.BackColor = System.Drawing.Color.LightGray;
-            this.pnl_history.Controls.Add(this.pictureBox9);
-            this.pnl_history.Controls.Add(this.label9);
-            this.pnl_history.Controls.Add(this.panel26);
-            this.pnl_history.Controls.Add(this.panel28);
-            this.pnl_history.ForeColor = System.Drawing.Color.Transparent;
-            this.pnl_history.Location = new System.Drawing.Point(6, 166);
-            this.pnl_history.Name = "pnl_history";
-            this.pnl_history.Size = new System.Drawing.Size(182, 32);
-            this.pnl_history.TabIndex = 6;
-            this.pnl_history.MouseEnter += new System.EventHandler(this.pnl_history_MouseEnter);
-            this.pnl_history.MouseLeave += new System.EventHandler(this.pnl_history_MouseLeave);
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox9.BackgroundImage")));
-            this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox9.Location = new System.Drawing.Point(3, 0);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(33, 32);
-            this.pictureBox9.TabIndex = 0;
-            this.pictureBox9.TabStop = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(34, 8);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(64, 19);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "History";
-            // 
-            // panel26
-            // 
-            this.panel26.BackColor = System.Drawing.Color.LightGray;
-            this.panel26.Controls.Add(this.panel27);
-            this.panel26.ForeColor = System.Drawing.Color.Transparent;
-            this.panel26.Location = new System.Drawing.Point(0, 30);
-            this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(135, 32);
-            this.panel26.TabIndex = 2;
-            // 
-            // panel27
-            // 
-            this.panel27.Location = new System.Drawing.Point(0, 30);
-            this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(135, 36);
-            this.panel27.TabIndex = 1;
-            // 
-            // panel28
-            // 
-            this.panel28.Location = new System.Drawing.Point(0, 30);
-            this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(135, 36);
-            this.panel28.TabIndex = 1;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(25, 55);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Padding = new System.Windows.Forms.Padding(20);
-            this.pictureBox2.Size = new System.Drawing.Size(146, 105);
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(52, 24);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(104, 19);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "ABOUT BCT";
+            this.pnl_enrollmenss.BackColor = System.Drawing.Color.Transparent;
+            this.pnl_enrollmenss.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnl_enrollmenss.Controls.Add(this.label8);
+            this.pnl_enrollmenss.Controls.Add(this.btn_drop);
+            this.pnl_enrollmenss.Controls.Add(this.btn_enroll);
+            this.pnl_enrollmenss.Controls.Add(this.dt_myclasses);
+            this.pnl_enrollmenss.Controls.Add(this.label13);
+            this.pnl_enrollmenss.Controls.Add(this.label12);
+            this.pnl_enrollmenss.Controls.Add(this.tb_schoolyear);
+            this.pnl_enrollmenss.Controls.Add(this.label11);
+            this.pnl_enrollmenss.Controls.Add(this.dt_availableclasses);
+            this.pnl_enrollmenss.Controls.Add(this.btn_loadclasses);
+            this.pnl_enrollmenss.Controls.Add(this.cb_terms);
+            this.pnl_enrollmenss.Controls.Add(this.lbl_username);
+            this.pnl_enrollmenss.Controls.Add(this.lbl_studentId);
+            this.pnl_enrollmenss.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_enrollmenss.Location = new System.Drawing.Point(141, 0);
+            this.pnl_enrollmenss.Name = "pnl_enrollmenss";
+            this.pnl_enrollmenss.Size = new System.Drawing.Size(659, 450);
+            this.pnl_enrollmenss.TabIndex = 2;
             // 
             // pnl_left
             // 
             this.pnl_left.BackColor = System.Drawing.Color.Transparent;
+            this.pnl_left.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnl_left.Controls.Add(this.button1);
             this.pnl_left.Controls.Add(this.pnl_schedule);
             this.pnl_left.Controls.Add(this.pnl_enrollments);
@@ -786,6 +567,136 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // lbl_studentId
+            // 
+            this.lbl_studentId.AutoSize = true;
+            this.lbl_studentId.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_studentId.ForeColor = System.Drawing.Color.White;
+            this.lbl_studentId.Location = new System.Drawing.Point(22, 22);
+            this.lbl_studentId.Name = "lbl_studentId";
+            this.lbl_studentId.Size = new System.Drawing.Size(85, 20);
+            this.lbl_studentId.TabIndex = 0;
+            this.lbl_studentId.Text = "Student ID:";
+            // 
+            // lbl_username
+            // 
+            this.lbl_username.AutoSize = true;
+            this.lbl_username.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_username.ForeColor = System.Drawing.Color.White;
+            this.lbl_username.Location = new System.Drawing.Point(25, 62);
+            this.lbl_username.Name = "lbl_username";
+            this.lbl_username.Size = new System.Drawing.Size(82, 20);
+            this.lbl_username.TabIndex = 1;
+            this.lbl_username.Text = "Username:";
+            // 
+            // cb_terms
+            // 
+            this.cb_terms.FormattingEnabled = true;
+            this.cb_terms.Location = new System.Drawing.Point(382, 21);
+            this.cb_terms.Name = "cb_terms";
+            this.cb_terms.Size = new System.Drawing.Size(199, 21);
+            this.cb_terms.TabIndex = 2;
+            // 
+            // btn_loadclasses
+            // 
+            this.btn_loadclasses.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_loadclasses.Location = new System.Drawing.Point(16, 375);
+            this.btn_loadclasses.Name = "btn_loadclasses";
+            this.btn_loadclasses.Size = new System.Drawing.Size(97, 27);
+            this.btn_loadclasses.TabIndex = 3;
+            this.btn_loadclasses.Text = "Load Classes";
+            this.btn_loadclasses.UseVisualStyleBackColor = true;
+            this.btn_loadclasses.Click += new System.EventHandler(this.btn_loadclasses_Click);
+            // 
+            // dt_availableclasses
+            // 
+            this.dt_availableclasses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dt_availableclasses.Location = new System.Drawing.Point(10, 136);
+            this.dt_availableclasses.Name = "dt_availableclasses";
+            this.dt_availableclasses.Size = new System.Drawing.Size(289, 233);
+            this.dt_availableclasses.TabIndex = 4;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(329, 21);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(47, 20);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Term:";
+            // 
+            // tb_schoolyear
+            // 
+            this.tb_schoolyear.Location = new System.Drawing.Point(382, 64);
+            this.tb_schoolyear.Name = "tb_schoolyear";
+            this.tb_schoolyear.Size = new System.Drawing.Size(199, 20);
+            this.tb_schoolyear.TabIndex = 6;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(282, 62);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(94, 20);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "School Year:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(12, 106);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(127, 20);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "Available Classes:";
+            // 
+            // dt_myclasses
+            // 
+            this.dt_myclasses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dt_myclasses.Location = new System.Drawing.Point(367, 136);
+            this.dt_myclasses.Name = "dt_myclasses";
+            this.dt_myclasses.Size = new System.Drawing.Size(289, 233);
+            this.dt_myclasses.TabIndex = 9;
+            // 
+            // btn_enroll
+            // 
+            this.btn_enroll.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_enroll.Location = new System.Drawing.Point(301, 196);
+            this.btn_enroll.Name = "btn_enroll";
+            this.btn_enroll.Size = new System.Drawing.Size(60, 27);
+            this.btn_enroll.TabIndex = 10;
+            this.btn_enroll.Text = "Enroll>>";
+            this.btn_enroll.UseVisualStyleBackColor = true;
+            this.btn_enroll.Click += new System.EventHandler(this.btn_enroll_Click);
+            // 
+            // btn_drop
+            // 
+            this.btn_drop.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_drop.Location = new System.Drawing.Point(301, 254);
+            this.btn_drop.Name = "btn_drop";
+            this.btn_drop.Size = new System.Drawing.Size(60, 27);
+            this.btn_drop.TabIndex = 11;
+            this.btn_drop.Text = "<<Drop";
+            this.btn_drop.UseVisualStyleBackColor = true;
+            this.btn_drop.Click += new System.EventHandler(this.btn_drop_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(378, 106);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(86, 20);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "My Classes:";
+            // 
             // frm_Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -797,21 +708,8 @@
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.frm_Dashboard_Load);
             this.pnl_fill.ResumeLayout(false);
-            this.pnl_right.ResumeLayout(false);
-            this.pnl_right.PerformLayout();
-            this.pnl_awards.ResumeLayout(false);
-            this.pnl_awards.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            this.panel34.ResumeLayout(false);
-            this.pnl_location.ResumeLayout(false);
-            this.pnl_location.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            this.panel30.ResumeLayout(false);
-            this.pnl_history.ResumeLayout(false);
-            this.pnl_history.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            this.panel26.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.pnl_enrollmenss.ResumeLayout(false);
+            this.pnl_enrollmenss.PerformLayout();
             this.pnl_left.ResumeLayout(false);
             this.pnl_left.PerformLayout();
             this.pnl_schedule.ResumeLayout(false);
@@ -839,6 +737,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_availableclasses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_myclasses)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -847,8 +747,7 @@
         private System.Windows.Forms.Panel pnl_fill;
         private System.Windows.Forms.Panel pnl_left;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel pnl_mid;
-        private System.Windows.Forms.Panel pnl_right;
+        private System.Windows.Forms.Panel pnl_enrollmenss;
         private System.Windows.Forms.Panel pnl_subjects;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
@@ -880,33 +779,26 @@
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Panel pnl_awards;
-        private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.Label Awards;
-        private System.Windows.Forms.Panel panel34;
-        private System.Windows.Forms.Panel panel35;
-        private System.Windows.Forms.Panel panel36;
-        private System.Windows.Forms.Panel pnl_location;
-        private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Panel panel30;
-        private System.Windows.Forms.Panel panel31;
-        private System.Windows.Forms.Panel panel32;
-        private System.Windows.Forms.Panel pnl_history;
-        private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel26;
-        private System.Windows.Forms.Panel panel27;
-        private System.Windows.Forms.Panel panel28;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Button button1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label lbl_studentId;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tb_schoolyear;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridView dt_availableclasses;
+        private System.Windows.Forms.Button btn_loadclasses;
+        private System.Windows.Forms.ComboBox cb_terms;
+        private System.Windows.Forms.Label lbl_username;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btn_drop;
+        private System.Windows.Forms.Button btn_enroll;
+        private System.Windows.Forms.DataGridView dt_myclasses;
     }
 }

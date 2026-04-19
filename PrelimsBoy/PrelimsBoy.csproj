@@ -119,12 +119,17 @@
       <DependentUpon>LoginRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Billing.cs" />
+    <Compile Include="Models\ClassOffering.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\CourseSubject.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Services\authServices.cs" />
     <Compile Include="Services\BillingService.cs" />
+    <Compile Include="Services\ClassOfferingService.cs" />
     <Compile Include="Services\CourseServices.cs" />
+    <Compile Include="Services\CourseSubjectService.cs" />
+    <Compile Include="Services\EnrollmentService.cs" />
     <Compile Include="Services\SubjectServices.cs" />
     <Compile Include="Services\SuperadminServices.cs" />
     <Compile Include="Student.cs">

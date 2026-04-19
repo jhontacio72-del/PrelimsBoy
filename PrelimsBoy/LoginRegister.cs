@@ -17,7 +17,7 @@ namespace PrelimsBoy
 {
     public partial class frm_Home : Form
     {
-        string connString = "server=localhost;database=User_db;uid=root;pwd=;";
+        private readonly EnrollmentService _enrollment = new EnrollmentService();
         private frm_superadmin _gridForm;
         public frm_Home()
         {
@@ -253,23 +253,33 @@ namespace PrelimsBoy
             if (user == null)
             {
                 MessageBox.Show(msg ?? "Invalid username or password.",
-                    "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (user.Role == "Admin" || user.Role == "Student")
-            {
-                new frm_Dashboard().Show();
-                this.Hide();
-            }
-            else if (user.Role == "SuperAdmin")
+            this.Hide();
+
+            if (user.Role.Equals("SuperAdmin", StringComparison.OrdinalIgnoreCase))
             {
                 new frm_superadmin().Show();
-                this.Hide();
+            }
+            else if (user.Role.Equals("Instructor", StringComparison.OrdinalIgnoreCase))
+            {
+                
+                new Admin().Show();
+            }
+            else if (user.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+            {
+                new Admin().Show();
+            }
+            else if (user.Role.Equals("Student", StringComparison.OrdinalIgnoreCase))
+            {
+                new frm_Dashboard().Show();
             }
             else
             {
                 MessageBox.Show("Unknown role.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Show();
             }
         }
 
@@ -306,15 +316,11 @@ namespace PrelimsBoy
             if (auth.Register(tb_fullname.Text.Trim(), tb_createusername.Text.Trim(), role.Trim(), out var msg))
             {
                 MessageBox.Show(msg, "Register", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // clear inputs
                 tb_fullname.Text = "Enter Full Name"; tb_fullname.ForeColor = System.Drawing.Color.Gray;
                 tb_createusername.Text = "Create Username"; tb_createusername.ForeColor = System.Drawing.Color.Gray;
                 tb_createpassword.Text = "Create Password"; tb_createpassword.PasswordChar = '\0'; tb_createpassword.ForeColor = System.Drawing.Color.Gray;
                 tb_confirmpassword.Text = "Confirm Password"; tb_confirmpassword.PasswordChar = '\0'; tb_confirmpassword.ForeColor = System.Drawing.Color.Gray;
                 cmb_role.SelectedIndex = -1;
-
-                // refresh superadmin grids if open
                 var openAdmin = (frm_superadmin)Application.OpenForms["frm_superadmin"];
                 if (openAdmin != null) openAdmin.LoadData();
             }
