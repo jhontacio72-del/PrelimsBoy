@@ -46,9 +46,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnl_fill.SuspendLayout();
-            this.pnl_Grades.SuspendLayout();
             this.pnl_side.SuspendLayout();
             this.btn_logout.SuspendLayout();
             this.btn_profile.SuspendLayout();
@@ -57,7 +55,6 @@
             this.btn_enrollment.SuspendLayout();
             this.btn_grades.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_fill
@@ -73,7 +70,8 @@
             // pnl_Grades
             // 
             this.pnl_Grades.BackColor = System.Drawing.Color.Gray;
-            this.pnl_Grades.Controls.Add(this.pictureBox2);
+            this.pnl_Grades.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_Grades.BackgroundImage")));
+            this.pnl_Grades.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnl_Grades.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_Grades.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnl_Grades.Location = new System.Drawing.Point(200, 0);
@@ -84,6 +82,8 @@
             // pnl_side
             // 
             this.pnl_side.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.pnl_side.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_side.BackgroundImage")));
+            this.pnl_side.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnl_side.Controls.Add(this.btn_logout);
             this.pnl_side.Controls.Add(this.btn_profile);
             this.pnl_side.Controls.Add(this.btn_myclasses);
@@ -102,7 +102,7 @@
             // 
             this.btn_logout.BackColor = System.Drawing.Color.SlateGray;
             this.btn_logout.Controls.Add(this.label7);
-            this.btn_logout.Location = new System.Drawing.Point(3, 355);
+            this.btn_logout.Location = new System.Drawing.Point(3, 347);
             this.btn_logout.Name = "btn_logout";
             this.btn_logout.Size = new System.Drawing.Size(194, 32);
             this.btn_logout.TabIndex = 3;
@@ -124,7 +124,7 @@
             // 
             this.btn_profile.BackColor = System.Drawing.Color.SlateGray;
             this.btn_profile.Controls.Add(this.label6);
-            this.btn_profile.Location = new System.Drawing.Point(3, 318);
+            this.btn_profile.Location = new System.Drawing.Point(3, 311);
             this.btn_profile.Name = "btn_profile";
             this.btn_profile.Size = new System.Drawing.Size(194, 32);
             this.btn_profile.TabIndex = 3;
@@ -143,7 +143,7 @@
             // 
             this.btn_myclasses.BackColor = System.Drawing.Color.SlateGray;
             this.btn_myclasses.Controls.Add(this.label5);
-            this.btn_myclasses.Location = new System.Drawing.Point(3, 280);
+            this.btn_myclasses.Location = new System.Drawing.Point(3, 272);
             this.btn_myclasses.Name = "btn_myclasses";
             this.btn_myclasses.Size = new System.Drawing.Size(194, 32);
             this.btn_myclasses.TabIndex = 4;
@@ -162,7 +162,7 @@
             // 
             this.btn_billing.BackColor = System.Drawing.Color.SlateGray;
             this.btn_billing.Controls.Add(this.label4);
-            this.btn_billing.Location = new System.Drawing.Point(3, 242);
+            this.btn_billing.Location = new System.Drawing.Point(3, 235);
             this.btn_billing.Name = "btn_billing";
             this.btn_billing.Size = new System.Drawing.Size(194, 32);
             this.btn_billing.TabIndex = 3;
@@ -181,7 +181,7 @@
             // 
             this.btn_enrollment.BackColor = System.Drawing.Color.SlateGray;
             this.btn_enrollment.Controls.Add(this.label3);
-            this.btn_enrollment.Location = new System.Drawing.Point(3, 204);
+            this.btn_enrollment.Location = new System.Drawing.Point(3, 196);
             this.btn_enrollment.Name = "btn_enrollment";
             this.btn_enrollment.Size = new System.Drawing.Size(194, 32);
             this.btn_enrollment.TabIndex = 3;
@@ -200,7 +200,7 @@
             // 
             this.btn_grades.BackColor = System.Drawing.Color.SlateGray;
             this.btn_grades.Controls.Add(this.label2);
-            this.btn_grades.Location = new System.Drawing.Point(3, 166);
+            this.btn_grades.Location = new System.Drawing.Point(3, 159);
             this.btn_grades.Name = "btn_grades";
             this.btn_grades.Size = new System.Drawing.Size(194, 32);
             this.btn_grades.TabIndex = 2;
@@ -218,8 +218,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(57, 135);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(57, 124);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 32);
             this.label1.TabIndex = 1;
@@ -231,18 +233,9 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(182, 120);
+            this.pictureBox1.Size = new System.Drawing.Size(169, 109);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(102, 67);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(382, 292);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
             // 
             // Admin
             // 
@@ -254,7 +247,6 @@
             this.Name = "Admin";
             this.Text = "Admin";
             this.pnl_fill.ResumeLayout(false);
-            this.pnl_Grades.ResumeLayout(false);
             this.pnl_side.ResumeLayout(false);
             this.pnl_side.PerformLayout();
             this.btn_logout.ResumeLayout(false);
@@ -270,7 +262,6 @@
             this.btn_grades.ResumeLayout(false);
             this.btn_grades.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -294,6 +285,5 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

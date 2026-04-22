@@ -42,11 +42,10 @@ namespace PrelimsBoy.Services
             using (MySqlConnection conn = Database.GetConnection())
             {
                 if (conn == null) return dt;
-                const string sql = @"
-                    SELECT id, CONCAT(lastname, ', ', firstname, ' (', username, ')') AS fullname
-                    FROM users
-                    WHERE role='Student' AND status='Active'
-                    ORDER BY lastname, firstname";
+                const string sql = @"SELECT id, username 
+                     FROM users 
+                     WHERE role = 'Student' AND status = 'Active'
+                     ORDER BY username";
                 using (MySqlDataAdapter da = new MySqlDataAdapter(sql, conn))
                 {
                     da.Fill(dt);

@@ -31,6 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Dashboard));
             this.pnl_fill = new System.Windows.Forms.Panel();
             this.pnl_enrollmenss = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btn_drop = new System.Windows.Forms.Button();
+            this.btn_enroll = new System.Windows.Forms.Button();
+            this.dt_myclasses = new System.Windows.Forms.DataGridView();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tb_schoolyear = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dt_availableclasses = new System.Windows.Forms.DataGridView();
+            this.btn_loadclasses = new System.Windows.Forms.Button();
+            this.cb_terms = new System.Windows.Forms.ComboBox();
+            this.lbl_username = new System.Windows.Forms.Label();
+            this.lbl_studentId = new System.Windows.Forms.Label();
             this.pnl_left = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.pnl_schedule = new System.Windows.Forms.Panel();
@@ -72,21 +85,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.lbl_studentId = new System.Windows.Forms.Label();
-            this.lbl_username = new System.Windows.Forms.Label();
-            this.cb_terms = new System.Windows.Forms.ComboBox();
-            this.btn_loadclasses = new System.Windows.Forms.Button();
-            this.dt_availableclasses = new System.Windows.Forms.DataGridView();
-            this.label11 = new System.Windows.Forms.Label();
-            this.tb_schoolyear = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.dt_myclasses = new System.Windows.Forms.DataGridView();
-            this.btn_enroll = new System.Windows.Forms.Button();
-            this.btn_drop = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
             this.pnl_fill.SuspendLayout();
             this.pnl_enrollmenss.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_myclasses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_availableclasses)).BeginInit();
             this.pnl_left.SuspendLayout();
             this.pnl_schedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -107,8 +109,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dt_availableclasses)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dt_myclasses)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_fill
@@ -126,6 +126,7 @@
             // pnl_enrollmenss
             // 
             this.pnl_enrollmenss.BackColor = System.Drawing.Color.Transparent;
+            this.pnl_enrollmenss.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_enrollmenss.BackgroundImage")));
             this.pnl_enrollmenss.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnl_enrollmenss.Controls.Add(this.label8);
             this.pnl_enrollmenss.Controls.Add(this.btn_drop);
@@ -146,9 +147,142 @@
             this.pnl_enrollmenss.Size = new System.Drawing.Size(659, 450);
             this.pnl_enrollmenss.TabIndex = 2;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(378, 106);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(86, 20);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "My Classes:";
+            // 
+            // btn_drop
+            // 
+            this.btn_drop.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_drop.Location = new System.Drawing.Point(301, 254);
+            this.btn_drop.Name = "btn_drop";
+            this.btn_drop.Size = new System.Drawing.Size(60, 27);
+            this.btn_drop.TabIndex = 11;
+            this.btn_drop.Text = "<<Drop";
+            this.btn_drop.UseVisualStyleBackColor = true;
+            this.btn_drop.Click += new System.EventHandler(this.btn_drop_Click);
+            // 
+            // btn_enroll
+            // 
+            this.btn_enroll.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_enroll.Location = new System.Drawing.Point(301, 196);
+            this.btn_enroll.Name = "btn_enroll";
+            this.btn_enroll.Size = new System.Drawing.Size(60, 27);
+            this.btn_enroll.TabIndex = 10;
+            this.btn_enroll.Text = "Enroll>>";
+            this.btn_enroll.UseVisualStyleBackColor = true;
+            this.btn_enroll.Click += new System.EventHandler(this.btn_enroll_Click);
+            // 
+            // dt_myclasses
+            // 
+            this.dt_myclasses.BackgroundColor = System.Drawing.Color.Lavender;
+            this.dt_myclasses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dt_myclasses.Location = new System.Drawing.Point(367, 136);
+            this.dt_myclasses.Name = "dt_myclasses";
+            this.dt_myclasses.Size = new System.Drawing.Size(289, 233);
+            this.dt_myclasses.TabIndex = 9;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(12, 106);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(127, 20);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "Available Classes:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(282, 62);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(94, 20);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "School Year:";
+            // 
+            // tb_schoolyear
+            // 
+            this.tb_schoolyear.Location = new System.Drawing.Point(382, 64);
+            this.tb_schoolyear.Name = "tb_schoolyear";
+            this.tb_schoolyear.Size = new System.Drawing.Size(199, 20);
+            this.tb_schoolyear.TabIndex = 6;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(329, 21);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(47, 20);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Term:";
+            // 
+            // dt_availableclasses
+            // 
+            this.dt_availableclasses.BackgroundColor = System.Drawing.Color.Lavender;
+            this.dt_availableclasses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dt_availableclasses.Location = new System.Drawing.Point(10, 136);
+            this.dt_availableclasses.Name = "dt_availableclasses";
+            this.dt_availableclasses.Size = new System.Drawing.Size(289, 233);
+            this.dt_availableclasses.TabIndex = 4;
+            // 
+            // btn_loadclasses
+            // 
+            this.btn_loadclasses.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_loadclasses.Location = new System.Drawing.Point(16, 375);
+            this.btn_loadclasses.Name = "btn_loadclasses";
+            this.btn_loadclasses.Size = new System.Drawing.Size(97, 27);
+            this.btn_loadclasses.TabIndex = 3;
+            this.btn_loadclasses.Text = "Load Classes";
+            this.btn_loadclasses.UseVisualStyleBackColor = true;
+            this.btn_loadclasses.Click += new System.EventHandler(this.btn_loadclasses_Click);
+            // 
+            // cb_terms
+            // 
+            this.cb_terms.FormattingEnabled = true;
+            this.cb_terms.Location = new System.Drawing.Point(382, 21);
+            this.cb_terms.Name = "cb_terms";
+            this.cb_terms.Size = new System.Drawing.Size(199, 21);
+            this.cb_terms.TabIndex = 2;
+            // 
+            // lbl_username
+            // 
+            this.lbl_username.AutoSize = true;
+            this.lbl_username.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_username.ForeColor = System.Drawing.Color.White;
+            this.lbl_username.Location = new System.Drawing.Point(25, 62);
+            this.lbl_username.Name = "lbl_username";
+            this.lbl_username.Size = new System.Drawing.Size(82, 20);
+            this.lbl_username.TabIndex = 1;
+            this.lbl_username.Text = "Username:";
+            // 
+            // lbl_studentId
+            // 
+            this.lbl_studentId.AutoSize = true;
+            this.lbl_studentId.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_studentId.ForeColor = System.Drawing.Color.White;
+            this.lbl_studentId.Location = new System.Drawing.Point(22, 22);
+            this.lbl_studentId.Name = "lbl_studentId";
+            this.lbl_studentId.Size = new System.Drawing.Size(85, 20);
+            this.lbl_studentId.TabIndex = 0;
+            this.lbl_studentId.Text = "Student ID:";
+            // 
             // pnl_left
             // 
             this.pnl_left.BackColor = System.Drawing.Color.Transparent;
+            this.pnl_left.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_left.BackgroundImage")));
             this.pnl_left.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnl_left.Controls.Add(this.button1);
             this.pnl_left.Controls.Add(this.pnl_schedule);
@@ -567,136 +701,6 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // lbl_studentId
-            // 
-            this.lbl_studentId.AutoSize = true;
-            this.lbl_studentId.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_studentId.ForeColor = System.Drawing.Color.White;
-            this.lbl_studentId.Location = new System.Drawing.Point(22, 22);
-            this.lbl_studentId.Name = "lbl_studentId";
-            this.lbl_studentId.Size = new System.Drawing.Size(85, 20);
-            this.lbl_studentId.TabIndex = 0;
-            this.lbl_studentId.Text = "Student ID:";
-            // 
-            // lbl_username
-            // 
-            this.lbl_username.AutoSize = true;
-            this.lbl_username.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_username.ForeColor = System.Drawing.Color.White;
-            this.lbl_username.Location = new System.Drawing.Point(25, 62);
-            this.lbl_username.Name = "lbl_username";
-            this.lbl_username.Size = new System.Drawing.Size(82, 20);
-            this.lbl_username.TabIndex = 1;
-            this.lbl_username.Text = "Username:";
-            // 
-            // cb_terms
-            // 
-            this.cb_terms.FormattingEnabled = true;
-            this.cb_terms.Location = new System.Drawing.Point(382, 21);
-            this.cb_terms.Name = "cb_terms";
-            this.cb_terms.Size = new System.Drawing.Size(199, 21);
-            this.cb_terms.TabIndex = 2;
-            // 
-            // btn_loadclasses
-            // 
-            this.btn_loadclasses.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_loadclasses.Location = new System.Drawing.Point(16, 375);
-            this.btn_loadclasses.Name = "btn_loadclasses";
-            this.btn_loadclasses.Size = new System.Drawing.Size(97, 27);
-            this.btn_loadclasses.TabIndex = 3;
-            this.btn_loadclasses.Text = "Load Classes";
-            this.btn_loadclasses.UseVisualStyleBackColor = true;
-            this.btn_loadclasses.Click += new System.EventHandler(this.btn_loadclasses_Click);
-            // 
-            // dt_availableclasses
-            // 
-            this.dt_availableclasses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dt_availableclasses.Location = new System.Drawing.Point(10, 136);
-            this.dt_availableclasses.Name = "dt_availableclasses";
-            this.dt_availableclasses.Size = new System.Drawing.Size(289, 233);
-            this.dt_availableclasses.TabIndex = 4;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(329, 21);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(47, 20);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Term:";
-            // 
-            // tb_schoolyear
-            // 
-            this.tb_schoolyear.Location = new System.Drawing.Point(382, 64);
-            this.tb_schoolyear.Name = "tb_schoolyear";
-            this.tb_schoolyear.Size = new System.Drawing.Size(199, 20);
-            this.tb_schoolyear.TabIndex = 6;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(282, 62);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(94, 20);
-            this.label12.TabIndex = 7;
-            this.label12.Text = "School Year:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(12, 106);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(127, 20);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "Available Classes:";
-            // 
-            // dt_myclasses
-            // 
-            this.dt_myclasses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dt_myclasses.Location = new System.Drawing.Point(367, 136);
-            this.dt_myclasses.Name = "dt_myclasses";
-            this.dt_myclasses.Size = new System.Drawing.Size(289, 233);
-            this.dt_myclasses.TabIndex = 9;
-            // 
-            // btn_enroll
-            // 
-            this.btn_enroll.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_enroll.Location = new System.Drawing.Point(301, 196);
-            this.btn_enroll.Name = "btn_enroll";
-            this.btn_enroll.Size = new System.Drawing.Size(60, 27);
-            this.btn_enroll.TabIndex = 10;
-            this.btn_enroll.Text = "Enroll>>";
-            this.btn_enroll.UseVisualStyleBackColor = true;
-            this.btn_enroll.Click += new System.EventHandler(this.btn_enroll_Click);
-            // 
-            // btn_drop
-            // 
-            this.btn_drop.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_drop.Location = new System.Drawing.Point(301, 254);
-            this.btn_drop.Name = "btn_drop";
-            this.btn_drop.Size = new System.Drawing.Size(60, 27);
-            this.btn_drop.TabIndex = 11;
-            this.btn_drop.Text = "<<Drop";
-            this.btn_drop.UseVisualStyleBackColor = true;
-            this.btn_drop.Click += new System.EventHandler(this.btn_drop_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(378, 106);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(86, 20);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "My Classes:";
-            // 
             // frm_Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -710,6 +714,8 @@
             this.pnl_fill.ResumeLayout(false);
             this.pnl_enrollmenss.ResumeLayout(false);
             this.pnl_enrollmenss.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_myclasses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_availableclasses)).EndInit();
             this.pnl_left.ResumeLayout(false);
             this.pnl_left.PerformLayout();
             this.pnl_schedule.ResumeLayout(false);
@@ -737,8 +743,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dt_availableclasses)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dt_myclasses)).EndInit();
             this.ResumeLayout(false);
 
         }

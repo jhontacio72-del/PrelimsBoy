@@ -445,8 +445,30 @@ namespace PrelimsBoy
             cb_term.DropDownStyle = ComboBoxStyle.DropDownList; cb_term.Items.Clear(); cb_term.Items.AddRange(new object[] { "1st", "2nd", "Summer" });
         }
 
-        private void LoadBilling() { dt_billing.DataSource = _billing.GetAll(); }
-        private void LoadStudentCombo() { var dt = _billing.GetStudentsLookup(); cb_student.DisplayMember = "fullname"; cb_student.ValueMember = "id"; cb_student.DataSource = dt; }
+        private void LoadBilling()
+        {
+            DataTable dt = new DataTable();
+            using (var conn = Database.GetConnection())
+            {
+                const string sql = @"SELECT b.billing_id AS billing_id, 
+                             b.student_id AS student_id,
+                             u.username AS student_name,
+                             b.school_year AS school_year, 
+                             b.term AS term, 
+                             b.total_amount AS total_amount, 
+                             b.status AS status, 
+                             b.notes AS notes
+                             FROM billing b
+                             JOIN users u ON u.id = b.student_id
+                             ORDER BY b.created_at DESC";
+                using (var da = new MySqlDataAdapter(sql, conn))
+                {
+                    da.Fill(dt);
+                }
+            }
+            dt_billing.DataSource = dt;
+        }
+        private void LoadStudentCombo() { var dt = _billing.GetStudentsLookup(); cb_student.DisplayMember = "username"; cb_student.ValueMember = "id"; cb_student.DataSource = dt; }
         private void ClearBillingFields() { selectedBillingId = -1; cb_student.SelectedIndex = -1; tb_schoolyear.Clear(); cb_term.SelectedIndex = -1; tb_totalamount.Text = "0.00"; cb_status.SelectedItem = "Unpaid"; tb_notes.Clear(); tb_paymentamount.Clear(); tb_paymentmethod.Clear(); dt_billing.ClearSelection(); }
         private Billing ReadBilling(int id) { decimal t; decimal.TryParse(tb_totalamount.Text, out t); return new Billing { BillingId = id, StudentId = Convert.ToInt32(cb_student.SelectedValue), SchoolYear = tb_schoolyear.Text.Trim(), Term = cb_term.SelectedItem?.ToString() ?? "", TotalAmount = t, Status = cb_status.SelectedItem?.ToString() ?? "Unpaid", Notes = tb_notes.Text?.Trim() }; }
 
@@ -658,7 +680,7 @@ namespace PrelimsBoy
         private void LoadClassOfferingCombos()
         {
             cb_course.DataSource = _courseSubject.GetCoursesLookup();
-            cb_course.DisplayMember = "fullname";
+            cb_course.DisplayMember = "username";
             cb_course.ValueMember = "course_id";
             cb_course.SelectedIndex = -1;
 

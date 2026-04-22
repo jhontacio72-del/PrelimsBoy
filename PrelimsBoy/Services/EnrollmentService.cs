@@ -89,42 +89,90 @@ namespace PrelimsBoy.Services
         public bool Enroll(int studentId, int classId, out string msg)
         {
             msg = null;
-            try
+            const decimal RATE_PER_UNIT = 400.00m;
+
+            using (var conn = Database.GetConnection())
             {
-                using (var conn = Database.GetConnection())
+                if (conn == null) { msg = "DB connection failed."; return false; }
+                using (var trans = conn.BeginTransaction())
                 {
-                    // Check capacity first
-                    const string checkSql = @"SELECT co.capacity, (SELECT COUNT(*) FROM enrollments WHERE class_id=@cid) AS enrolled
-                                              FROM class_offerings co WHERE co.class_id=@cid";
-                    using (var checkCmd = new MySqlCommand(checkSql, conn))
+                    try
                     {
-                        checkCmd.Parameters.AddWithValue("@cid", classId);
-                        using (var rdr = checkCmd.ExecuteReader())
+                        // 1. Check capacity + get class details for billing
+                        int capacity = 0, enrolled = 0, units = 0;
+                        string subjectCode = "", subjectName = "", sy = "", term = "";
+
+                        const string checkSql = @"SELECT co.capacity, co.school_year, co.term,
+                                          s.units, s.subject_code, s.subject_name,
+                                          (SELECT COUNT(*) FROM enrollments WHERE class_id=@cid) AS enrolled
+                                          FROM class_offerings co
+                                          JOIN subjects s ON s.subject_id = co.subject_id
+                                          WHERE co.class_id=@cid";
+                        using (var checkCmd = new MySqlCommand(checkSql, conn, trans))
                         {
-                            if (rdr.Read())
+                            checkCmd.Parameters.AddWithValue("@cid", classId);
+                            using (var rdr = checkCmd.ExecuteReader())
                             {
-                                int capacity = Convert.ToInt32(rdr["capacity"]);
-                                int enrolled = Convert.ToInt32(rdr["enrolled"]);
-                                if (enrolled >= capacity) { msg = "Class is full."; return false; }
+                                if (!rdr.Read()) { msg = "Class not found."; trans.Rollback(); return false; }
+                                capacity = Convert.ToInt32(rdr["capacity"]);
+                                enrolled = Convert.ToInt32(rdr["enrolled"]);
+                                units = Convert.ToInt32(rdr["units"]);
+                                subjectCode = rdr["subject_code"].ToString();
+                                subjectName = rdr["subject_name"].ToString();
+                                sy = rdr["school_year"].ToString();
+                                term = rdr["term"].ToString();
                             }
                         }
-                    }
 
-                    const string sql = "INSERT INTO enrollments (student_id, class_id) VALUES (@sid, @cid)";
-                    using (var cmd = new MySqlCommand(sql, conn))
+                        if (enrolled >= capacity) { msg = "Class is full."; trans.Rollback(); return false; }
+
+                        // 2. Insert enrollment and get the new ID
+                        long enrollmentId;
+                        const string insertEnroll = "INSERT INTO enrollments (student_id, class_id) VALUES (@sid, @cid); SELECT LAST_INSERT_ID();";
+                        using (var cmd = new MySqlCommand(insertEnroll, conn, trans))
+                        {
+                            cmd.Parameters.AddWithValue("@sid", studentId);
+                            cmd.Parameters.AddWithValue("@cid", classId);
+                            enrollmentId = Convert.ToInt64(cmd.ExecuteScalar());
+                        }
+
+                        // 3. Auto-create billing linked to enrollment_id
+                        decimal amountDue = units * RATE_PER_UNIT;
+                        string notes = $"{subjectCode} - {subjectName} ({units} units @ ₱{RATE_PER_UNIT}/unit)";
+
+                        const string insertBill = @"INSERT INTO billing 
+                    (enrollment_id, student_id, school_year, term, total_amount, status, notes) 
+                    VALUES (@eid, @sid, @sy, @term, @amount, 'Unpaid', @notes)";
+                        using (var cmd = new MySqlCommand(insertBill, conn, trans))
+                        {
+                            cmd.Parameters.AddWithValue("@eid", enrollmentId);
+                            cmd.Parameters.AddWithValue("@sid", studentId);
+                            cmd.Parameters.AddWithValue("@sy", sy);
+                            cmd.Parameters.AddWithValue("@term", term);
+                            cmd.Parameters.AddWithValue("@amount", amountDue);
+                            cmd.Parameters.AddWithValue("@notes", notes);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        trans.Commit();
+                        msg = $"Enrolled successfully. Billed: ₱{amountDue:N2} for {subjectCode}";
+                        return true;
+                    }
+                    catch (MySqlException ex) when (ex.Number == 1062)
                     {
-                        cmd.Parameters.AddWithValue("@sid", studentId);
-                        cmd.Parameters.AddWithValue("@cid", classId);
-                        cmd.ExecuteNonQuery();
+                        trans.Rollback();
+                        msg = "Already enrolled in this class.";
+                        return false;
+                    }
+                    catch (Exception ex)
+                    {
+                        trans.Rollback();
+                        msg = ex.Message;
+                        return false;
                     }
                 }
-                msg = "Enrolled successfully.";
-                return true;
             }
-            catch (MySqlException ex) when (ex.Number == 1062) { msg = "Already enrolled in this class."; return false; }
-            catch (Exception ex) { msg = ex.Message; return false; }
         }
-
         public bool Drop(int enrollmentId, out string msg)
         {
             msg = null;
@@ -137,7 +185,7 @@ namespace PrelimsBoy.Services
                     {
                         cmd.Parameters.AddWithValue("@id", enrollmentId);
                         var rows = cmd.ExecuteNonQuery();
-                        msg = rows > 0 ? "Class dropped." : "Enrollment not found.";
+                        msg = rows > 0 ? "Class dropped. Billing automatically removed." : "Enrollment not found.";
                         return rows > 0;
                     }
                 }
@@ -145,4 +193,5 @@ namespace PrelimsBoy.Services
             catch (Exception ex) { msg = ex.Message; return false; }
         }
     }
-}
+        }
+ 
