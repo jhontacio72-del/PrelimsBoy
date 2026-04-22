@@ -100,7 +100,7 @@
             // 
             // btn_logout
             // 
-            this.btn_logout.BackColor = System.Drawing.Color.SlateGray;
+            this.btn_logout.BackColor = System.Drawing.Color.White;
             this.btn_logout.Controls.Add(this.label7);
             this.btn_logout.Location = new System.Drawing.Point(3, 347);
             this.btn_logout.Name = "btn_logout";
@@ -122,7 +122,7 @@
             // 
             // btn_profile
             // 
-            this.btn_profile.BackColor = System.Drawing.Color.SlateGray;
+            this.btn_profile.BackColor = System.Drawing.Color.White;
             this.btn_profile.Controls.Add(this.label6);
             this.btn_profile.Location = new System.Drawing.Point(3, 311);
             this.btn_profile.Name = "btn_profile";
@@ -141,7 +141,7 @@
             // 
             // btn_myclasses
             // 
-            this.btn_myclasses.BackColor = System.Drawing.Color.SlateGray;
+            this.btn_myclasses.BackColor = System.Drawing.Color.White;
             this.btn_myclasses.Controls.Add(this.label5);
             this.btn_myclasses.Location = new System.Drawing.Point(3, 272);
             this.btn_myclasses.Name = "btn_myclasses";
@@ -160,7 +160,7 @@
             // 
             // btn_billing
             // 
-            this.btn_billing.BackColor = System.Drawing.Color.SlateGray;
+            this.btn_billing.BackColor = System.Drawing.Color.White;
             this.btn_billing.Controls.Add(this.label4);
             this.btn_billing.Location = new System.Drawing.Point(3, 235);
             this.btn_billing.Name = "btn_billing";
@@ -179,7 +179,7 @@
             // 
             // btn_enrollment
             // 
-            this.btn_enrollment.BackColor = System.Drawing.Color.SlateGray;
+            this.btn_enrollment.BackColor = System.Drawing.Color.White;
             this.btn_enrollment.Controls.Add(this.label3);
             this.btn_enrollment.Location = new System.Drawing.Point(3, 196);
             this.btn_enrollment.Name = "btn_enrollment";
@@ -198,7 +198,7 @@
             // 
             // btn_grades
             // 
-            this.btn_grades.BackColor = System.Drawing.Color.SlateGray;
+            this.btn_grades.BackColor = System.Drawing.Color.White;
             this.btn_grades.Controls.Add(this.label2);
             this.btn_grades.Location = new System.Drawing.Point(3, 159);
             this.btn_grades.Name = "btn_grades";
