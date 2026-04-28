@@ -142,6 +142,7 @@
             this.pnl_enrollmenss.Controls.Add(this.lbl_username);
             this.pnl_enrollmenss.Controls.Add(this.lbl_studentId);
             this.pnl_enrollmenss.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_enrollmenss.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnl_enrollmenss.Location = new System.Drawing.Point(141, 0);
             this.pnl_enrollmenss.Name = "pnl_enrollmenss";
             this.pnl_enrollmenss.Size = new System.Drawing.Size(659, 450);
@@ -215,7 +216,7 @@
             // 
             this.tb_schoolyear.Location = new System.Drawing.Point(382, 64);
             this.tb_schoolyear.Name = "tb_schoolyear";
-            this.tb_schoolyear.Size = new System.Drawing.Size(199, 20);
+            this.tb_schoolyear.Size = new System.Drawing.Size(199, 22);
             this.tb_schoolyear.TabIndex = 6;
             // 
             // label11
