@@ -26,6 +26,7 @@ namespace PrelimsBoy
         private Stack<int> undoStack = new Stack<int>();
         private readonly ClassOfferingService _classOffering = new ClassOfferingService();
         private int selectedClassId = -1;
+       
         public frm_superadmin()
         {
             InitializeComponent();
@@ -59,6 +60,9 @@ namespace PrelimsBoy
             dt_course.CellClick += dt_course_CellClick;
             dg_subjects.CellClick += dg_subjects_CellClick;
             dt_manageinstructor.CellContentClick += dt_manageinstructor_CellContentClick; // <-- here
+            cb_showDelete.CheckedChanged += cb_showDelete_CheckedChanged;
+            btn_billingRestore.Click += btn_billingRestore_Click;
+            btn_deletebilling.Click += btn_deletebilling_Click;
 
         }
         private void SetupGrid()
@@ -430,8 +434,12 @@ namespace PrelimsBoy
         private void SetupBillingGrid()
         {
             dt_billing.Columns.Clear();
-            dt_billing.AutoGenerateColumns = false; dt_billing.ReadOnly = true; dt_billing.AllowUserToAddRows = false;
-            dt_billing.SelectionMode = DataGridViewSelectionMode.FullRowSelect; dt_billing.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dt_billing.AutoGenerateColumns = false;
+            dt_billing.ReadOnly = true;
+            dt_billing.AllowUserToAddRows = false;
+            dt_billing.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dt_billing.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "billId", HeaderText = "ID", DataPropertyName = "billing_id" });
             dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "studId", HeaderText = "Student ID", DataPropertyName = "student_id" });
             dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "studName", HeaderText = "Student", DataPropertyName = "student_name" });
@@ -440,33 +448,23 @@ namespace PrelimsBoy
             dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "total", HeaderText = "Total Amount", DataPropertyName = "total_amount" });
             dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "status", HeaderText = "Status", DataPropertyName = "status" });
             dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "notes", HeaderText = "Notes", DataPropertyName = "notes" });
+            dt_billing.Columns.Add(new DataGridViewTextBoxColumn { Name = "deleted", HeaderText = "Deleted", DataPropertyName = "is_deleted", Visible = false });
+
             dt_billing.CellClick += dt_billing_CellClick;
-            cb_status.DropDownStyle = ComboBoxStyle.DropDownList; cb_status.Items.Clear(); cb_status.Items.AddRange(new object[] { "Unpaid", "Partial", "Paid", "Void" }); cb_status.SelectedItem = "Unpaid";
-            cb_term.DropDownStyle = ComboBoxStyle.DropDownList; cb_term.Items.Clear(); cb_term.Items.AddRange(new object[] { "1st", "2nd", "Summer" });
+
+            cb_status.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_status.Items.Clear();
+            cb_status.Items.AddRange(new object[] { "Unpaid", "Partial", "Paid", "Void" });
+            cb_status.SelectedItem = "Unpaid";
+
+            cb_term.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_term.Items.Clear();
+            cb_term.Items.AddRange(new object[] { "1st", "2nd", "Summer" });
         }
 
         private void LoadBilling()
         {
-            DataTable dt = new DataTable();
-            using (var conn = Database.GetConnection())
-            {
-                const string sql = @"SELECT b.billing_id AS billing_id, 
-                             b.student_id AS student_id,
-                             u.username AS student_name,
-                             b.school_year AS school_year, 
-                             b.term AS term, 
-                             b.total_amount AS total_amount, 
-                             b.status AS status, 
-                             b.notes AS notes
-                             FROM billing b
-                             JOIN users u ON u.id = b.student_id
-                             ORDER BY b.created_at DESC";
-                using (var da = new MySqlDataAdapter(sql, conn))
-                {
-                    da.Fill(dt);
-                }
-            }
-            dt_billing.DataSource = dt;
+            dt_billing.DataSource = _billing.GetAll(cb_showDelete.Checked);
         }
         private void LoadStudentCombo() { var dt = _billing.GetStudentsLookup(); cb_student.DisplayMember = "username"; cb_student.ValueMember = "id"; cb_student.DataSource = dt; }
         private void ClearBillingFields() { selectedBillingId = -1; cb_student.SelectedIndex = -1; tb_schoolyear.Clear(); cb_term.SelectedIndex = -1; tb_totalamount.Text = "0.00"; cb_status.SelectedItem = "Unpaid"; tb_notes.Clear(); tb_paymentamount.Clear(); tb_paymentmethod.Clear(); dt_billing.ClearSelection(); }
@@ -499,9 +497,12 @@ namespace PrelimsBoy
         private void btn_deletebilling_Click(object sender, EventArgs e)
         {
             if (selectedBillingId <= 0) { MessageBox.Show("Select a billing record to delete."); return; }
-            if (MessageBox.Show("Delete this billing record?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
-            string m; var ok = _billing.Delete(selectedBillingId, out m); MessageBox.Show(ok ? m : (m ?? "Failed."), ok ? "OK" : "Error", MessageBoxButtons.OK, ok ? MessageBoxIcon.Information : MessageBoxIcon.Error); if (ok) { LoadBilling(); ClearBillingFields(); }
+            if (MessageBox.Show("Move this billing to deleted items?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
+            string m; var ok = _billing.SoftDelete(selectedBillingId, out m);
+            MessageBox.Show(ok ? m : (m ?? "Failed."), ok ? "OK" : "Error", MessageBoxButtons.OK, ok ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+            if (ok) { LoadBilling(); ClearBillingFields(); }
         }
+        
 
         private void btn_recordpayment_Click(object sender, EventArgs e)
         {
@@ -805,6 +806,27 @@ namespace PrelimsBoy
             if (_classOffering.ToggleActive(selectedClassId, out var msg))
             { MessageBox.Show(msg); LoadClassOfferings(); }
             else MessageBox.Show(msg ?? "Failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void cb_showDelete_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadBilling();
+            // Toggle button states: can't add/update when viewing deleted
+            bool showingDeleted = cb_showDelete.Checked;
+            btn_addbilling.Enabled = !showingDeleted;
+            btn_updatebilling.Enabled = !showingDeleted;
+            btn_recordpayment.Enabled = !showingDeleted;
+            btn_billingRestore.Enabled = showingDeleted;
+            btn_deletebilling.Enabled = !showingDeleted;
+        }
+
+        private void btn_billingRestore_Click(object sender, EventArgs e)
+        {
+            if (selectedBillingId <= 0) { MessageBox.Show("Select a deleted billing record."); return; }
+            if (MessageBox.Show("Restore this billing?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
+            string m; var ok = _billing.Restore(selectedBillingId, out m);
+            MessageBox.Show(ok ? m : (m ?? "Failed."), ok ? "OK" : "Error", MessageBoxButtons.OK, ok ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+            if (ok) { LoadBilling(); ClearBillingFields(); }
         }
     }
 }

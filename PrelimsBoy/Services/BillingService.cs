@@ -14,19 +14,20 @@ namespace PrelimsBoy.Services
 {
     public class BillingService
     {
-        public DataTable GetAll()
+        public DataTable GetAll(bool showDeleted = false)
         {
             DataTable dt = new DataTable();
             using (MySqlConnection conn = Database.GetConnection())
             {
                 if (conn == null) return dt;
-                const string sql = @"
+                string whereDeleted = showDeleted ? "b.is_deleted = 1" : "b.is_deleted = 0";
+                string sql = $@"
                     SELECT b.billing_id, b.student_id,
-                           CONCAT(u.lastname, ', ', u.firstname) AS student_name,
-                           b.school_year, b.term, b.total_amount, b.status, b.notes
+                           u.username AS student_name,
+                           b.school_year, b.term, b.total_amount, b.status, b.notes, b.is_deleted
                     FROM billing b
                     JOIN users u ON u.id = b.student_id
-                    WHERE u.role = 'Student'
+                    WHERE u.role = 'Student' AND {whereDeleted}
                     ORDER BY b.billing_id DESC";
                 using (MySqlDataAdapter da = new MySqlDataAdapter(sql, conn))
                 {
@@ -42,10 +43,10 @@ namespace PrelimsBoy.Services
             using (MySqlConnection conn = Database.GetConnection())
             {
                 if (conn == null) return dt;
-                const string sql = @"SELECT id, username 
-                     FROM users 
-                     WHERE role = 'Student' AND status = 'Active'
-                     ORDER BY username";
+                const string sql = @"SELECT id, username
+                                     FROM users
+                                     WHERE role = 'Student' AND status = 'Active'
+                                     ORDER BY username";
                 using (MySqlDataAdapter da = new MySqlDataAdapter(sql, conn))
                 {
                     da.Fill(dt);
@@ -116,20 +117,39 @@ namespace PrelimsBoy.Services
             catch (Exception ex) { msg = ex.Message; return false; }
         }
 
-        public bool Delete(int billingId, out string msg)
+        public bool SoftDelete(int billingId, out string msg)
         {
             try
             {
                 using (MySqlConnection conn = Database.GetConnection())
                 {
                     if (conn == null) { msg = "No DB connection."; return false; }
-                    using (MySqlCommand cmd = new MySqlCommand("DELETE FROM billing WHERE billing_id=@id", conn))
+                    using (MySqlCommand cmd = new MySqlCommand("UPDATE billing SET is_deleted=1 WHERE billing_id=@id", conn))
                     {
                         cmd.Parameters.AddWithValue("@id", billingId);
                         cmd.ExecuteNonQuery();
                     }
                 }
-                msg = "Billing deleted.";
+                msg = "Billing moved to deleted.";
+                return true;
+            }
+            catch (Exception ex) { msg = ex.Message; return false; }
+        }
+
+        public bool Restore(int billingId, out string msg)
+        {
+            try
+            {
+                using (MySqlConnection conn = Database.GetConnection())
+                {
+                    if (conn == null) { msg = "No DB connection."; return false; }
+                    using (MySqlCommand cmd = new MySqlCommand("UPDATE billing SET is_deleted=0 WHERE billing_id=@id", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", billingId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                msg = "Billing restored.";
                 return true;
             }
             catch (Exception ex) { msg = ex.Message; return false; }
